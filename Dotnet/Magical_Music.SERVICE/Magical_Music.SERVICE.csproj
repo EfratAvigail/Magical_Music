@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Magical_Music.CORE\Magical_Music.CORE.csproj" />
+    <ProjectReference Include="..\Magical_Music.DATA\Magical_Music.DATA.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="AWSSDK.S3" Version="4.0.0.6" />
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+		<PackageReference Include="MailKit" Version="4.12.1" />
+		<PackageReference Include="MimeKit" Version="4.12.0" />
+	</ItemGroup>
+
+
+</Project>

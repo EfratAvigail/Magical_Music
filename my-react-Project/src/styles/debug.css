@@ -1,0 +1,16 @@
+/* Debug styles to help identify rendering issues */
+.debug-outline {
+  outline: 2px solid red;
+}
+
+.debug-info {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  z-index: 9999;
+}

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>0e1825b8-7ef3-4eeb-91a5-74742e872de8</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+		<PackageReference Include="DotNetEnv" Version="3.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.15" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.14">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="ServiceStack.Text" Version="8.7.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<!-- הוספת AutoMapper -->
+		
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Magical_Music.CORE\Magical_Music.CORE.csproj" />
+		<ProjectReference Include="..\Magical_Music.DATA\Magical_Music.DATA.csproj" />
+		<ProjectReference Include="..\Magical_Music.SERVICE\Magical_Music.SERVICE.csproj" />
+	</ItemGroup>
+
+</Project>

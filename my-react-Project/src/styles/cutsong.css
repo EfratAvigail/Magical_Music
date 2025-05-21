@@ -1,0 +1,342 @@
+.cut-song-container {
+  padding: 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.cut-song-header {
+  margin-bottom: 2rem;
+}
+
+.cut-song-header h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.cut-song-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b6b, #6b66ff);
+  border-radius: 3px;
+}
+
+.cut-song-description {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+}
+
+.cut-song-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1.5rem;
+}
+
+.song-selection {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: fit-content;
+}
+
+.song-selection h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.song-selection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.song-selection-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.song-selection-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.song-selection-item.selected {
+  background: rgba(107, 102, 255, 0.2);
+  border: 1px solid rgba(107, 102, 255, 0.3);
+}
+
+.song-selection-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.song-selection-info {
+  flex: 1;
+}
+
+.song-selection-info h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.song-selection-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.song-selection-duration {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.song-editor {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.song-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-song-info h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.2rem;
+}
+
+.selected-song-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.play-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(107, 102, 255, 0.2);
+  border: 1px solid rgba(107, 102, 255, 0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.play-button:hover {
+  background: rgba(107, 102, 255, 0.3);
+}
+
+.waveform-container {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+}
+
+.waveform-canvas {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+}
+
+.time-markers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.time-marker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.time-marker span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.marker-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.marker-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6b66ff;
+  cursor: pointer;
+}
+
+.marker-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6b66ff;
+  cursor: pointer;
+  border: none;
+}
+
+.cut-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cut-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #ff6b6b, #6b66ff);
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.cut-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(107, 102, 255, 0.3);
+}
+
+.cut-button:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.cut-complete {
+  background: rgba(107, 102, 255, 0.1);
+  border: 1px solid rgba(107, 102, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.cut-complete p {
+  margin: 0 0 1rem 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cut-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.cut-preview-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.download-cut-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(107, 102, 255, 0.2);
+  border: 1px solid rgba(107, 102, 255, 0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.download-cut-button:hover {
+  background: rgba(107, 102, 255, 0.3);
+}
+
+.no-song-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  height: 300px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 992px) {
+  .cut-song-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .song-editor-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cut-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .reset-button,
+  .cut-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

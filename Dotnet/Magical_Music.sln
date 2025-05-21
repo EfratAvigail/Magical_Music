@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magical_Music.API", "Magical_Music\Magical_Music.API.csproj", "{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magical_Music.CORE", "Magical_Music.CORE\Magical_Music.CORE.csproj", "{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magical_Music.DATA", "Magical_Music.DATA\Magical_Music.DATA.csproj", "{C25CFA45-B598-4793-BCCE-9894C6CFA963}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magical_Music.SERVICE", "Magical_Music.SERVICE\Magical_Music.SERVICE.csproj", "{6105EDBA-360A-43B1-8066-86FAE5EE2561}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C25CFA45-B598-4793-BCCE-9894C6CFA963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C25CFA45-B598-4793-BCCE-9894C6CFA963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C25CFA45-B598-4793-BCCE-9894C6CFA963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C25CFA45-B598-4793-BCCE-9894C6CFA963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6105EDBA-360A-43B1-8066-86FAE5EE2561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6105EDBA-360A-43B1-8066-86FAE5EE2561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6105EDBA-360A-43B1-8066-86FAE5EE2561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6105EDBA-360A-43B1-8066-86FAE5EE2561}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EEFCAD9-D531-4982-A10E-2A2DD62D3A35}
+	EndGlobalSection
+EndGlobal

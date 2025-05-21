@@ -1,0 +1,51 @@
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #121225;
+  color: white;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  position: relative;
+  min-height: 100vh;
+  z-index: 10;
+  transition: margin-left 0.3s ease;
+}
+
+/* Smaller margin on larger screens when menu is collapsed */
+@media (min-width: 769px) {
+  .main-content {
+    margin-left: 20px; /* Only 20px when menu is collapsed */
+  }
+
+  /* When side menu is expanded, increase margin */
+  .side-menu.expanded ~ .main-content {
+    margin-left: 250px;
+  }
+}
+
+/* Current view indicator */
+.view-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(107, 102, 255, 0.2);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+/* Mobile view style update */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding-top: 60px;
+    width: 100%;
+  }
+}

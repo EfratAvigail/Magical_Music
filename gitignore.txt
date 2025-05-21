@@ -1,0 +1,28 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.sln.ide
+.vs/
+
+
+# Environment variables
+**/.env
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+node_modules/
+dist/
+
+
+# Rider
+.idea/
+*.sln.iml
+
+# NuGet Packages
+*.nupkg
+packages/
