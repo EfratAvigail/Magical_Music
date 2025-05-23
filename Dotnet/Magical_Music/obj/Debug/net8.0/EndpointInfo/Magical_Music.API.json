@@ -95,6 +95,71 @@
         }
       }
     },
+    "/api/UploadFile/upload": {
+      "post": {
+        "tags": [
+          "AWS"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Name": {
+                    "type": "string"
+                  },
+                  "MusicStyle": {
+                    "type": "string"
+                  },
+                  "SongLength": {
+                    "type": "string",
+                    "format": "date-span"
+                  },
+                  "ReleaseDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "SingerId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "Name": {
+                  "style": "form"
+                },
+                "MusicStyle": {
+                  "style": "form"
+                },
+                "SongLength": {
+                  "style": "form"
+                },
+                "ReleaseDate": {
+                  "style": "form"
+                },
+                "SingerId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UploadFile/download-url": {
       "get": {
         "tags": [
@@ -861,6 +926,14 @@
               "$ref": "#/components/schemas/User"
             },
             "nullable": true
+          },
+          "s3Url": {
+            "type": "string",
+            "nullable": true
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -884,13 +957,21 @@
             "type": "string",
             "format": "date-time"
           },
-          "imageUrl": {
-            "type": "string",
-            "nullable": true
-          },
           "singerId": {
             "type": "integer",
             "format": "int32"
+          },
+          "s3Url": {
+            "type": "string",
+            "nullable": true
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -20,10 +20,17 @@ namespace Magical_Music.CORE.Models
         public DateTime ReleaseDate { get; set; }
 
         public string ImageUrl { get; set; }
-        public int singerId { get; set; }
+        public int SingerId { get; set; }
 
         public Singer Singer { get; set; }
 
         public ICollection<User> Users { get; set; }
+
+        public string S3Url { get; set; }
+
+
+        public string Key { get; set; }  // שדה חדש למפתח ה-S3
+
+    
     }
 }

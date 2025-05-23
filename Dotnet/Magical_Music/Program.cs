@@ -93,10 +93,19 @@ namespace Magical_Music
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddAutoMapper(typeof(MappingProfile));
+            builder.Services.AddScoped<AWSService>();
+
 
             // שירותי AWS
             builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
             builder.Services.AddAWSService<IAmazonS3>();
+            // שירותי AWS
+            builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+            builder.Services.AddAWSService<IAmazonS3>();
+
+            // הוספת AWSService
+            builder.Services.AddScoped<AWSService>(); // הוסף שורה זו
+
             builder.Services.AddSingleton<IAmazonS3>(sp =>
             {
                 var configuration = sp.GetRequiredService<IConfiguration>();
@@ -110,6 +119,7 @@ namespace Magical_Music
                 };
                 return new AmazonS3Client(credentials, clientConfig);
             });
+
 
             // הוספת DbContext
             builder.Services.AddDbContext<DataContext>(options =>

@@ -276,6 +276,23 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Microsoft.AspNetCore.Http.Features/5.0.17": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "5.0.1",
+          "System.IO.Pipelines": "5.0.2"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
@@ -3137,7 +3154,8 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "AutoMapper": "12.0.1",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1"
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "compile": {
           "bin/placeholder/Magical_Music.CORE.dll": {}
@@ -3556,6 +3574,25 @@
         "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
         "microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/5.0.17": {
+      "sha512": "3jG2xS+dx8DDCGV/F+STdPTg89lX3ao3dF/VEPvJaz3wzBIjuadipTtYNEXDIVuOPZwb6jdmhrX9jkzOIBm5cw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/5.0.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
@@ -9666,11 +9703,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music\\Magical_Music.API.csproj",
+      "projectUniqueName": "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music\\Magical_Music.API.csproj",
       "projectName": "Magical_Music.API",
-      "projectPath": "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music\\Magical_Music.API.csproj",
+      "projectPath": "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music\\Magical_Music.API.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music\\obj\\",
+      "outputPath": "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -9691,14 +9728,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music.CORE\\Magical_Music.CORE.csproj": {
-              "projectPath": "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music.CORE\\Magical_Music.CORE.csproj"
+            "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music.CORE\\Magical_Music.CORE.csproj": {
+              "projectPath": "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music.CORE\\Magical_Music.CORE.csproj"
             },
-            "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music.DATA\\Magical_Music.DATA.csproj": {
-              "projectPath": "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music.DATA\\Magical_Music.DATA.csproj"
+            "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music.DATA\\Magical_Music.DATA.csproj": {
+              "projectPath": "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music.DATA\\Magical_Music.DATA.csproj"
             },
-            "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj": {
-              "projectPath": "C:\\Users\\user1\\Desktop\\תשפה\\Practicum\\Dotnet\\Magical_Music\\Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj"
+            "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj": {
+              "projectPath": "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj"
             }
           }
         }

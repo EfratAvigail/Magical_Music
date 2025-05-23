@@ -1,402 +1,188 @@
 "use client"
 
-import type React from "react"
+import { useState } from "react"
+import axios from "axios"
+import { FolderPlus, MoreHorizontal, Play, Heart, Filter, SortDesc, Grid, List } from "lucide-react"
+import type { Song } from "../types"
+import "../styles/songfolder.css"
 
-import { useState, useEffect } from "react"
-import { Plus, Edit, Trash2, X, Check, Loader, User, Search } from "lucide-react"
-import { singerAPI } from "../services/api"
-import type { Singer } from "../types"
-import "../styles/singermanagement.css"
+interface SongFolderProps {
+  songs: Song[]
+}
 
-const SingerManagement = () => {
-  console.log("SingerManagement component rendering")
-  const [singers, setSingers] = useState<Singer[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [showAddForm, setShowAddForm] = useState(false)
-  const [editingSingerId, setEditingSingerId] = useState<number | null>(null)
-  const [formData, setFormData] = useState({
-    name: "",
-    biography: "",
+const SongFolder = ({ songs }: SongFolderProps) => {
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  const [sortBy, setSortBy] = useState<"name" | "date" | "style">("name")
+  const [filterStyle, setFilterStyle] = useState<string>("")
+
+  // Get unique music styles for filter
+  const musicStyles = Array.from(new Set(songs.map((song) => song.musicStyle)))
+
+  // Sort songs based on current sort option
+  const sortedSongs = [...songs].sort((a, b) => {
+    if (sortBy === "name") {
+      return a.name.localeCompare(b.name)
+    } else if (sortBy === "date") {
+      return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+    } else {
+      return a.musicStyle.localeCompare(b.musicStyle)
+    }
   })
-  const [selectedImage, setSelectedImage] = useState<File | null>(null)
-  const [imageSrc, setImageSrc] = useState<string | null>(null)
-  const [submitting, setSubmitting] = useState(false)
-  const [searchTerm, setSearchTerm] = useState("")
 
-  // Fetch singers on component mount
-  useEffect(() => {
-    fetchSingers()
-  }, [])
+  // Filter songs by music style if filter is active
+  const filteredSongs = filterStyle ? sortedSongs.filter((song) => song.musicStyle === filterStyle) : sortedSongs
 
-  const fetchSingers = async () => {
-    try {
-      setLoading(true)
-      setError(null)
-
-      console.log("Fetching singers...")
-
-      const data = await singerAPI.getAllSingers()
-      console.log("Singers fetched:", data)
-
-      setSingers(Array.isArray(data) ? data : [])
-    } catch (error: any) {
-      console.error("Error fetching singers:", error)
-      setError(error.message || "Failed to load singers")
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0]
-
-      // Validate file type
-      if (!file.type.startsWith("image/")) {
-        alert("Please select a valid image file.")
-        return
-      }
-
-      setSelectedImage(file)
-
-      // Create preview
-      if (imageSrc) {
-        URL.revokeObjectURL(imageSrc)
-      }
-
-      const objectUrl = URL.createObjectURL(file)
-      setImageSrc(objectUrl)
-    }
-  }
-
-  const clearImageSelection = () => {
-    if (imageSrc) {
-      URL.revokeObjectURL(imageSrc)
-    }
-    setSelectedImage(null)
-    setImageSrc(null)
-  }
-
-  const resetForm = () => {
-    setFormData({
-      name: "",
-      biography: "",
+  // Format date to display in a readable format
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
     })
-    clearImageSelection()
   }
 
-  const handleAddSinger = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!formData.name.trim()) {
-      alert("Please enter a singer name.")
-      return
-    }
-
+  const onPlaySong = async (song: Song) => {
     try {
-      setSubmitting(true)
-      const singerFormData = new FormData()
-      singerFormData.append("name", formData.name)
-      singerFormData.append("biography", formData.biography || "")
-      if (selectedImage) {
-        singerFormData.append("imageFile", selectedImage)
-      }
-
-      await singerAPI.addSinger(singerFormData)
-      await fetchSingers()
-      resetForm()
-      setShowAddForm(false)
-    } catch (error: any) {
-      console.error("Error adding singer:", error)
-      alert("Failed to add singer: " + (error.message || "Unknown error"))
-    } finally {
-      setSubmitting(false)
+      const response = await axios.get(`https://localhost:7234/api/UploadFile/download-url?fileName=${encodeURIComponent(song.name)}`);
+      const audioUrl = response.data; // assuming the API returns the URL directly
+      const audio = new Audio(audioUrl);
+      audio.play();
+    } catch (error) {
+      console.error("Error fetching the audio URL:", error);
     }
-  }
-
-  const handleEditSinger = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!formData.name.trim() || !editingSingerId) {
-      return
-    }
-
-    try {
-      setSubmitting(true)
-      const singerFormData = new FormData()
-      singerFormData.append("name", formData.name)
-      singerFormData.append("biography", formData.biography || "")
-      if (selectedImage) {
-        singerFormData.append("imageFile", selectedImage)
-      }
-
-      await singerAPI.updateSinger(editingSingerId, singerFormData)
-      await fetchSingers()
-      resetForm()
-      setEditingSingerId(null)
-    } catch (error: any) {
-      console.error("Error updating singer:", error)
-      alert("Failed to update singer: " + (error.message || "Unknown error"))
-    } finally {
-      setSubmitting(false)
-    }
-  }
-
-  const handleDeleteSinger = async (singerId: number) => {
-    if (!window.confirm("Are you sure you want to delete this singer? This will also delete all associated songs.")) {
-      return
-    }
-
-    try {
-      await singerAPI.deleteSinger(singerId)
-      setSingers((prevSingers) => prevSingers.filter((singer) => singer.id !== singerId))
-    } catch (error: any) {
-      console.error("Error deleting singer:", error)
-      alert("Failed to delete singer: " + (error.message || "Unknown error"))
-    }
-  }
-
-  const startEditing = (singer: Singer) => {
-    setFormData({
-      name: singer.name,
-      biography: singer.biography || "",
-    })
-    setImageSrc(singer.imageUrl || null)
-    setEditingSingerId(singer.id)
-    setShowAddForm(false)
-  }
-
-  const cancelEditing = () => {
-    resetForm()
-    setEditingSingerId(null)
-  }
-
-  const filteredSingers = singers.filter((singer) => singer.name.toLowerCase().includes(searchTerm.toLowerCase()))
-
-  if (loading && singers.length === 0) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>Loading singers...</p>
-      </div>
-    )
-  }
-
-  if (error && singers.length === 0) {
-    return (
-      <div className="error-container">
-        <p>Error: {error}</p>
-        <button onClick={() => fetchSingers()}>Try Again</button>
-      </div>
-    )
   }
 
   return (
-    <div className="singer-management-container">
-      <div className="singer-management-header">
-        <h2>Artist Management</h2>
-        <div className="header-actions">
-          <div className="search-input-wrapper">
-            <Search size={18} className="search-icon" />
-            <input
-              type="text"
-              placeholder="Search artists..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
-            />
-            {searchTerm && (
-              <button className="clear-search" onClick={() => setSearchTerm("")}>
-                <X size={16} />
-              </button>
-            )}
-          </div>
-          {!showAddForm && !editingSingerId && (
-            <button className="add-singer-button" onClick={() => setShowAddForm(true)}>
-              <Plus size={18} />
-              <span>Add Artist</span>
+    <div className="song-folder">
+      <div className="folder-header">
+        <h2>Your Song Collection</h2>
+        <div className="folder-actions">
+          <button className="folder-action-button">
+            <FolderPlus size={18} />
+            <span>New Folder</span>
+          </button>
+          <div className="view-options">
+            <button
+              className={`view-option ${viewMode === "grid" ? "active" : ""}`}
+              onClick={() => setViewMode("grid")}
+            >
+              <Grid size={18} />
             </button>
-          )}
+            <button
+              className={`view-option ${viewMode === "list" ? "active" : ""}`}
+              onClick={() => setViewMode("list")}
+            >
+              <List size={18} />
+            </button>
+          </div>
         </div>
       </div>
 
-      {showAddForm && (
-        <div className="singer-form-container">
-          <h3>Add New Artist</h3>
-          <form onSubmit={handleAddSinger}>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Enter artist name"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="biography">Biography</label>
-              <textarea
-                id="biography"
-                name="biography"
-                value={formData.biography}
-                onChange={handleInputChange}
-                placeholder="Enter artist biography"
-                rows={4}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Profile Image</label>
-              <div className="image-upload-container">
-                <input
-                  type="file"
-                  id="image-upload"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="hidden-input"
-                />
-                {selectedImage && imageSrc ? (
-                  <div className="image-preview-container">
-                    <img src={imageSrc || "/placeholder.svg"} alt="Preview" className="image-preview" />
-                    <button type="button" className="remove-image" onClick={clearImageSelection}>
-                      <X size={16} />
-                    </button>
-                  </div>
-                ) : (
-                  <label htmlFor="image-upload" className="image-upload-label">
-                    <User size={24} />
-                    <span>Upload Image</span>
-                  </label>
-                )}
-              </div>
-            </div>
-
-            <div className="form-actions">
-              <button type="button" className="cancel-button" onClick={() => setShowAddForm(false)}>
-                Cancel
-              </button>
-              <button type="submit" className="submit-button" disabled={submitting}>
-                {submitting ? <Loader size={18} className="spinner" /> : <Check size={18} />}
-                <span>Add Artist</span>
-              </button>
-            </div>
-          </form>
+      <div className="folder-filters">
+        <div className="filter-group">
+          <label>
+            <Filter size={16} />
+            <span>Filter by:</span>
+          </label>
+          <select value={filterStyle} onChange={(e) => setFilterStyle(e.target.value)} className="filter-select">
+            <option value="">All Styles</option>
+            {musicStyles.map((style) => (
+              <option key={style} value={style}>
+                {style}
+              </option>
+            ))}
+          </select>
         </div>
-      )}
 
-      {editingSingerId && (
-        <div className="singer-form-container">
-          <h3>Edit Artist</h3>
-          <form onSubmit={handleEditSinger}>
-            <div className="form-group">
-              <label htmlFor="edit-name">Name</label>
-              <input
-                type="text"
-                id="edit-name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Enter artist name"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="edit-biography">Biography</label>
-              <textarea
-                id="edit-biography"
-                name="biography"
-                value={formData.biography}
-                onChange={handleInputChange}
-                placeholder="Enter artist biography"
-                rows={4}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Profile Image</label>
-              <div className="image-upload-container">
-                <input
-                  type="file"
-                  id="edit-image-upload"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="hidden-input"
-                />
-                {selectedImage || imageSrc ? (
-                  <div className="image-preview-container">
-                    <img src={imageSrc || ""} alt="Preview" className="image-preview" />
-                    <button type="button" className="remove-image" onClick={clearImageSelection}>
-                      <X size={16} />
-                    </button>
-                  </div>
-                ) : (
-                  <label htmlFor="edit-image-upload" className="image-upload-label">
-                    <User size={24} />
-                    <span>Upload Image</span>
-                  </label>
-                )}
-              </div>
-            </div>
-
-            <div className="form-actions">
-              <button type="button" className="cancel-button" onClick={cancelEditing}>
-                Cancel
-              </button>
-              <button type="submit" className="submit-button" disabled={submitting}>
-                {submitting ? <Loader size={18} className="spinner" /> : <Check size={18} />}
-                <span>Update Artist</span>
-              </button>
-            </div>
-          </form>
+        <div className="filter-group">
+          <label>
+            <SortDesc size={16} />
+            <span>Sort by:</span>
+          </label>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as "name" | "date" | "style")}
+            className="filter-select"
+          >
+            <option value="name">Name</option>
+            <option value="date">Release Date</option>
+            <option value="style">Music Style</option>
+          </select>
         </div>
-      )}
+      </div>
 
-      {filteredSingers.length === 0 ? (
-        <div className="no-singers">
-          <User size={48} />
-          <p>No artists found. {!showAddForm && "Add some artists to get started!"}</p>
-        </div>
-      ) : (
-        <div className="singers-grid">
-          {filteredSingers.map((singer) => (
-            <div key={singer.id} className="singer-card">
-              <div className="singer-image">
-                {singer.imageUrl ? (
-                  <img src={singer.imageUrl || "/placeholder.svg"} alt={singer.name} />
-                ) : (
-                  <div className="placeholder-image">
-                    <User size={32} />
-                  </div>
-                )}
+      {viewMode === "grid" ? (
+        <div className="songs-grid">
+          {filteredSongs.map((song) => (
+            <div key={song.id} className="song-card">
+              <div className="song-card-image">
+                <img src={song.imageUrl || "/placeholder.svg?height=200&width=200"} alt={song.name} />
+                <div className="song-card-overlay">
+                  <button className="play-overlay-button" onClick={() => onPlaySong(song)}>
+                    <Play size={32} />
+                  </button>
+                </div>
               </div>
-              <div className="singer-info">
-                <h3 className="singer-name">{singer.name}</h3>
-                {singer.biography && <p className="singer-bio">{singer.biography}</p>}
-                {singer.songs && <p className="singer-songs-count">{singer.songs.length} songs</p>}
-              </div>
-              <div className="singer-actions">
-                <button className="action-button edit" onClick={() => startEditing(singer)}>
-                  <Edit size={18} />
-                </button>
-                <button className="action-button delete" onClick={() => handleDeleteSinger(singer.id)}>
-                  <Trash2 size={18} />
-                </button>
+              <div className="song-card-info">
+                <h3>{song.name}</h3>
+                <p className="song-style">{song.musicStyle}</p>
+                <div className="song-card-meta">
+                  <span className="song-date">{formatDate(song.releaseDate)}</span>
+                  <button className={`like-button ${song.liked ? "liked" : ""}`}>
+                    <Heart size={16} />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+      ) : (
+        <div className="songs-list">
+          <table className="songs-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Style</th>
+                <th>Length</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredSongs.map((song) => (
+                <tr key={song.id} className="song-row">
+                  <td>
+                    <div className="song-row-image">
+                      <img src={song.imageUrl || "/placeholder.svg?height=40&width=40"} alt={song.name} />
+                      <button className="play-row-button" onClick={() => onPlaySong(song)}>
+                        <Play size={16} />
+                      </button>
+                    </div>
+                  </td>
+                  <td>{song.name}</td>
+                  <td>{song.musicStyle}</td>
+                  <td>{song.songLength.substring(3)}</td>
+                  <td>{formatDate(song.releaseDate)}</td>
+                  <td>
+                    <div className="song-row-actions">
+                      <button className={`like-button ${song.liked ? "liked" : ""}`}>
+                        <Heart size={16} />
+                      </button>
+                      <button className="more-button">
+                        <MoreHorizontal size={16} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
   )
 }
 
-export default SingerManagement
+export default SongFolder

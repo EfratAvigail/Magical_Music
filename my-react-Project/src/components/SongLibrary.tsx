@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Play, Pause, Heart, Trash2, Edit, Music, Search, Filter, X } from "lucide-react"
+import { Play, Pause, Heart, Trash2, Edit, Music, Filter, X } from "lucide-react"
 import { songAPI, singerAPI } from "../services/api"
 import type { Song, Singer } from "../types"
 import "../styles/songlibrary.css"
@@ -125,14 +125,14 @@ const SongLibrary = () => {
         <h2>My Music Library</h2>
         <div className="search-container">
           <div className="search-input-wrapper">
-            <Search size={18} className="search-icon" />
+            {/* <Search size={18} className="search-icon" />
             <input
               type="text"
               placeholder="Search songs or artists..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-input"
-            />
+            /> */}
             {searchTerm && (
               <button className="clear-search" onClick={() => setSearchTerm("")}>
                 <X size={16} />

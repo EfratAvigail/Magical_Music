@@ -7,7 +7,7 @@ import Login from "./components/Login"
 import Register from "./components/Register"
 import LandingPage from "./components/LandingPage"
 import ErrorBoundary from "./components/ErrorBoundary"
-import UploadSong from "./components/UploadSong" // Import the UploadSong component
+// import UploadSong from "./components/UploadSong" // Import the UploadSong component
 
 // Define types for authentication
 interface User {
@@ -76,10 +76,10 @@ function App() {
             path="/dashboard/*"
             element={isAuthenticated ? <Home setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/login" />}
           />
-          <Route
+          {/* <Route
             path="/dashboard/upload"
             element={isAuthenticated ? <UploadSong /> : <Navigate to="/login" />} // Added UploadSong route
-          />
+          /> */}
         </Routes>
       </Router>
     </ErrorBoundary>

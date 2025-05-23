@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using Magical_Music.SERVICE;
+using Magical_Music.CORE.DTOs;
+using Magical_Music.CORE.Models;
+using Magical_Music.CORE.Services;
+using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Magical_Music.API.Controllers
 {
@@ -15,11 +21,13 @@ namespace Magical_Music.API.Controllers
     {
         private readonly IAmazonS3 _s3Client;
         private readonly string _bucketName;
+        private readonly AWSService _awsService;
 
-        public AWSController(IAmazonS3 s3Client, IConfiguration configuration)
+        public AWSController(IAmazonS3 s3Client, IConfiguration configuration, AWSService awsService)
         {
             _s3Client = s3Client;
             _bucketName = configuration["AWS:BucketName"];
+            _awsService = awsService;
         }
 
         [HttpGet("presigned-url")]
@@ -71,6 +79,43 @@ namespace Magical_Music.API.Controllers
             {
                 return StatusCode(500, $"שגיאה ביצירת URL עם הרשאות: {ex.Message}");
             }
+        }
+
+        [HttpPost("upload")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UploadFile([FromForm] CORE.Models.UploadSongRequest request, [FromServices] ISongService songService)
+        {
+            if (request.File == null || request.File.Length == 0)
+                return BadRequest("File is empty.");
+
+            var allowedExtensions = new[] { ".mp3", ".wav" };
+            var fileExtension = Path.GetExtension(request.File.FileName).ToLower();
+
+            if (!allowedExtensions.Contains(fileExtension))
+                return BadRequest("רק קבצי MP3 או WAV מותרים.");
+
+            using var stream = request.File.OpenReadStream();
+
+            var (url, key) = await _awsService.UploadFileAsync(stream, request.File.FileName);
+
+            var songDto = new SongDTO
+            {
+                Name = request.Name,
+                MusicStyle = request.MusicStyle,
+                SongLength = request.SongLength,
+                ReleaseDate = request.ReleaseDate,
+                SingerId = request.SingerId,
+                S3Url = url,
+                Key = key
+            };
+
+            var savedSong = await songService.AddAsync(songDto);
+
+            return Ok(new
+            {
+                Song = savedSong,
+                S3Url = url
+            });
         }
 
         [HttpGet("download-url")]

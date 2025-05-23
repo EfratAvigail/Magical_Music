@@ -27,7 +27,7 @@ namespace MagicalMusic.DATA.Repositories
 
         public async Task<IEnumerable<Song>> GetByCreatorIdAsync(int creatorId)
         {
-            return await _context.Songs.Where(s => s.singerId == creatorId).ToListAsync();
+            return await _context.Songs.Where(s => s.SingerId == creatorId).ToListAsync();
         }
 
         public async Task<IEnumerable<Song>> GetSongsByGenreAsync(string MusicStyle)
@@ -51,7 +51,7 @@ namespace MagicalMusic.DATA.Repositories
             s.SongLength = song.SongLength;
             s.ImageUrl = song.ImageUrl;
             s.ReleaseDate = song.ReleaseDate;
-            s.singerId = song.singerId;
+            s.SingerId = song.SingerId;
 
             return s;
         }

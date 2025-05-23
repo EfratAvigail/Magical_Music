@@ -16,3 +16,21 @@ C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DAT
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.pdb
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.genruntimeconfig.cache
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\ref\Magical_Music.DATA.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\bin\Debug\net8.0\Magical_Music.DATA.deps.json
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\bin\Debug\net8.0\Magical_Music.DATA.runtimeconfig.json
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\bin\Debug\net8.0\Magical_Music.DATA.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\bin\Debug\net8.0\Magical_Music.DATA.pdb
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\bin\Debug\net8.0\Magical_Music.CORE.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\bin\Debug\net8.0\Magical_Music.CORE.pdb
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.csproj.AssemblyReference.cache
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.AssemblyInfoInputs.cache
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.AssemblyInfo.cs
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.csproj.CoreCompileInputs.cache
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.sourcelink.json
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_.12562A77.Up2Date
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\refint\Magical_Music.DATA.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.pdb
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.genruntimeconfig.cache
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.DATA\obj\Debug\net8.0\ref\Magical_Music.DATA.dll

@@ -11,3 +11,16 @@ C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.COR
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.CORE\obj\Debug\net8.0\refint\Magical_Music.CORE.dll
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.pdb
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.CORE\obj\Debug\net8.0\ref\Magical_Music.CORE.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\bin\Debug\net8.0\Magical_Music.CORE.deps.json
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\bin\Debug\net8.0\Magical_Music.CORE.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\bin\Debug\net8.0\Magical_Music.CORE.pdb
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.csproj.AssemblyReference.cache
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.AssemblyInfoInputs.cache
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.AssemblyInfo.cs
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.csproj.CoreCompileInputs.cache
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.sourcelink.json
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\refint\Magical_Music.CORE.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\Magical_Music.CORE.pdb
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.CORE\obj\Debug\net8.0\ref\Magical_Music.CORE.dll

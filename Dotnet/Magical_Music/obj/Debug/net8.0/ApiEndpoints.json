@@ -329,6 +329,47 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Magical_Music.API.Controllers.AWSController",
+    "Method": "UploadFile",
+    "RelativePath": "api/UploadFile/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MusicStyle",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SongLength",
+        "Type": "System.TimeSpan",
+        "IsRequired": false
+      },
+      {
+        "Name": "ReleaseDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "SingerId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Magical_Music.API.Controllers.UserController",
     "Method": "GetAll",
     "RelativePath": "api/User",

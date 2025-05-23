@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useNavigate, Routes, Route } from "react-router-dom"
 import {
   Play,
@@ -14,18 +14,16 @@ import {
   Headphones,
   Heart,
   MoreHorizontal,
-  Shuffle,
   Repeat,
   User,
 } from "lucide-react"
 import type { Song, User as UserType } from "../types"
-import "../styles/home.css"
+import "../styles/Home.css"
 import SideMenu from "./SideMenu"
 import SongFolder from "./SongFolder"
 import Transcribe from "./Transcribe"
 import CutSong from "./CutSong"
 import ShareSong from "./ShareSong"
-import SearchSongs from "./SearchSongs"
 import UserSettings from "./UserSettings"
 import axios from "axios"
 
@@ -42,70 +40,59 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
   const [progress, setProgress] = useState<number>(0)
   const [volume, setVolume] = useState<number>(70)
   const navigate = useNavigate()
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    // Get user from localStorage
     const userData = localStorage.getItem("user")
     if (userData && userData !== "undefined") {
       try {
         setUser(JSON.parse(userData))
       } catch (error) {
         console.error("Error parsing user data:", error)
-        localStorage.removeItem("user") // Remove invalid data
+        localStorage.removeItem("user")
       }
     }
 
-    // Fetch songs from API
     fetchSongs()
 
-    // Simulate progress for demo purposes
-    const interval = setInterval(() => {
-      if (isPlaying) {
-        setProgress((prev) => {
-          if (prev >= 100) {
-            nextSong()
-            return 0
-          }
-          return prev + 0.5
-        })
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
       }
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [isPlaying])
-
-const fetchSongs = async () => {
-    setLoading(true); // הוספת מצב טעינה
-    try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get<string[]>("https://localhost:7234/api/UploadFile/songs", { // עדכון הכתובת
-            headers: {
-                Authorization: `Bearer ${token}`, // הוספת הטוקן להודעת הבקשה
-            },
-        });
-
-        const data = response.data.map((song: string, index: number) => ({ // הגדרת טיפוסים
-            id: index + 1, // ניתן להוסיף מזהה ייחודי
-            name: song, // שם השיר (בהנחה שהשיר הוא רק מפתח)
-            songLength: "4:00", // אורך השיר (אם יש לך מידע נוסף)
-            musicStyle: "Unknown", // סגנון המוזיקה (אם יש לך מידע נוסף)
-            releaseDate: "2023-01-01", // תאריך יציאה (נתון דמה)
-            liked: false, // האם השיר אהוב
-        }));
-
-        setSongs(data); // עדכון מצב השירים עם הנתונים שהתקבלו
-        if (data.length > 0) {
-            setCurrentSong(data[0]); // הגדרת השיר הראשון כרגע הנוכחי
-        }
-    } catch (error) {
-        console.error("Error fetching songs:", error); // טיפול בשגיאה
-        setSongs(mockSongs); // שימוש בנתוני דמה במקרה של שגיאה
-        setCurrentSong(mockSongs[0]); // הגדרת השיר הראשון מדאטה הדמה
-    } finally {
-        setLoading(false); // סיום מצב הטעינה
     }
-}
+  }, [])
 
+  const fetchSongs = async () => {
+    setLoading(true)
+    try {
+      const token = localStorage.getItem("token")
+      const response = await axios.get<string[]>("https://localhost:7234/api/UploadFile/songs", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      const data = response.data.map((song: string, index: number) => ({
+        id: index + 1,
+        name: song,
+        songLength: "4:00", // נתון דמה, תעדכן לפי הצורך
+        musicStyle: "Unknown",
+        releaseDate: "2023-01-01",
+        liked: false,
+      }))
+
+      setSongs(data)
+      if (data.length > 0) {
+        setCurrentSong(data[0])
+      }
+    } catch (error) {
+      console.error("Error fetching songs:", error)
+      setSongs(mockSongs)
+      setCurrentSong(mockSongs[0])
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("token")
@@ -114,13 +101,38 @@ const fetchSongs = async () => {
     navigate("/login")
   }
 
-  const playSong = (song: Song) => {
-    setCurrentSong(song)
-    setIsPlaying(true)
-    setProgress(0)
+  const playSong = async (song: Song) => {
+    if (audioRef.current) {
+      audioRef.current.pause() // עצור את השיר הנוכחי
+    }
+
+    try {
+      const response = await axios.get(`https://localhost:7234/api/UploadFile/download-url`, {
+        params: { fileName: song.name }
+      })
+      const audioUrl = response.data.fileUrl
+      audioRef.current = new Audio(audioUrl)
+      audioRef.current.volume = volume / 100
+      audioRef.current.play()
+
+      setCurrentSong(song)
+      setIsPlaying(true)
+      setProgress(0)
+
+      audioRef.current.addEventListener('ended', nextSong) // עבור לשיר הבא כאשר השיר נגמר
+    } catch (error) {
+      console.error("Failed to play song", error)
+    }
   }
 
   const togglePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause()
+      } else {
+        audioRef.current.play()
+      }
+    }
     setIsPlaying(!isPlaying)
   }
 
@@ -129,9 +141,7 @@ const fetchSongs = async () => {
 
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id)
     const nextIndex = (currentIndex + 1) % songs.length
-    setCurrentSong(songs[nextIndex])
-    setIsPlaying(true)
-    setProgress(0)
+    playSong(songs[nextIndex])
   }
 
   const prevSong = () => {
@@ -139,13 +149,14 @@ const fetchSongs = async () => {
 
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id)
     const prevIndex = (currentIndex - 1 + songs.length) % songs.length
-    setCurrentSong(songs[prevIndex])
-    setIsPlaying(true)
-    setProgress(0)
+    playSong(songs[prevIndex])
   }
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVolume(Number.parseInt(e.target.value))
+    if (audioRef.current) {
+      audioRef.current.volume = Number.parseInt(e.target.value) / 100
+    }
   }
 
   const toggleLike = (id: number) => {
@@ -167,11 +178,8 @@ const fetchSongs = async () => {
 
   const calculateCurrentTime = () => {
     if (!currentSong) return "0:00"
-
     const timeParts = currentSong.songLength.split(":")
-    const totalSeconds =
-      Number.parseInt(timeParts[0]) * 3600 + Number.parseInt(timeParts[1]) * 60 + Number.parseInt(timeParts[2])
-
+    const totalSeconds = Number.parseInt(timeParts[0]) * 60 + Number.parseInt(timeParts[1])
     const currentSeconds = (progress / 100) * totalSeconds
     return formatTime(currentSeconds)
   }
@@ -179,25 +187,13 @@ const fetchSongs = async () => {
   const formatSongLength = (songLength: string) => {
     const parts = songLength.split(":")
     if (parts.length === 2) return songLength
-
-    if (parts.length === 3) {
-      const hours = Number.parseInt(parts[0])
-      const minutes = Number.parseInt(parts[1])
-      const seconds = Number.parseInt(parts[2])
-
-      const totalMinutes = hours * 60 + minutes
-      return `${totalMinutes}:${seconds < 10 ? "0" : ""}${seconds}`
-    }
-
     return songLength
   }
 
- const mockSongs: Song[] = [
+  const mockSongs: Song[] = [
     { id: 1, name: "Song One", songLength: "3:45", musicStyle: "חסידי", releaseDate: "2023-01-01", liked: false },
-    { id: 2, name: "Song Two", songLength: "3:45", musicStyle: "Pop", releaseDate: "2023-01-01", liked: false  },
-    // שירים נוספים
-];
-
+    { id: 2, name: "Song Two", songLength: "3:45", musicStyle: "Pop", releaseDate: "2023-01-01", liked: false },
+  ]
 
   const displaySongs = songs.length > 0 ? songs : mockSongs
   const displayCurrentSong = currentSong || (displaySongs.length > 0 ? displaySongs[0] : null)
@@ -213,10 +209,6 @@ const fetchSongs = async () => {
     )
   }
 
-  const MusicNote = ({ size, color }: { size: number; color: string }) => {
-    return <Music size={size} color={color} />
-  }
-
   return (
     <div className="home-container">
       <div className="music-background">
@@ -230,13 +222,7 @@ const fetchSongs = async () => {
               animationDelay: `${Math.random() * 10}s`,
             }}
           >
-            {i % 3 === 0 ? (
-              <MusicNote size={15 + Math.random() * 25} color={`hsl(${Math.random() * 360}, 80%, 60%)`} />
-            ) : i % 3 === 1 ? (
-              <Headphones size={15 + Math.random() * 25} color={`hsl(${Math.random() * 360}, 80%, 60%)`} />
-            ) : (
-              <Music size={15 + Math.random() * 25} color={`hsl(${Math.random() * 360}, 80%, 60%)`} />
-            )}
+            <Music size={15 + Math.random() * 25} color={`hsl(${Math.random() * 360}, 80%, 60%)`} />
           </div>
         ))}
       </div>
@@ -342,9 +328,6 @@ const fetchSongs = async () => {
                         <div className="player-controls-container">
                           <div className="additional-controls">
                             <button className="control-button small">
-                              <Shuffle size={16} />
-                            </button>
-                            <button className="control-button small">
                               <Repeat size={16} />
                             </button>
                           </div>
@@ -399,7 +382,6 @@ const fetchSongs = async () => {
             <Route path="transcribe" element={<Transcribe />} />
             <Route path="cut" element={<CutSong songs={displaySongs} />} />
             <Route path="share" element={<ShareSong songs={displaySongs} />} />
-            <Route path="search" element={<SearchSongs />} />
             <Route path="settings" element={<UserSettings user={user} />} />
           </Routes>
         </main>

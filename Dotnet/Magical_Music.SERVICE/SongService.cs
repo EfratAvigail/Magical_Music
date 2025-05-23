@@ -38,7 +38,7 @@ namespace Magical_Music.SERVICE
                 SongLength = songDto.SongLength,
                 ReleaseDate = songDto.ReleaseDate,
                 ImageUrl = songDto.ImageUrl,
-                singerId = songDto.singerId
+                SingerId = songDto.SingerId
             };
 
             return await _songRepository.AddAsync(song);

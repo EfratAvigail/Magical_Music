@@ -1,20 +1,20 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
+using Amazon.S3.Transfer;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Magical_Music.SERVICE
 {
     public class AWSService
     {
-
         private readonly IAmazonS3 _s3Client;
         private readonly string _bucketName;
-        public AWSService(IConfiguration configuration) // namespace מלא
+
+        public AWSService(IConfiguration configuration)
         {
             var awsOptions = configuration.GetSection("AWS");
             var accessKey = awsOptions["AccessKey"];
@@ -25,9 +25,25 @@ namespace Magical_Music.SERVICE
             _s3Client = new AmazonS3Client(accessKey, secretKey, Amazon.RegionEndpoint.GetBySystemName(region));
         }
 
+        public async Task<(string url, string key)> UploadFileAsync(Stream fileStream, string fileName)
+        {
+            var key = $"songs/{Guid.NewGuid()}_{fileName}";
 
+            var uploadRequest = new TransferUtilityUploadRequest
+            {
+                InputStream = fileStream,
+                BucketName = _bucketName,
+                Key = key,
+                ContentType = "audio/mpeg" // או סוג תוכן אחר בהתאם לסוג הקובץ
+            };
 
-        public string GeneratePresignedUrlAsync(string fileName, string contentType)
+            var transferUtility = new TransferUtility(_s3Client);
+            await transferUtility.UploadAsync(uploadRequest);
+
+            return ($"https://{_bucketName}.s3.amazonaws.com/{key}", key);
+        }
+
+        public string GeneratePresignedUrl(string fileName, string contentType)
         {
             var request = new GetPreSignedUrlRequest
             {
@@ -45,7 +61,6 @@ namespace Magical_Music.SERVICE
             }
             catch (AmazonS3Exception ex)
             {
-                // טיפול בשגיאה
                 throw new Exception($"שגיאה ביצירת URL חתום: {ex.Message}");
             }
         }
@@ -72,8 +87,5 @@ namespace Magical_Music.SERVICE
             var response = await _s3Client.ListObjectsV2Async(request);
             return response.S3Objects.Select(obj => obj.Key).ToList(); // מחזיר את רשימת השירים
         }
-
     }
-
 }
-

@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react"
 import { Music, Upload, Mic, Bot, LogOut, Menu, X, ChevronRight, Search, Share, Scissors } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
 import AIChat from "./AIChat"
-import MusicPlayer from "./MusicPlayer"
+// import MusicPlayer from "./MusicPlayer"
 import "../styles/sidemenu.css"
 
 interface MenuItem {
@@ -33,11 +33,11 @@ const SideMenu = ({ onNavigate }: SideMenuProps) => {
   const menuItems: MenuItem[] = [
     { id: "/dashboard", label: "Home", icon: <Music size={20} /> },
     { id: "/dashboard/folder", label: "Song Folder", icon: <Upload size={20} /> },
-    { id: "/dashboard/upload", label: "Upload Song", icon: <Upload size={20} /> }, // Added Upload Song item
+    // { id: "/dashboard/upload", label: "Upload Song", icon: <Upload size={20} /> }, // Added Upload Song item
     { id: "/dashboard/transcribe", label: "Transcribe", icon: <Mic size={20} /> },
     { id: "/dashboard/cut", label: "Cut Song", icon: <Scissors size={20} /> },
     { id: "/dashboard/share", label: "Share Song", icon: <Share size={20} /> },
-    { id: "/dashboard/search", label: "Search Songs", icon: <Search size={20} /> },
+    // { id: "/dashboard/search", label: "Search Songs", icon: <Search size={20} /> },
   ]
 
   // Check if route is active
@@ -183,9 +183,9 @@ const SideMenu = ({ onNavigate }: SideMenuProps) => {
           </ul>
         </nav>
 
-        <div className="side-menu-player">
+        {/* <div className="side-menu-player">
           <MusicPlayer isCollapsed={!isExpanded} />
-        </div>
+        </div> */}
 
         <div className="side-menu-footer">
           <Link to="/login" className="logout-button">

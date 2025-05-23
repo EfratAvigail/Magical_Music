@@ -2,15 +2,15 @@
 
 import { useState } from "react"
 import { FolderPlus, MoreHorizontal, Play, Heart, Filter, SortDesc, Grid, List } from "lucide-react"
+import axios from "axios" // הוספת Axios
 import type { Song } from "../types"
 import "../styles/songfolder.css"
 
 interface SongFolderProps {
   songs: Song[]
-  onPlaySong: (song: Song) => void
 }
 
-const SongFolder = ({ songs, onPlaySong }: SongFolderProps) => {
+const SongFolder = ({ songs }: SongFolderProps) => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [sortBy, setSortBy] = useState<"name" | "date" | "style">("name")
   const [filterStyle, setFilterStyle] = useState<string>("")
@@ -41,6 +41,23 @@ const SongFolder = ({ songs, onPlaySong }: SongFolderProps) => {
       day: "numeric",
     })
   }
+
+  // Function to play the song using Axios
+const onPlaySong = async (song: Song) => {
+  try {
+    const response = await axios.get(`https://localhost:7234/api/UploadFile/download-url`, {
+      params: { fileName: song.name }
+    });
+    
+    // הנחה שה-API מחזיר אובייקט עם fileUrl
+    const audioUrl = response.data.fileUrl; 
+    const audio = new Audio(audioUrl);
+    audio.play();
+  } catch (error) {
+    console.error("Failed to fetch the song", error);
+  }
+}
+
 
   return (
     <div className="song-folder">
