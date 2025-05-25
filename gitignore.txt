@@ -18,6 +18,16 @@ obj/
 node_modules/
 dist/
 
+# Ignore Visual Studio files
+
+bin/
+obj/
+
+# Ignore bin and obj folders
+bin/
+obj/
+
+
 
 # Rider
 .idea/

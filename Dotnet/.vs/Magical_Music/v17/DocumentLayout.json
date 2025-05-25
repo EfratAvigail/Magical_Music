@@ -78,8 +78,7 @@
               "RelativeToolTip": "Magical_Music.CORE\\Services\\ITranscriptionService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T22:05:14.404Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T22:05:14.404Z"
             },
             {
               "$type": "Document",
@@ -91,8 +90,7 @@
               "RelativeToolTip": "Magical_Music\\Controllers\\TranscriptionController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAkwBsAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T22:04:29.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T22:04:29.41Z"
             },
             {
               "$type": "Document",
@@ -104,8 +102,7 @@
               "RelativeToolTip": "Magical_Music.CORE\\Services\\ISongCuttingService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T21:24:21.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T21:24:21.777Z"
             },
             {
               "$type": "Document",
@@ -117,8 +114,7 @@
               "RelativeToolTip": "Magical_Music.CORE\\Models\\CutRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T21:23:58.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T21:23:58.956Z"
             },
             {
               "$type": "Document",
@@ -130,8 +126,7 @@
               "RelativeToolTip": "Magical_Music\\Controllers\\CutSongController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAowCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T21:23:09.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T21:23:09.406Z"
             },
             {
               "$type": "Document",
@@ -143,8 +138,7 @@
               "RelativeToolTip": "Magical_Music.SERVICE\\SongCuttingService.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAuwDMAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T20:44:09.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T20:44:09.465Z"
             },
             {
               "$type": "Document",
@@ -156,8 +150,7 @@
               "RelativeToolTip": "Magical_Music.CORE\\DTOs\\TranscriptionRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T20:28:04.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T20:28:04.086Z"
             },
             {
               "$type": "Document",
@@ -169,8 +162,7 @@
               "RelativeToolTip": "Magical_Music.CORE\\Models\\Singer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T20:24:35.174Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T20:24:35.174Z"
             },
             {
               "$type": "Document",
@@ -182,21 +174,19 @@
               "RelativeToolTip": "Magical_Music.CORE\\DTOs\\SingerDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T20:20:07.974Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T20:20:07.974Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Magical_Music.CORE",
+              "Title": "Magical_Music.CORE.csproj",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Magical_Music.CORE.csproj",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\Magical_Music.CORE.csproj",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Magical_Music.CORE.csproj",
               "RelativeToolTip": "Magical_Music.CORE\\Magical_Music.CORE.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-25T20:01:15.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T20:01:15.588Z"
             },
             {
               "$type": "Document",
@@ -208,8 +198,7 @@
               "RelativeToolTip": "Magical_Music.SERVICE\\TranscriptionService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T19:45:39.578Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T19:45:39.578Z"
             },
             {
               "$type": "Document",
@@ -231,7 +220,7 @@
               "RelativeDocumentMoniker": "Magical_Music\\Program.cs",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Program.cs",
               "RelativeToolTip": "Magical_Music\\Program.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAAAwwMIAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAcwHUAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-21T20:46:55.685Z",
               "EditorCaption": ""
