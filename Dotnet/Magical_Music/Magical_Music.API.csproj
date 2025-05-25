@@ -23,11 +23,19 @@
 		<!-- הוספת AutoMapper -->
 		
 	</ItemGroup>
-
+	<ItemGroup>
+		<None Update="Tools\ffmpeg\ffmpeg.exe">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Magical_Music.CORE\Magical_Music.CORE.csproj" />
 		<ProjectReference Include="..\Magical_Music.DATA\Magical_Music.DATA.csproj" />
 		<ProjectReference Include="..\Magical_Music.SERVICE\Magical_Music.SERVICE.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Tools\ffmpeg\" />
 	</ItemGroup>
 
 </Project>

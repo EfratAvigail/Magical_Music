@@ -32,6 +32,44 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Magical_Music.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_5",
+    "RelativePath": "api/chat",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatRequest",
+        "Type": "Magical_Music.ChatRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Magical_Music.API.Controllers.CutSongController",
+    "Method": "Cut",
+    "RelativePath": "api/CutSong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Magical_Music.CORE.DTOs.SongCutRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Magical_Music.API.Controllers.EmailController",
     "Method": "SendEmail",
     "RelativePath": "api/Email/send",
@@ -282,6 +320,44 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Magical_Music.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_6",
+    "RelativePath": "api/transcribe",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Magical_Music.TranscriptionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Magical_Music.API.Controllers.TranscriptionController",
+    "Method": "TranscribeAudio",
+    "RelativePath": "api/Transcription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AudioFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Magical_Music.API.Controllers.AWSController",
     "Method": "GetDownloadUrl",
     "RelativePath": "api/UploadFile/download-url",
@@ -320,7 +396,7 @@
   },
   {
     "ContainingType": "Magical_Music.API.Controllers.AWSController",
-    "Method": "GetAllSongs",
+    "Method": "GetAllSongsAsync",
     "RelativePath": "api/UploadFile/songs",
     "HttpMethod": "GET",
     "IsController": true,

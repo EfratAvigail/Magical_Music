@@ -362,3 +362,5 @@ C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\o
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\Magical_Music.API.pdb
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\Magical_Music.API.genruntimeconfig.cache
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\ref\Magical_Music.API.dll
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\bin\Debug\net8.0\Tools\ffmpeg\ffmpeg.exe
+C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\bin\Debug\net8.0\Newtonsoft.Json.dll

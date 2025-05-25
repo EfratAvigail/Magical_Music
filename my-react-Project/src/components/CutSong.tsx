@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { Scissors, Play, Pause, Save, RotateCcw, Music } from "lucide-react"
 import type { Song } from "../types"
 import "../styles/cutsong.css"
+import axios from "axios"
 
 interface CutSongProps {
   songs: Song[]
@@ -18,10 +19,10 @@ const CutSong = ({ songs }: CutSongProps) => {
   const [endMarker, setEndMarker] = useState<number>(100)
   const [isCutting, setIsCutting] = useState<boolean>(false)
   const [cutComplete, setCutComplete] = useState<boolean>(false)
+  const [cutDownloadUrl, setCutDownloadUrl] = useState<string | null>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
   const waveformCanvasRef = useRef<HTMLCanvasElement>(null)
 
-  // Parse song length from format "00:03:45" to seconds
   const parseSongLength = (songLength: string): number => {
     const parts = songLength.split(":")
     if (parts.length === 3) {
@@ -32,45 +33,40 @@ const CutSong = ({ songs }: CutSongProps) => {
 
   useEffect(() => {
     if (selectedSong) {
-      // In a real app, we would load the actual audio file
-      // For demo purposes, we'll simulate the audio duration
       const songDuration = parseSongLength(selectedSong.songLength)
       setDuration(songDuration)
       setEndMarker(songDuration)
-
-      // Draw waveform
       drawWaveform()
     }
   }, [selectedSong])
 
   useEffect(() => {
+    drawWaveform()
+  }, [startMarker, endMarker])
+
+  useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
-    const updateTime = () => {
-      setCurrentTime(audio.currentTime)
-    }
+    const updateTime = () => setCurrentTime(audio.currentTime)
+    const onEnded = () => setIsPlaying(false)
 
     audio.addEventListener("timeupdate", updateTime)
-    audio.addEventListener("ended", () => setIsPlaying(false))
+    audio.addEventListener("ended", onEnded)
 
     return () => {
       audio.removeEventListener("timeupdate", updateTime)
-      audio.removeEventListener("ended", () => setIsPlaying(false))
+      audio.removeEventListener("ended", onEnded)
     }
   }, [])
 
   const drawWaveform = () => {
     const canvas = waveformCanvasRef.current
     if (!canvas) return
-
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    // Generate random waveform for demo
     const width = canvas.width
     const height = canvas.height
     const barWidth = 2
@@ -80,24 +76,36 @@ const CutSong = ({ songs }: CutSongProps) => {
     ctx.fillStyle = "rgba(255, 255, 255, 0.5)"
 
     for (let i = 0; i < bars; i++) {
-      // Random height for each bar
       const barHeight = Math.random() * (height * 0.8) + height * 0.1
-
       ctx.fillRect(i * (barWidth + barGap), (height - barHeight) / 2, barWidth, barHeight)
     }
 
-    // Draw selection area
-    if (selectedSong) {
+    if (selectedSong && duration > 0) {
       const startX = (startMarker / duration) * width
       const endX = (endMarker / duration) * width
 
       ctx.fillStyle = "rgba(107, 102, 255, 0.3)"
       ctx.fillRect(startX, 0, endX - startX, height)
 
-      // Draw markers
       ctx.fillStyle = "#6b66ff"
       ctx.fillRect(startX - 2, 0, 4, height)
       ctx.fillRect(endX - 2, 0, 4, height)
+    }
+  }
+
+  const handleCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    const canvas = waveformCanvasRef.current
+    if (!canvas) return
+
+    const rect = canvas.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const width = canvas.width
+    const clickedTime = (x / width) * duration
+
+    if (clickedTime < startMarker) {
+      setStartMarker(clickedTime)
+    } else if (clickedTime > endMarker) {
+      setEndMarker(clickedTime)
     }
   }
 
@@ -120,6 +128,7 @@ const CutSong = ({ songs }: CutSongProps) => {
     setStartMarker(0)
     setEndMarker(parseSongLength(song.songLength))
     setCutComplete(false)
+    setCutDownloadUrl(null)
   }
 
   const formatTime = (seconds: number) => {
@@ -128,24 +137,35 @@ const CutSong = ({ songs }: CutSongProps) => {
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`
   }
 
-  const handleMarkerChange = (marker: "start" | "end", value: number) => {
-    if (marker === "start") {
-      setStartMarker(Math.min(value, endMarker - 1))
-    } else {
-      setEndMarker(Math.max(value, startMarker + 1))
+  const cutSong = async () => {
+    if (!selectedSong || startMarker >= endMarker) {
+      alert("Start marker must be less than end marker.")
+      return
     }
-    drawWaveform()
-  }
 
-  const cutSong = () => {
     setIsCutting(true)
 
-    // In a real app, we would send the cut parameters to an API
-    // For demo purposes, we'll simulate the cutting process
-    setTimeout(() => {
-      setIsCutting(false)
+    const requestBody = {
+      songKey: selectedSong.name,
+      startSeconds: Math.floor(startMarker),
+      endSeconds: Math.floor(endMarker),
+    }
+
+    try {
+      const response = await axios.post("https://localhost:7234/api/CutSong", requestBody, {
+        headers: { "Content-Type": "application/json" },
+        responseType: "blob",
+      })
+
+      const url = window.URL.createObjectURL(new Blob([response.data]))
+      setCutDownloadUrl(url)
       setCutComplete(true)
-    }, 2000)
+    } catch (error) {
+      console.error("Error cutting song:", error)
+      alert("Failed to cut the song.")
+    } finally {
+      setIsCutting(false)
+    }
   }
 
   const resetCut = () => {
@@ -153,6 +173,7 @@ const CutSong = ({ songs }: CutSongProps) => {
       setStartMarker(0)
       setEndMarker(parseSongLength(selectedSong.songLength))
       setCutComplete(false)
+      setCutDownloadUrl(null)
       drawWaveform()
     }
   }
@@ -205,76 +226,75 @@ const CutSong = ({ songs }: CutSongProps) => {
             </div>
 
             <div className="waveform-container">
-              <canvas ref={waveformCanvasRef} className="waveform-canvas" width={800} height={150}></canvas>
-
-              {/* Hidden audio element for playback */}
+              <canvas
+                ref={waveformCanvasRef}
+                className="waveform-canvas"
+                width={800}
+                height={150}
+                onClick={handleCanvasClick}
+              ></canvas>
               <audio
                 ref={audioRef}
-                src="/sample-audio.mp3" // In a real app, this would be the actual song URL
+                src={selectedSong.audioUrl}
                 style={{ display: "none" }}
               />
             </div>
 
-            <div className="time-markers">
-              <div className="time-marker">
-                <span>Start: {formatTime(startMarker)}</span>
+            <div className="cut-markers">
+              <label>
+                Start Time:
                 <input
-                  type="range"
-                  min={0}
-                  max={duration}
+                  type="number"
                   value={startMarker}
-                  onChange={(e) => handleMarkerChange("start", Number(e.target.value))}
-                  className="marker-slider"
-                />
-              </div>
-              <div className="time-marker">
-                <span>End: {formatTime(endMarker)}</span>
-                <input
-                  type="range"
+                  onChange={(e) => setStartMarker(Number(e.target.value))}
                   min={0}
                   max={duration}
-                  value={endMarker}
-                  onChange={(e) => handleMarkerChange("end", Number(e.target.value))}
-                  className="marker-slider"
                 />
-              </div>
+              </label>
+              <label>
+                End Time:
+                <input
+                  type="number"
+                  value={endMarker}
+                  onChange={(e) => setEndMarker(Number(e.target.value))}
+                  min={0}
+                  max={duration}
+                />
+              </label>
             </div>
 
             <div className="cut-actions">
-              <button className="reset-button" onClick={resetCut}>
+              <button className="reset-button" onClick={resetCut} disabled={isCutting}>
                 <RotateCcw size={18} />
                 <span>Reset</span>
               </button>
-              <button className="cut-button" onClick={cutSong} disabled={isCutting || cutComplete}>
-                {isCutting ? (
-                  <span>Processing...</span>
-                ) : cutComplete ? (
-                  <>
-                    <Save size={18} />
-                    <span>Save Cut</span>
-                  </>
-                ) : (
-                  <>
-                    <Scissors size={18} />
-                    <span>Cut Song</span>
-                  </>
-                )}
-              </button>
+
+              {!cutComplete ? (
+                <button className="cut-button" onClick={cutSong} disabled={isCutting}>
+                  {isCutting ? (
+                    <span>Processing...</span>
+                  ) : (
+                    <>
+                      <Scissors size={18} />
+                      <span>Cut Song</span>
+                    </>
+                  )}
+                </button>
+              ) : (
+                <a
+                  href={cutDownloadUrl || "#"}
+                  className="cut-button"
+                  download={`${selectedSong?.name}_cut.mp3`}
+                >
+                  <Save size={18} />
+                  <span>Save Cut</span>
+                </a>
+              )}
             </div>
 
             {cutComplete && (
               <div className="cut-complete">
                 <p>Your cut is complete! The new song duration is {formatTime(endMarker - startMarker)}.</p>
-                <div className="cut-preview">
-                  <div className="cut-preview-info">
-                    <Music size={20} />
-                    <span>{selectedSong.name} (Cut)</span>
-                  </div>
-                  <button className="download-cut-button">
-                    <Save size={18} />
-                    <span>Download</span>
-                  </button>
-                </div>
               </div>
             )}
           </div>

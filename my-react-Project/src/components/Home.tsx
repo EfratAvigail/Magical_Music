@@ -20,7 +20,7 @@ import {
 import type { Song, User as UserType } from "../types"
 import "../styles/Home.css"
 import SideMenu from "./SideMenu"
-import SongFolder from "./SongFolder"
+// import SongFolder from "./SongFolder"
 import Transcribe from "./Transcribe"
 import CutSong from "./CutSong"
 import ShareSong from "./ShareSong"
@@ -378,7 +378,7 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
                 </div>
               }
             />
-            <Route path="folder" element={<SongFolder songs={displaySongs} onPlaySong={playSong} />} />
+            {/* <Route path="folder" element={<SongFolder songs={displaySongs} onPlaySong={playSong} />} /> */}
             <Route path="transcribe" element={<Transcribe />} />
             <Route path="cut" element={<CutSong songs={displaySongs} />} />
             <Route path="share" element={<ShareSong songs={displaySongs} />} />

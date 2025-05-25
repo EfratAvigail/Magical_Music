@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fsF2fDLYQ1w=",
+  "dgSpecHash": "5bDCCSS205Q=",
   "success": true,
   "projectFilePath": "C:\\Users\\user1\\Desktop\\פרויקט המוזיקה שלי\\Dotnet\\Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj",
   "expectedPackageFiles": [
@@ -52,6 +52,7 @@
     "C:\\Users\\user1\\.nuget\\packages\\mysql.data.entityframeworkcore\\8.0.22\\mysql.data.entityframeworkcore.8.0.22.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\mysql.entityframeworkcore\\8.0.11\\mysql.entityframeworkcore.8.0.11.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
+    "C:\\Users\\user1\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.3\\pomelo.entityframeworkcore.mysql.8.0.3.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",

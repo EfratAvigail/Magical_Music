@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Magical_Music.SERVICE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d1be38c7e4ad9adf628acc1562681bc89d956cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02476f97182ffb5a2ea0f53b63834f323ecc5207")]
 [assembly: System.Reflection.AssemblyProductAttribute("Magical_Music.SERVICE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Magical_Music.SERVICE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

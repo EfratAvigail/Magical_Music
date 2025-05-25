@@ -1,10 +1,9 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
 import { Send, X, Loader, Bot, User, ChevronDown, ChevronUp } from 'lucide-react'
-import { aiAPI } from "../services/api"
+// import { aiAPI } from "../services/api"
 import { ChatMessage } from "../types"
 import "../styles/aichat.css"
 
@@ -30,12 +29,10 @@ const AIChat = ({ isOpen, onClose }: AIChatProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
-  // Auto-scroll to bottom of messages
   useEffect(() => {
     scrollToBottom()
   }, [messages])
 
-  // Focus input on open
   useEffect(() => {
     if (inputRef.current && !isMinimized && isOpen) {
       inputRef.current.focus()
@@ -75,23 +72,42 @@ const AIChat = ({ isOpen, onClose }: AIChatProps) => {
     setIsLoading(true)
 
     try {
-      // Prepare messages for API
       const messageHistory = [
-        ...messages.filter((msg) => msg.id !== "welcome"), // Filter out welcome message
+        ...messages.filter((msg) => msg.id !== "welcome"),
         userMessage,
       ].map((msg) => ({
         role: msg.role,
         content: msg.content,
       }))
 
-      // Call the AI API
-      const response = await aiAPI.sendMessage(messageHistory)
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ messages: messageHistory }),
+      })
 
-      // Add AI response to messages
+      if (!response.ok) {
+        let errorMsg = "API error"
+        try {
+          const errorBody = await response.text()
+          errorMsg = errorBody || errorMsg
+        } catch {}
+        throw new Error(errorMsg)
+      }
+
+      const text = await response.text()
+      if (!text) {
+        throw new Error("Empty response from server")
+      }
+
+      const data = JSON.parse(text)
+
       const aiMessage: ChatMessage = {
         id: Date.now().toString(),
         role: "assistant",
-        content: response.content || response.message || "I'm not sure how to respond to that.",
+        content: data.content || "I'm not sure how to respond to that.",
         timestamp: new Date(),
       }
 
@@ -99,53 +115,6 @@ const AIChat = ({ isOpen, onClose }: AIChatProps) => {
     } catch (error: any) {
       console.error("AI chat error:", error)
       setError(`Failed to get response: ${error.message}`)
-
-      // Fallback to OpenAI API directly if the backend API fails
-      try {
-        // Check if we have a public OpenAI API key
-        const openAiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY
-
-        if (openAiKey) {
-          const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${openAiKey}`,
-            },
-            body: JSON.stringify({
-              model: "gpt-3.5-turbo",
-              messages: [
-                {
-                  role: "system",
-                  content:
-                    "You are a helpful music assistant that helps with music recommendations, information about artists, and general music knowledge.",
-                },
-                ...messages.map((msg) => ({
-                  role: msg.role,
-                  content: msg.content,
-                })),
-              ],
-              max_tokens: 500,
-            }),
-          })
-
-          if (response.ok) {
-            const data = await response.json()
-            const aiMessage: ChatMessage = {
-              id: Date.now().toString(),
-              role: "assistant",
-              content: data.choices[0].message.content,
-              timestamp: new Date(),
-            }
-
-            setMessages((prev) => [...prev, aiMessage])
-            setError(null)
-          }
-        }
-      } catch (fallbackError) {
-        console.error("Fallback AI error:", fallbackError)
-        // Error already set from the first attempt
-      }
     } finally {
       setIsLoading(false)
     }
@@ -235,3 +204,5 @@ const AIChat = ({ isOpen, onClose }: AIChatProps) => {
 }
 
 export default AIChat
+// This component provides a chat interface for interacting with an AI music assistant.
+// It allows users to send messages and receive responses, with a minimized mode for compact display.

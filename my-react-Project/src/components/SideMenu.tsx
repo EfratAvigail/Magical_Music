@@ -32,7 +32,7 @@ const SideMenu = ({ onNavigate }: SideMenuProps) => {
   // Menu items with proper routing paths
   const menuItems: MenuItem[] = [
     { id: "/dashboard", label: "Home", icon: <Music size={20} /> },
-    { id: "/dashboard/folder", label: "Song Folder", icon: <Upload size={20} /> },
+    // { id: "/dashboard/folder", label: "Song Folder", icon: <Upload size={20} /> },
     // { id: "/dashboard/upload", label: "Upload Song", icon: <Upload size={20} /> }, // Added Upload Song item
     { id: "/dashboard/transcribe", label: "Transcribe", icon: <Mic size={20} /> },
     { id: "/dashboard/cut", label: "Cut Song", icon: <Scissors size={20} /> },

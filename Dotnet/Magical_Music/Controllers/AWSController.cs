@@ -1,14 +1,11 @@
 ﻿using Amazon.S3.Model;
 using Amazon.S3;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
 using Magical_Music.SERVICE;
 using Magical_Music.CORE.DTOs;
-using Magical_Music.CORE.Models;
 using Magical_Music.CORE.Services;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -31,54 +28,27 @@ namespace Magical_Music.API.Controllers
         }
 
         [HttpGet("presigned-url")]
-        public async Task<IActionResult> GetPresignedUrl([FromQuery] string fileName, [FromQuery] string albumName)
+        public IActionResult GetPresignedUrl([FromQuery] string fileName, [FromQuery] string albumName)
         {
             if (string.IsNullOrEmpty(fileName) || string.IsNullOrEmpty(albumName))
-            {
-                fileName = "file";
-                albumName = "default-album"; // החלף בשם ברירת המחדל שתרצה
-            }
+                return BadRequest("חובה לציין שם קובץ ואלבום.");
 
-            string fileExtension = Path.GetExtension(fileName).ToLower();
-            string contentType;
-
-            switch (fileExtension)
+            var ext = Path.GetExtension(fileName).ToLower();
+            var contentType = ext switch
             {
-                case ".mp3":
-                    contentType = "audio/mpeg";
-                    break;
-                case ".wav":
-                    contentType = "audio/wav";
-                    break;
-                case ".ogg":
-                    contentType = "audio/ogg";
-                    break;
-                default:
-                    return BadRequest("סוג הקובץ לא נתמך. רק קבצי אודיו מותר להעלות.");
-            }
-
-            var request = new GetPreSignedUrlRequest
-            {
-                BucketName = _bucketName,
-                Key = $"{albumName}/{fileName}",
-                Verb = HttpVerb.PUT,
-                Expires = DateTime.UtcNow.AddMinutes(10),
-                ContentType = contentType
+                ".mp3" => "audio/mpeg",
+                ".wav" => "audio/wav",
+                ".ogg" => "audio/ogg",
+                _ => null
             };
 
-            request.Headers["x-amz-acl"] = "bucket-owner-full-control";
+            if (contentType == null)
+                return BadRequest("רק קבצי MP3, WAV או OGG מותרים.");
 
-            try
-            {
-                string url = _s3Client.GetPreSignedURL(request);
-                string fileUrl = $"https://{_bucketName}.s3.ca-central-1.amazonaws.com/{albumName}/{fileName}";
+            var url = _awsService.GeneratePresignedUploadUrl($"{albumName}/{fileName}", contentType);
+            var fileUrl = $"https://{_bucketName}.s3.amazonaws.com/{albumName}/{fileName}";
 
-                return Ok(new { uploadUrl = url, fileUrl = fileUrl });
-            }
-            catch (AmazonS3Exception ex)
-            {
-                return StatusCode(500, $"שגיאה ביצירת URL עם הרשאות: {ex.Message}");
-            }
+            return Ok(new { uploadUrl = url, fileUrl });
         }
 
         [HttpPost("upload")]
@@ -111,13 +81,25 @@ namespace Magical_Music.API.Controllers
 
             var savedSong = await songService.AddAsync(songDto);
 
-            return Ok(new
-            {
-                Song = savedSong,
-                S3Url = url
-            });
+            return Ok(new { Song = savedSong, S3Url = url });
         }
 
+        //[HttpGet("download-url")]
+        //public IActionResult GetDownloadUrl([FromQuery] string fileName)
+        //{
+        //    if (string.IsNullOrWhiteSpace(fileName))
+        //        return BadRequest("שם הקובץ חסר.");
+
+        //    try
+        //    {
+        //        var url = _awsService.GeneratePresignedDownloadUrl(fileName);
+        //        return Ok(new { downloadUrl = url });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"שגיאה בהפקת קישור הורדה: {ex.Message}");
+        //    }
+        //}
         [HttpGet("download-url")]
         public async Task<IActionResult> GetDownloadUrl([FromQuery] string fileName)
         {
@@ -146,21 +128,14 @@ namespace Magical_Music.API.Controllers
         }
 
         [HttpGet("songs")]
-        public async Task<IActionResult> GetAllSongs()
+        public async Task<IActionResult> GetAllSongsAsync()
         {
             try
             {
-                var request = new ListObjectsV2Request
-                {
-                    BucketName = _bucketName,
-                };
-
-                var response = await _s3Client.ListObjectsV2Async(request);
-                var songs = response.S3Objects.Select(obj => obj.Key).ToList();
-
+                var songs = await _awsService.GetAllSongsAsync();
                 return Ok(songs);
             }
-            catch (AmazonS3Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, $"שגיאה בשליפת השירים: {ex.Message}");
             }

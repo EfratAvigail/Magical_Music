@@ -3,9 +3,10 @@ using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Magical_Music.SERVICE
 {
@@ -34,7 +35,7 @@ namespace Magical_Music.SERVICE
                 InputStream = fileStream,
                 BucketName = _bucketName,
                 Key = key,
-                ContentType = "audio/mpeg" // או סוג תוכן אחר בהתאם לסוג הקובץ
+                ContentType = "audio/mpeg"
             };
 
             var transferUtility = new TransferUtility(_s3Client);
@@ -43,37 +44,34 @@ namespace Magical_Music.SERVICE
             return ($"https://{_bucketName}.s3.amazonaws.com/{key}", key);
         }
 
-        public string GeneratePresignedUrl(string fileName, string contentType)
+        public string GeneratePresignedUploadUrl(string fileKey, string contentType)
         {
             var request = new GetPreSignedUrlRequest
             {
                 BucketName = _bucketName,
-                Key = fileName,
+                Key = fileKey,
                 Verb = HttpVerb.PUT,
                 Expires = DateTime.UtcNow.AddMinutes(10),
                 ContentType = contentType
             };
-
-            try
-            {
-                var url = _s3Client.GetPreSignedURL(request);
-                return url;
-            }
-            catch (AmazonS3Exception ex)
-            {
-                throw new Exception($"שגיאה ביצירת URL חתום: {ex.Message}");
-            }
+            request.Headers["x-amz-acl"] = "bucket-owner-full-control";
+            return _s3Client.GetPreSignedURL(request);
         }
 
-        public async Task<string> GetDownloadUrlAsync(string fileName)
+        public string GeneratePresignedDownloadUrl(string fileKey)
         {
             var request = new GetPreSignedUrlRequest
             {
                 BucketName = _bucketName,
-                Key = fileName,
+                Key = fileKey,
                 Verb = HttpVerb.GET,
-                Expires = DateTime.UtcNow.AddMinutes(30) // תוקף של 30 דקות
+                Expires = DateTime.UtcNow.AddMinutes(10),
+                ResponseHeaderOverrides = new ResponseHeaderOverrides
+                {
+                    ContentDisposition = $"attachment; filename=\"{Path.GetFileName(fileKey)}\""
+                }
             };
+
             return _s3Client.GetPreSignedURL(request);
         }
 
@@ -85,7 +83,7 @@ namespace Magical_Music.SERVICE
             };
 
             var response = await _s3Client.ListObjectsV2Async(request);
-            return response.S3Objects.Select(obj => obj.Key).ToList(); // מחזיר את רשימת השירים
+            return response.S3Objects.Select(obj => obj.Key).ToList();
         }
     }
 }
