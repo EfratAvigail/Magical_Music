@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Magical_Music.API",
-    "version": "1.0"
+    "title": "Magical Music API",
+    "version": "v1"
   },
   "paths": {
     "/api/Auth/login": {
@@ -269,58 +269,6 @@
             }
           },
           "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/transcribe": {
-      "post": {
-        "tags": [
-          "Magical_Music.API"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "required": [
-                  "request"
-                ],
-                "type": "object",
-                "properties": {
-                  "request": {
-                    "$ref": "#/components/schemas/TranscriptionRequest"
-                  }
-                }
-              },
-              "encoding": {
-                "request": {
-                  "style": "form"
-                }
-              }
-            },
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "required": [
-                  "request"
-                ],
-                "type": "object",
-                "properties": {
-                  "request": {
-                    "$ref": "#/components/schemas/TranscriptionRequest"
-                  }
-                }
-              },
-              "encoding": {
-                "request": {
-                  "style": "form"
-                }
-              }
-            }
-          }
         },
         "responses": {
           "200": {
@@ -722,7 +670,7 @@
         }
       }
     },
-    "/api/Transcription": {
+    "/api/Transcription/transcribe": {
       "post": {
         "tags": [
           "Transcription"
@@ -949,8 +897,7 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Message"
-            },
-            "nullable": true
+            }
           }
         },
         "additionalProperties": false
@@ -959,16 +906,13 @@
         "type": "object",
         "properties": {
           "to": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "subject": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "body": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -991,12 +935,10 @@
         "type": "object",
         "properties": {
           "role": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "content": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1027,15 +969,13 @@
             "format": "int32"
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "song": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Song"
-            },
-            "nullable": true
+            }
           }
         },
         "additionalProperties": false
@@ -1044,8 +984,7 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1058,12 +997,10 @@
             "format": "int32"
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "musicStyle": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "songLength": {
             "type": "string",
@@ -1074,8 +1011,7 @@
             "format": "date-time"
           },
           "imageUrl": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "singerId": {
             "type": "integer",
@@ -1088,16 +1024,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/User"
-            },
-            "nullable": true
+            }
           },
           "s3Url": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "key": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1106,8 +1039,7 @@
         "type": "object",
         "properties": {
           "songKey": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "startSeconds": {
             "type": "number",
@@ -1124,12 +1056,10 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "musicStyle": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "songLength": {
             "type": "string",
@@ -1144,27 +1074,13 @@
             "format": "int32"
           },
           "s3Url": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "key": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "imageUrl": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TranscriptionRequest": {
-        "type": "object",
-        "properties": {
-          "audioFile": {
-            "type": "string",
-            "format": "binary",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1177,27 +1093,22 @@
             "format": "int32"
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "email": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "password": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "role": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "songs": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Song"
-            },
-            "nullable": true
+            }
           }
         },
         "additionalProperties": false
@@ -1206,16 +1117,13 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "email": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "password": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false

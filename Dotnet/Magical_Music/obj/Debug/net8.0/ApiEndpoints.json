@@ -33,7 +33,7 @@
   },
   {
     "ContainingType": "Magical_Music.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_5",
+    "Method": "\u003CMain\u003Eb__0_6",
     "RelativePath": "api/chat",
     "HttpMethod": "POST",
     "IsController": false,
@@ -320,31 +320,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Magical_Music.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_6",
-    "RelativePath": "api/transcribe",
-    "HttpMethod": "POST",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Magical_Music.TranscriptionRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "Magical_Music.API.Controllers.TranscriptionController",
     "Method": "TranscribeAudio",
-    "RelativePath": "api/Transcription",
+    "RelativePath": "api/Transcription/transcribe",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

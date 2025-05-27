@@ -2,86 +2,61 @@
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Magical_Music.CORE.Services;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+using Magical_Music.CORE.Services;
 
 namespace Magical_Music.SERVICE
 {
     public class TranscriptionService : ITranscriptionService
     {
-        private readonly HttpClient _httpClient;
-        private readonly string _apiKey;
+        private readonly IConfiguration _configuration;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public TranscriptionService(HttpClient httpClient, IConfiguration configuration)
+        public TranscriptionService(IConfiguration configuration, IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
-            _apiKey = configuration["AssemblyAI:ApiKey"];
+            _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<string> TranscribeAudioAsync(string audioFilePath)
         {
-            var audioFile = File.ReadAllBytes(audioFilePath);
-            var uploadResponse = await UploadAudio(audioFile);
-            string audioUrl = uploadResponse.upload_url;
+            var apiKey = _configuration["OpenAI:ApiKey"];
+            var model = _configuration["OpenAI:Model"] ?? "whisper-1";
 
-            var transcriptId = await CreateTranscript(audioUrl);
-            return await CheckTranscription(transcriptId);
-        }
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-        private async Task<dynamic> UploadAudio(byte[] audioFile)
-        {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
-            var content = new ByteArrayContent(audioFile);
-            content.Headers.ContentType = new MediaTypeHeaderValue("audio/wav");
+            using var multipartContent = new MultipartFormDataContent();
 
-            var response = await _httpClient.PostAsync("https://api.assemblyai.com/v2/upload", content);
-            response.EnsureSuccessStatusCode();
-
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<dynamic>(jsonResponse);
-        }
-
-        private async Task<string> CreateTranscript(string audioUrl)
-        {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
-            var requestBody = new { audio_url = audioUrl };
-            var content = new StringContent(JsonConvert.SerializeObject(requestBody), System.Text.Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync("https://api.assemblyai.com/v2/transcript", content);
-            response.EnsureSuccessStatusCode();
-
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-            var transcriptResponse = JsonConvert.DeserializeObject<dynamic>(jsonResponse);
-            return transcriptResponse.id;
-        }
-
-        private async Task<string> CheckTranscription(string transcriptId)
-        {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
-
-            while (true)
+            var extension = Path.GetExtension(audioFilePath).ToLower();
+            var mimeType = extension switch
             {
-                var response = await _httpClient.GetAsync($"https://api.assemblyai.com/v2/transcript/{transcriptId}");
-                response.EnsureSuccessStatusCode();
+                ".mp3" => "audio/mpeg",
+                ".wav" => "audio/wav",
+                ".m4a" => "audio/mp4",
+                _ => "application/octet-stream"
+            };
 
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                var resultResponse = JsonConvert.DeserializeObject<dynamic>(jsonResponse);
+            await using var fileStream = File.OpenRead(audioFilePath);
+            var fileContent = new StreamContent(fileStream);
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
 
-                if (resultResponse.status == "completed")
-                {
-                    return resultResponse.text.ToString();
-                }
-                else if (resultResponse.status == "failed")
-                {
-                    return "Transcription failed";
-                }
-                else
-                {
-                    await Task.Delay(5000); // המתן 5 שניות
-                }
-            }
+            multipartContent.Add(fileContent, "file", Path.GetFileName(audioFilePath));
+            multipartContent.Add(new StringContent(model), "model");
+            var apiBaseUrl = _configuration["OpenAI:BaseUrl"] ?? "https://api.openai.com";
+            var response = await client.PostAsync($"{apiBaseUrl}/v1/audio/transcriptions", multipartContent);
+            var responseText = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"OpenAI Error: {response.StatusCode} - {responseText}");
+
+            // Parse only the "text" field from the JSON response
+            using var jsonDoc = JsonDocument.Parse(responseText);
+            var root = jsonDoc.RootElement;
+
+            return root.GetProperty("text").GetString();
         }
     }
 }

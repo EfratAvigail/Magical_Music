@@ -460,9 +460,9 @@
 .feature-icon {
   display: flex;
   align-items: center;
-  \
+  
   justify-content: center;
-  255,255,0.2);
+  /* 255,255,0.2); */
 }
 
 .feature-icon {

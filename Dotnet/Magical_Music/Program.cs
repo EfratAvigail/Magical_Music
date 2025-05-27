@@ -1,4 +1,4 @@
-using System.Net.Http.Headers;
+ο»Ώusing System.Net.Http.Headers;
 using System.Net.Http.Json;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -25,21 +25,22 @@ namespace Magical_Music
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ωμιτϊ ξωϊπι δραιαδ ξ-User Secrets
             builder.Configuration.AddUserSecrets<Program>();
+            builder.Configuration.AddJsonFile("Secret.json", optional: true, reloadOnChange: true);
 
-            // ωμιτϊ δξτϊη JWT_KEY
             var jwtKey = builder.Configuration["JWT_KEY"];
             if (string.IsNullOrEmpty(jwtKey))
-            {
                 throw new ArgumentNullException("Jwt:Key", "JWT Key must be provided in User Secrets");
-            }
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
 
-            // δερτϊ HttpClient μωιξεω α-OpenAI
             builder.Services.AddHttpClient();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new() { Title = "Magical Music API", Version = "v1" });
+                c.SupportNonNullableReferenceTypes();
+            });
 
-            // δερτϊ ωιψεϊιν
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
                 {
@@ -47,7 +48,6 @@ namespace Magical_Music
                     options.JsonSerializerOptions.WriteIndented = true;
                 });
 
-            // δερτϊ ξγιπιεϊ CORS
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
@@ -84,7 +84,6 @@ namespace Magical_Music
                 });
             });
 
-            // δζψχεϊ ωιψεϊιν χιιξεϊ ωμκ
             builder.Services.AddScoped<ISongService, SongService>();
             builder.Services.AddScoped<ISongRepository, SongRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
@@ -93,19 +92,13 @@ namespace Magical_Music
             builder.Services.AddScoped<ISingerService, SingerService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<AuthService>();
-            builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddScoped<AWSService>();
-            builder.Services.AddAWSService<IAmazonS3>();
             builder.Services.AddScoped<ISongCuttingService, SongCuttingService>();
-
-            // δερτϊ ωιψεϊ ϊξμεμ
             builder.Services.AddScoped<ITranscriptionService, TranscriptionService>();
-            builder.Services.AddHttpClient<ITranscriptionService, TranscriptionService>();
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-            // AWS configuration
             builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
             builder.Services.AddAWSService<IAmazonS3>();
-
             builder.Services.AddSingleton<IAmazonS3>(sp =>
             {
                 var configuration = sp.GetRequiredService<IConfiguration>();
@@ -120,7 +113,6 @@ namespace Magical_Music
                 return new AmazonS3Client(credentials, clientConfig);
             });
 
-            // DbContext
             builder.Services.AddDbContext<DataContext>(options =>
                 options.UseMySql(
                     @"Server=btw6ujkgafer3ugtuqgm-mysql.services.clever-cloud.com;
@@ -130,12 +122,10 @@ namespace Magical_Music
                       Password=qCV6Kk3IFLptHiJRXMV9",
                     new MySqlServerVersion(new Version(8, 0, 21))));
 
-            // δερτϊ Anti-Forgery
             builder.Services.AddAntiforgery();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -147,9 +137,9 @@ namespace Magical_Music
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseAntiforgery(); // δερτϊ middleware ωμ Anti-Forgery
+            app.UseAntiforgery();
 
-            // API Endpoint ηγω μ-AI Chat
+            // β¨ Chat API - Only for music topics
             app.MapPost("/api/chat", async (IHttpClientFactory httpClientFactory, IConfiguration config, ChatRequest chatRequest) =>
             {
                 var apiKey = config["OpenAI:ApiKey"];
@@ -158,6 +148,22 @@ namespace Magical_Music
 
                 if (chatRequest.Messages == null || chatRequest.Messages.Count == 0)
                     return Results.BadRequest("No messages provided.");
+
+                var musicKeywords = new[] {
+                    "ΧΧ•Χ–Χ™Χ§Χ”", "Χ©Χ™Χ¨", "Χ©Χ™Χ¨Χ™Χ", "ΧΧ Χ’Χ™Χ Χ”", "ΧΧ—Χ", "Χ§Χ¦Χ‘", "ΧªΧ•Χ•Χ™Χ", "ΧΧ§Χ•Χ¨Χ“", "Χ”Χ¨ΧΧ•Χ Χ™Χ”", "Χ–ΧΧ¨", "Χ–ΧΧ¨Χª",
+                    "beat", "melody", "music", "note", "song", "lyrics", "composer", "producer", "ΧΧ™Χ§Χ΅", "ΧΆΧ™Χ‘Χ•Χ“"
+                };
+
+                bool isMusicRelated = chatRequest.Messages.Any(m =>
+                    musicKeywords.Any(keyword =>
+                        m.Content.Contains(keyword, StringComparison.OrdinalIgnoreCase)
+                    )
+                );
+
+                if (!isMusicRelated)
+                {
+                    return Results.BadRequest(new { content = "Χ”Χ¦'ΧΧ ΧΧ™Χ•ΧΆΧ“ ΧΧ©ΧΧΧ•Χª Χ”Χ§Χ©Χ•Χ¨Χ•Χª ΧΧΧ•Χ–Χ™Χ§Χ” Χ‘ΧΧ‘Χ“ πµ" });
+                }
 
                 var httpClient = httpClientFactory.CreateClient();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
@@ -183,28 +189,12 @@ namespace Magical_Music
                 return Results.Ok(new { content = aiContent });
             });
 
-            // API Endpoint ηγω μϊξμεμ χεαυ ωξς
-            app.MapPost("/api/transcribe", async (ITranscriptionService transcriptionService, [FromForm] TranscriptionRequest request) =>
-            {
-                if (request.AudioFile == null || request.AudioFile.Length == 0)
-                    return Results.BadRequest("Audio file must be provided.");
-
-                var audioFilePath = Path.Combine(Path.GetTempPath(), request.AudioFile.FileName);
-                using (var stream = new FileStream(audioFilePath, FileMode.Create))
-                {
-                    await request.AudioFile.CopyToAsync(stream);
-                }
-
-                string result = await transcriptionService.TranscribeAudioAsync(audioFilePath);
-                return Results.Ok(result);
-            });
-
             app.MapControllers();
+
             app.Run();
         }
     }
 
-    // DTOιν μ-API
     public record ChatRequest(List<Message> Messages);
     public record Message(string Role, string Content);
     public record OpenAIResponse(List<Choice> Choices);

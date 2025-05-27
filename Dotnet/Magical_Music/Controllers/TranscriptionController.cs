@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Magical_Music.SERVICE;
-using System.IO;
-using System.Threading.Tasks;
-using Magical_Music.CORE.Services;
-using Magical_Music.CORE.DTOs;
+﻿using Magical_Music.CORE.Services;
+using Magical_Music.CORE.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Magical_Music.API.Controllers
 {
@@ -18,21 +15,37 @@ namespace Magical_Music.API.Controllers
             _transcriptionService = transcriptionService;
         }
 
-        [HttpPost]
-        [Consumes("multipart/form-data")] // הוספת תמיכה ב-multipart
+        [HttpPost("transcribe")]
         public async Task<IActionResult> TranscribeAudio([FromForm] TranscriptionRequest request)
         {
             if (request.AudioFile == null || request.AudioFile.Length == 0)
-                return BadRequest("Audio file must be provided.");
+                return BadRequest("No audio file provided.");
 
-            var audioFilePath = Path.Combine(Path.GetTempPath(), request.AudioFile.FileName);
-            using (var stream = new FileStream(audioFilePath, FileMode.Create))
+            var allowedExtensions = new[] { ".mp3", ".wav", ".m4a" };
+            var extension = Path.GetExtension(request.AudioFile.FileName).ToLower();
+            if (!allowedExtensions.Contains(extension))
+                return BadRequest("File format not supported. Only mp3, wav, and m4a are supported.");
+
+            var tempFilePath = Path.GetTempFileName();
+            try
             {
-                await request.AudioFile.CopyToAsync(stream);
-            }
+                using (var stream = System.IO.File.Create(tempFilePath))
+                {
+                    await request.AudioFile.CopyToAsync(stream);
+                }
 
-            string result = await _transcriptionService.TranscribeAudioAsync(audioFilePath);
-            return Ok(result);
+                var result = await _transcriptionService.TranscribeAudioAsync(tempFilePath);
+                return Ok(new { text = result });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error during transcription: {ex.Message}");
+            }
+            finally
+            {
+                if (System.IO.File.Exists(tempFilePath))
+                    System.IO.File.Delete(tempFilePath);
+            }
         }
     }
 }

@@ -80,38 +80,48 @@ const AIChat = ({ isOpen, onClose }: AIChatProps) => {
         content: msg.content,
       }))
 
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ messages: messageHistory }),
-      })
+const response = await fetch("https://localhost:7234/api/chat", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ messages: messageHistory }),
+});
 
-      if (!response.ok) {
-        let errorMsg = "API error"
-        try {
-          const errorBody = await response.text()
-          errorMsg = errorBody || errorMsg
-        } catch {}
-        throw new Error(errorMsg)
-      }
 
-      const text = await response.text()
-      if (!text) {
-        throw new Error("Empty response from server")
-      }
+const data = await response.json();
+console.log("API Response", data); // 👈
 
-      const data = JSON.parse(text)
+if (!response.ok) {
+  const content =
+    data?.content ||
+    (data?.error?.message?.includes("מוזיקה")
+      ? "אני כאן כדי לעזור רק בשאלות שקשורות למוזיקה 🎵. נסה לשאול שאלה אחרת."
+      : "לא הצלחתי להבין את השאלה. נסה שוב.");
 
-      const aiMessage: ChatMessage = {
-        id: Date.now().toString(),
-        role: "assistant",
-        content: data.content || "I'm not sure how to respond to that.",
-        timestamp: new Date(),
-      }
+  const aiMessage: ChatMessage = {
+    id: Date.now().toString(),
+    role: "assistant",
+    content,
+    timestamp: new Date(),
+  };
 
-      setMessages((prev) => [...prev, aiMessage])
+  setMessages((prev) => [...prev, aiMessage]);
+  setIsLoading(false);
+  return;
+}
+
+
+
+const aiMessage: ChatMessage = {
+  id: Date.now().toString(),
+  role: "assistant",
+  content: data.content || "I'm not sure how to respond to that.",
+  timestamp: new Date(),
+}
+
+setMessages((prev) => [...prev, aiMessage])
+
     } catch (error: any) {
       console.error("AI chat error:", error)
       setError(`Failed to get response: ${error.message}`)

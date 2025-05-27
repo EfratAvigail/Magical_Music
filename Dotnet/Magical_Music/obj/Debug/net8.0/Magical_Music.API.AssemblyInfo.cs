@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Magical_Music.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44b4e2db6d025cd32b582cd9d6fbc98572802829")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49e47ab66c266ffbf26e1588f08a80b4f0219687")]
 [assembly: System.Reflection.AssemblyProductAttribute("Magical_Music.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Magical_Music.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -61,6 +61,10 @@
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [
@@ -258,6 +262,10 @@
             "MailKit": {
               "target": "Package",
               "version": "[4.12.1, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[10.0.0-preview.4.25258.110, )"
             },
             "MimeKit": {
               "target": "Package",
