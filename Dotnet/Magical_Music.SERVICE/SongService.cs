@@ -38,11 +38,15 @@ namespace Magical_Music.SERVICE
                 SongLength = songDto.SongLength,
                 ReleaseDate = songDto.ReleaseDate,
                 ImageUrl = songDto.ImageUrl,
-                SingerId = songDto.SingerId
+                S3Url = songDto.S3Url,
+                Key = songDto.Key
             };
 
-            return await _songRepository.AddAsync(song);
+            await _songRepository.AddAsync(song);
+            await _songRepository.SaveChangesAsync(); // ודא שהשינויים נשמרים
+            return song;
         }
+
 
 
         public async Task<Song> UpdateAsync(int id, SongDTO song)

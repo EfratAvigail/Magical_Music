@@ -124,9 +124,8 @@
                     "type": "string",
                     "format": "date-time"
                   },
-                  "SingerId": {
-                    "type": "integer",
-                    "format": "int32"
+                  "ImageUrl": {
+                    "type": "string"
                   }
                 }
               },
@@ -146,7 +145,7 @@
                 "ReleaseDate": {
                   "style": "form"
                 },
-                "SingerId": {
+                "ImageUrl": {
                   "style": "form"
                 }
               }
@@ -1013,19 +1012,6 @@
           "imageUrl": {
             "type": "string"
           },
-          "singerId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "singer": {
-            "$ref": "#/components/schemas/Singer"
-          },
-          "users": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/User"
-            }
-          },
           "s3Url": {
             "type": "string"
           },
@@ -1068,10 +1054,6 @@
           "releaseDate": {
             "type": "string",
             "format": "date-time"
-          },
-          "singerId": {
-            "type": "integer",
-            "format": "int32"
           },
           "s3Url": {
             "type": "string"

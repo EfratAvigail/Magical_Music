@@ -26,10 +26,11 @@ namespace Magical_Music.API.Controllers
             if (!allowedExtensions.Contains(extension))
                 return BadRequest("File format not supported. Only mp3, wav, and m4a are supported.");
 
-            var tempFilePath = Path.GetTempFileName();
+            var tempFilePath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}{extension}");
+
             try
             {
-                using (var stream = System.IO.File.Create(tempFilePath))
+                await using (var stream = System.IO.File.Create(tempFilePath))
                 {
                     await request.AudioFile.CopyToAsync(stream);
                 }

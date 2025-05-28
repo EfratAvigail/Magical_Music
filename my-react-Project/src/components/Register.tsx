@@ -34,7 +34,6 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
       ...prevState,
       [name]: value,
     }))
-    // Reset error message on input change
     if (error) setError("")
   }
 
@@ -43,7 +42,6 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
     setLoading(true)
     setError("")
 
-    // Validate password match
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match")
       setLoading(false)
@@ -59,24 +57,41 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
 
       const data = response.data
 
-      // Save token to localStorage if your API returns one on registration
+      // שליחת מייל ברוכים הבאים
+      await axios.post("https://localhost:7234/api/Email/send", {
+        to: formData.email,
+        subject: "ברוכים הבאים ל-Magical Music 🎵✨",
+        body: `
+          <div style="background-color:rgb(19, 86, 157); padding: 40px; text-align: center; font-family: Arial, sans-serif; color: white; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+            <h1 style="font-size: 36px; font-weight: bold; color: #ffffff;">ברוכים הבאים ל-Magical Music!</h1>
+            <p style="font-size: 20px; margin-top: 20px; color: #ffffff;">שלום ${formData.name} היקר/ה,</p>
+            <p style="font-size: 18px; color: #ffffff; margin-bottom: 40px;">
+              איזה כיף שהצטרפת אלינו! 🎶<br />
+              אנחנו שמחים לקבל אותך לקהילה המוזיקלית שלנו, עם המון הפתעות מוזיקליות שמחכות לך!<br />
+              <strong style="font-size: 22px;">המסע שלך עם מוזיקה מרגשת, מחברת ומעצימה מתחיל עכשיו!</strong>
+            </p>
+            <div style="margin-top: 40px; text-align: center;">
+              <span style="font-size: 24px; color: #ffffff;">תתכונן ליהנות מהעולם המוזיקלי המדהים שלנו!</span>
+            </div>
+            <p style="font-size: 16px; margin-top: 30px; color: #ffffff;">
+              נשמח לראותך ב-Magical Music כל יום.<br />
+              צוות Magical Music ❤️
+            </p>
+          </div>
+        `,
+      })
+
       if (data.token) {
         localStorage.setItem("token", data.token)
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user))
         }
-
-        // Update authentication state
         setIsAuthenticated(true)
-
-        // Redirect to home page
         navigate("/")
       } else {
-        // If no token is returned, redirect to login
         navigate("/login")
       }
     } catch (err) {
-      // Improved error handling
       if (axios.isAxiosError(err) && err.response) {
         setError(err.response.data.message || "An error occurred during registration")
       } else {
@@ -90,7 +105,6 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
   return (
     <div className="auth-container">
       <div className="auth-background">
-        {/* Animated musical notes and instruments */}
         {[...Array(15)].map((_, i) => (
           <div
             key={i}

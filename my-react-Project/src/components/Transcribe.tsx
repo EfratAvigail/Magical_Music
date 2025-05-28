@@ -25,8 +25,6 @@ interface TranscriptionState {
   confidence: number
 }
 
-const ASSEMBLY_AI_API_KEY = "72956af2d493457a9a1dfdf5661522aa"
-
 const Transcribe = () => {
   console.log("Transcribe component rendering")
 
@@ -174,43 +172,6 @@ const Transcribe = () => {
     setIsPlaying(false)
   }
 
-  // Upload audio to AssemblyAI
-  const uploadAudioToAssemblyAI = async (audioBlob: Blob): Promise<string> => {
-    setTranscriptionStatus("Uploading audio...")
-
-    // Convert blob to base64
-    const reader = new FileReader()
-    return new Promise((resolve, reject) => {
-      reader.onloadend = async () => {
-        try {
-          const base64Audio = reader.result as string
-          const base64Data = base64Audio.split(",")[1]
-
-          // Upload to AssemblyAI
-          const uploadResponse = await axios.post("https://api.assemblyai.com/v2/upload", base64Data, {
-            headers: {
-              "Content-Type": "application/octet-stream",
-              Authorization: ASSEMBLY_AI_API_KEY,
-            },
-            onUploadProgress: (progressEvent) => {
-              if (progressEvent.total) {
-                const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-                setUploadProgress(progress)
-              }
-            },
-          })
-
-          resolve(uploadResponse.data.upload_url)
-        } catch (error: any) {
-          reject(new Error(`Failed to upload audio: ${error.message}`))
-        }
-      }
-      reader.onerror = () => reject(new Error("Failed to read audio file"))
-      reader.readAsDataURL(audioBlob)
-    })
-  }
-
-  // Transcribe audio using AssemblyAI
   const transcribeAudio = async () => {
     if (!audioBlob) {
       setError("No audio recording found. Please record audio first.")
@@ -223,79 +184,40 @@ const Transcribe = () => {
       setUploadProgress(0)
       setTranscriptionStatus("Preparing transcription...")
 
-      // Upload audio to AssemblyAI
-      const audioUrl = await uploadAudioToAssemblyAI(audioBlob)
-
-      // Create transcription request
       setTranscriptionStatus("Starting transcription...")
-      const transcriptionResponse = await axios.post(
-        "https://api.assemblyai.com/v2/transcript",
-        {
-          audio_url: audioUrl,
-          speech_model: "universal",
-        },
-        {
-          headers: {
-            Authorization: ASSEMBLY_AI_API_KEY,
-            "Content-Type": "application/json",
-          },
-        },
-      )
 
-      const transcriptId = transcriptionResponse.data.id
-      const pollingEndpoint = `https://api.assemblyai.com/v2/transcript/${transcriptId}`
+      const formData = new FormData();
+      formData.append("AudioFile", audioBlob, "audio.mp3"); // כאן אתה מוסיף את קובץ האודיו
 
-      // Poll for transcription result
-      setTranscriptionStatus("Processing transcription...")
-      let pollingInterval: NodeJS.Timeout
-
-      const checkTranscriptionStatus = async () => {
-        try {
-          const pollingResponse = await axios.get(pollingEndpoint, {
-            headers: {
-              Authorization: ASSEMBLY_AI_API_KEY,
-            },
-          })
-
-          const transcriptionResult = pollingResponse.data
-
-          if (transcriptionResult.status === "completed") {
-            clearInterval(pollingInterval)
-            setTranscriptionResult({
-              text: transcriptionResult.text,
-              confidence: transcriptionResult.confidence || 0.9,
-            })
-            setTranscribing(false)
-            setTranscriptionStatus("")
-          } else if (transcriptionResult.status === "error") {
-            clearInterval(pollingInterval)
-            setTranscribing(false)
-            setTranscriptionStatus("")
-            throw new Error(`Transcription failed: ${transcriptionResult.error}`)
-          } else {
-            // Still processing
-            setTranscriptionStatus(`Processing transcription (${transcriptionResult.status})...`)
-          }
-        } catch (error: any) {
-          clearInterval(pollingInterval)
-          setTranscribing(false)
-          setTranscriptionStatus("")
-          setError(`Transcription error: ${error.message}`)
+      // שליחת הבקשה ל-API שלך
+      const transcriptionResponse = await axios.post('https://localhost:7234/api/Transcription/transcribe', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'accept': '*/*'
         }
+      });
+
+      // טיפול בתגובה מה-API
+      if (transcriptionResponse.status === 200) {
+        const transcriptionResult = transcriptionResponse.data;
+        setTranscriptionResult({
+          text: transcriptionResult.text,
+          confidence: 1.0, // אם אין מידע על ביטחון, תוכל לשים 1.0
+        });
+      } else {
+        throw new Error(`Transcription failed with status: ${transcriptionResponse.status}`);
       }
 
-      // Check status every 3 seconds
-      pollingInterval = setInterval(checkTranscriptionStatus, 3000)
-
-      // Initial check
-      await checkTranscriptionStatus()
+      setTranscribing(false);
+      setTranscriptionStatus("");
     } catch (error: any) {
-      console.error("Transcription error:", error)
-      setError(`Transcription failed: ${error.message || "Unknown error"}`)
-      setTranscribing(false)
-      setTranscriptionStatus("")
+      console.error("Transcription error:", error);
+      setError(`Transcription failed: ${error.message || "Unknown error"}`);
+      setTranscribing(false);
+      setTranscriptionStatus("");
     }
   }
+
 
   // Send transcription via email
   const sendEmail = async () => {
@@ -367,38 +289,60 @@ const Transcribe = () => {
   }
 
   // Handle audio file upload
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0]
+// Handle audio file upload
+const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  if (e.target.files && e.target.files[0]) {
+    const file = e.target.files[0];
 
-      // Check if it's an audio file
-      if (!file.type.startsWith("audio/")) {
-        setError("Please select a valid audio file.")
-        return
-      }
+    // Check if it's an audio file
+    if (!file.type.startsWith("audio/")) {
+      setError("Please select a valid audio file.");
+      return;
+    }
 
-      // Reset states
-      clearRecording()
-      setUploadedAudioFile(file)
+    // Reset states
+    clearRecording();
+    setUploadedAudioFile(file);
 
-      // Create audio element to get duration
-      const audio = new Audio()
-      audio.src = URL.createObjectURL(file)
+    // Create audio element to get duration
+    const audio = new Audio();
+    audio.src = URL.createObjectURL(file);
 
-      audio.onloadedmetadata = () => {
-        setUploadedAudioDuration(Math.floor(audio.duration))
-        setRecordingTime(Math.floor(audio.duration))
+    audio.onloadedmetadata = () => {
+      setUploadedAudioDuration(Math.floor(audio.duration));
+      setRecordingTime(Math.floor(audio.duration));
 
-        // Create audio URL for playback
-        const url = URL.createObjectURL(file)
-        setAudioBlob(file)
-        setAudioUrl(url)
+      // Create audio URL for playback
+      const url = URL.createObjectURL(file);
+      setAudioBlob(file);
+      setAudioUrl(url);
 
-        // Clean up
-        audio.remove()
-      }
+      // Clean up
+      audio.remove();
+    };
+
+    // Transcribe the uploaded audio
+    try {
+      const formData = new FormData();
+      formData.append('AudioFile', file);
+
+      const response = await axios.post("https://localhost:7234/api/Transcription/transcribe", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Set the transcription result
+      setTranscriptionResult({
+        text: response.data.text,
+        confidence: 1.0, // Assuming confidence is not returned; adjust as necessary
+      });
+
+    } catch (error: any) {
+      setError(`Transcription failed: ${error.message}`);
     }
   }
+};
 
   // Switch between record and upload tabs
   const switchTab = (tab: "record" | "upload") => {
@@ -615,3 +559,5 @@ const Transcribe = () => {
 }
 
 export default Transcribe
+
+

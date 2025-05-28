@@ -35,7 +35,7 @@ namespace Magical_Music.SERVICE
             {
                 ".mp3" => "audio/mpeg",
                 ".wav" => "audio/wav",
-                ".m4a" => "audio/mp4",
+                ".m4a" => "audio/x-m4a",
                 _ => "application/octet-stream"
             };
 
@@ -45,6 +45,7 @@ namespace Magical_Music.SERVICE
 
             multipartContent.Add(fileContent, "file", Path.GetFileName(audioFilePath));
             multipartContent.Add(new StringContent(model), "model");
+
             var apiBaseUrl = _configuration["OpenAI:BaseUrl"] ?? "https://api.openai.com";
             var response = await client.PostAsync($"{apiBaseUrl}/v1/audio/transcriptions", multipartContent);
             var responseText = await response.Content.ReadAsStringAsync();
@@ -52,11 +53,11 @@ namespace Magical_Music.SERVICE
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"OpenAI Error: {response.StatusCode} - {responseText}");
 
-            // Parse only the "text" field from the JSON response
             using var jsonDoc = JsonDocument.Parse(responseText);
             var root = jsonDoc.RootElement;
 
             return root.GetProperty("text").GetString();
         }
+
     }
 }

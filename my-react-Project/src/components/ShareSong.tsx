@@ -51,11 +51,102 @@ const ShareSong = ({ songs }: ShareSongProps) => {
     setIsSending(true);
 
     try {
-      const fullMessage = `${message}\n\n🌟🎵שיהיה לך יום נעים!\n\n\n👇לינק לשיר: ${shareLink}`;
-      
+      // תוכן מייל מעוצב במיוחד עם CSS פנימי
+      const fullMessage = `
+      <html>
+        <head>
+          <style>
+            body {
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              background: #f9fafb;
+              color: #333;
+              margin: 0; padding: 0;
+            }
+            .container {
+              max-width: 600px;
+              background: #fff;
+              margin: 20px auto;
+              border-radius: 10px;
+              box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+              overflow: hidden;
+            }
+            .header {
+              background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+              color: white;
+              padding: 20px;
+              text-align: center;
+              font-size: 24px;
+              font-weight: 700;
+            }
+            .content {
+              padding: 30px 40px;
+            }
+            .message {
+              font-size: 16px;
+              margin-bottom: 20px;
+              line-height: 1.5;
+              color: #444;
+            }
+            .song-details {
+              background: #f0f4ff;
+              border-radius: 8px;
+              padding: 15px 20px;
+              margin-bottom: 25px;
+              box-shadow: inset 0 0 10px #c6d1ff;
+            }
+            .song-details h2 {
+              margin: 0 0 10px 0;
+              color: #2a2f45;
+            }
+            .song-details p {
+              margin: 6px 0;
+              font-size: 15px;
+              color: #555;
+            }
+            .listen-button {
+              display: inline-block;
+              background: #2575fc;
+              color: white;
+              text-decoration: none;
+              padding: 12px 25px;
+              border-radius: 25px;
+              font-weight: 600;
+              font-size: 16px;
+              transition: background 0.3s ease;
+            }
+            .listen-button:hover {
+              background: #1b5fdb;
+            }
+            .footer {
+              text-align: center;
+              padding: 20px;
+              font-size: 14px;
+              color: #999;
+              border-top: 1px solid #eee;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">Magical_Music - שיתוף שיר חדש</div>
+            <div class="content">
+              <p class="message">${message || "היי, אני רוצה לשתף איתך שיר מהמוזיקה שלי. תהנה!"}</p>
+              <div class="song-details">
+                <h2>🎵 ${selectedSong.name}</h2>
+                <p><strong>סגנון מוזיקלי:</strong> ${selectedSong.musicStyle}</p>
+                <p><strong>אורך השיר:</strong> ${selectedSong.songLength.substring(3)}</p>
+              </div>
+              <a href="${shareLink}" target="_blank" rel="noopener noreferrer" class="listen-button">🎧 האזן לשיר כאן</a>
+            </div>
+            <div class="footer">תודה שהשתמשת ב-Magical_Music! 🌟</div>
+          </div>
+        </body>
+      </html>
+      `;
+
       await axios.post("https://localhost:7234/api/Email/send", {
         to: email,
-        subject: `שותף איתך ${selectedSong.name} באמצעות מערכת Magical_Music`,
+        subject: `שותף איתך את השיר "${selectedSong.name}" באמצעות Magical_Music`,
         body: fullMessage,
         songId: selectedSong.id,
       });
@@ -63,24 +154,20 @@ const ShareSong = ({ songs }: ShareSongProps) => {
       setIsSuccess(true);
       setEmail("");
       setMessage("");
-      setShareLink(null); // מאפס את הקישור
+      setShareLink(null); // אפס את הקישור אחרי שליחה
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Failed to send email. Please check the console for more details.");
+      alert("שליחת המייל נכשלה, אנא בדוק את הקונסול לפרטים נוספים.");
     } finally {
       setIsSending(false);
     }
   };
 
-  
   const fetchSongUrl = async (song: Song) => {
     try {
       const response = await axios.get(`https://localhost:7234/api/UploadFile/download-url?fileName=${encodeURIComponent(song.name)}`);
-      console.log("Fetching URL for song:", song.name);
-
       return response.data.fileUrl;
     } catch (error) {
-      console.log("Fetching URL failed for song:", song.name);
       console.error("Error fetching song URL:", error);
       setShareLink(null);
       return null;

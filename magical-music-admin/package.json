@@ -1,5 +1,5 @@
 {
-  "name": "my-angular-project",
+  "name": "magical-music-admin",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,10 +11,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",
+    "@angular/cdk": "^19.2.17",
     "@angular/common": "^19.0.0",
     "@angular/compiler": "^19.0.0",
-    "@angular/core": "^19.2.12",
+    "@angular/core": "^19.0.0",
     "@angular/forms": "^19.0.0",
+    "@angular/material": "^19.2.17",
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
@@ -35,4 +37,5 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.6.2"
   }
+  
 }

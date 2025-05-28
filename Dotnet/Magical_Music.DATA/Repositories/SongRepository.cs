@@ -16,9 +16,10 @@ namespace MagicalMusic.DATA.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<Song>> GetAllAsync() => await _context.Songs.Include(s => s.Singer).Include(s => s.Users).ToListAsync();
+        public async Task<IEnumerable<Song>> GetAllAsync() => await _context.Songs.ToListAsync();
 
-     
+
+
 
         public async Task<Song> GetByIdAsync(int id)
         {
@@ -27,8 +28,10 @@ namespace MagicalMusic.DATA.Repositories
 
         public async Task<IEnumerable<Song>> GetByCreatorIdAsync(int creatorId)
         {
-            return await _context.Songs.Where(s => s.SingerId == creatorId).ToListAsync();
+            // אם אין לך קשר ל-Singer, תצטרך לשנות את הלוגיקה כאן
+            return await _context.Songs.Where(s => s.Key == creatorId.ToString()).ToListAsync(); // דוגמה להחלפת לוגיקה
         }
+
 
         public async Task<IEnumerable<Song>> GetSongsByGenreAsync(string MusicStyle)
         {
@@ -38,8 +41,10 @@ namespace MagicalMusic.DATA.Repositories
         public async Task<Song> AddAsync(Song song)
         {
             await _context.Songs.AddAsync(song);
+            await _context.SaveChangesAsync(); // שמור את השינויים
             return song;
         }
+
 
         public async Task<Song> UpdateAsync(int id, Song song)
         {
@@ -51,7 +56,6 @@ namespace MagicalMusic.DATA.Repositories
             s.SongLength = song.SongLength;
             s.ImageUrl = song.ImageUrl;
             s.ReleaseDate = song.ReleaseDate;
-            s.SingerId = song.SingerId;
 
             return s;
         }
@@ -65,5 +69,11 @@ namespace MagicalMusic.DATA.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

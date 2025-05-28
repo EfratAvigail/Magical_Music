@@ -15,5 +15,7 @@ namespace Magical_Music.CORE.Repositories
          Task<Song> UpdateAsync(int id, Song song);
          Task DeleteAsync(int id);
         Task<IEnumerable<Song>> GetByCreatorIdAsync(int creatorId);
+        Task SaveChangesAsync(); // הוסף את המתודה הזו
+
     }
 }

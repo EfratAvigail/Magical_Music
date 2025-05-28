@@ -53,6 +53,7 @@ namespace Magical_Music.API.Controllers
 
         [HttpPost("upload")]
         [Consumes("multipart/form-data")]
+      
         public async Task<IActionResult> UploadFile([FromForm] CORE.Models.UploadSongRequest request, [FromServices] ISongService songService)
         {
             if (request.File == null || request.File.Length == 0)
@@ -66,23 +67,27 @@ namespace Magical_Music.API.Controllers
 
             using var stream = request.File.OpenReadStream();
 
+            // העלאת הקובץ ל-S3
             var (url, key) = await _awsService.UploadFileAsync(stream, request.File.FileName);
 
+            // יצירת אובייקט SongDTO
             var songDto = new SongDTO
             {
                 Name = request.Name,
                 MusicStyle = request.MusicStyle,
                 SongLength = request.SongLength,
                 ReleaseDate = request.ReleaseDate,
-                SingerId = request.SingerId,
+                ImageUrl = request.ImageUrl,
                 S3Url = url,
                 Key = key
             };
 
+            // הוספת השיר למסד הנתונים
             var savedSong = await songService.AddAsync(songDto);
 
             return Ok(new { Song = savedSong, S3Url = url });
         }
+
 
         //[HttpGet("download-url")]
         //public IActionResult GetDownloadUrl([FromQuery] string fileName)

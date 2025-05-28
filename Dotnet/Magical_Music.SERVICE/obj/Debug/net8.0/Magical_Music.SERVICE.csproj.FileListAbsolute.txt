@@ -34,3 +34,20 @@ C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.S
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\refint\Magical_Music.SERVICE.dll
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.pdb
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\ref\Magical_Music.SERVICE.dll
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\bin\Debug\net8.0\Magical_Music.SERVICE.deps.json
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\bin\Debug\net8.0\Magical_Music.SERVICE.dll
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\bin\Debug\net8.0\Magical_Music.SERVICE.pdb
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\bin\Debug\net8.0\Magical_Music.CORE.dll
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\bin\Debug\net8.0\Magical_Music.DATA.dll
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\bin\Debug\net8.0\Magical_Music.CORE.pdb
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\bin\Debug\net8.0\Magical_Music.DATA.pdb
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.csproj.AssemblyReference.cache
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.AssemblyInfoInputs.cache
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.AssemblyInfo.cs
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.csproj.CoreCompileInputs.cache
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_.280BCB48.Up2Date
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.dll
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\refint\Magical_Music.SERVICE.dll
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\Magical_Music.SERVICE.pdb
+C:\Users\user1\Documents\Dotnet\Magical_Music.SERVICE\obj\Debug\net8.0\ref\Magical_Music.SERVICE.dll

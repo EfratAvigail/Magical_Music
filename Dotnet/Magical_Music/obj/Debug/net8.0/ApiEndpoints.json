@@ -416,8 +416,8 @@
         "IsRequired": false
       },
       {
-        "Name": "SingerId",
-        "Type": "System.Int32",
+        "Name": "ImageUrl",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
