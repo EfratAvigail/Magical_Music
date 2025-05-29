@@ -13,7 +13,7 @@ interface CutSongProps {
 const CutSong = ({ songs }: CutSongProps) => {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
-  const [currentTime, setCurrentTime] = useState<number>(0)
+  const [, setCurrentTime] = useState<number>(0)
   const [duration, setDuration] = useState<number>(0)
   const [startMarker, setStartMarker] = useState<number>(0)
   const [endMarker, setEndMarker] = useState<number>(100)

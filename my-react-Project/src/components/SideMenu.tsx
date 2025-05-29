@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
-import { Music, Upload, Mic, Bot, LogOut, Menu, X, ChevronRight, Search, Share, Scissors } from "lucide-react"
+import { Music,  Mic, Bot, LogOut, Menu, X, ChevronRight, Share, Scissors } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
 import AIChat from "./AIChat"
 // import MusicPlayer from "./MusicPlayer"
@@ -14,8 +14,10 @@ interface MenuItem {
   icon: React.ReactNode
 }
 
+
 interface SideMenuProps {
-  onNavigate?: (view: string) => void
+  onNavigate: (view: string) => void;
+  activeView: string; // ← הוסף את זה
 }
 
 const SideMenu = ({ onNavigate }: SideMenuProps) => {
