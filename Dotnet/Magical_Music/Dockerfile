@@ -8,15 +8,14 @@ EXPOSE 8080
 EXPOSE 8081
 
 
-
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY Magical_Music/Magical_Music.API.csproj Magical_Music/
-COPY Magical_Music.CORE/Magical_Music.CORE.csproj Magical_Music.CORE/
-COPY Magical_Music.DATA/Magical_Music.DATA.csproj Magical_Music.DATA/
-COPY Magical_Music.SERVICE/Magical_Music.SERVICE.csproj Magical_Music.SERVICE/
+COPY ["Magical_Music/Magical_Music.API.csproj", "Magical_Music/"]
+COPY ["Magical_Music.CORE/Magical_Music.CORE.csproj", "Magical_Music.CORE/"]
+COPY ["Magical_Music.DATA/Magical_Music.DATA.csproj", "Magical_Music.DATA/"]
+COPY ["Magical_Music.SERVICE/Magical_Music.SERVICE.csproj", "Magical_Music.SERVICE/"]
 RUN dotnet restore "./Magical_Music/Magical_Music.API.csproj"
 COPY . .
 WORKDIR "/src/Magical_Music"
