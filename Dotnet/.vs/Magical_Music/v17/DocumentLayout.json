@@ -126,9 +126,9 @@
               "RelativeDocumentMoniker": "Magical_Music\\Dockerfile",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Dockerfile",
               "RelativeToolTip": "Magical_Music\\Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAowBEAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-29T17:54:10.623Z",
+              "WhenOpened": "2025-05-29T21:11:03.029Z",
               "EditorCaption": ""
             },
             {
@@ -139,9 +139,10 @@
               "RelativeDocumentMoniker": "Magical_Music.SERVICE\\AWSService.cs",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\AWSService.cs",
               "RelativeToolTip": "Magical_Music.SERVICE\\AWSService.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAB4AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAAB4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T12:22:34.651Z"
+              "WhenOpened": "2025-05-28T12:22:34.651Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -201,8 +202,7 @@
               "RelativeToolTip": "..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\0e1825b8-7ef3-4eeb-91a5-74742e872de8\\secrets.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-26T15:58:40.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T15:58:40.491Z"
             },
             {
               "$type": "Document",
@@ -286,8 +286,7 @@
               "RelativeToolTip": "Magical_Music\\Program.cs",
               "ViewState": "AgIAAKkAAAAAAAAAAAAgwK4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T20:46:55.685Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T20:46:55.685Z"
             },
             {
               "$type": "Document",
