@@ -18,7 +18,7 @@ import {
   User,
 } from "lucide-react"
 import type { Song, User as UserType } from "../types"
-import "../styles/Home.css"
+import "../styles/home.css"
 import SideMenu from "./SideMenu"
 // import SongFolder from "./SongFolder"
 import Transcribe from "./Transcribe"
