@@ -186,7 +186,6 @@ C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\o
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Magical_Music.API.props
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Magical_Music.API.props
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\Magical_.67A4EE64.Up2Date
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\Magical_Music.API.dll
 C:\Users\user1\Desktop\פרויקט המוזיקה שלי\Dotnet\Magical_Music\obj\Debug\net8.0\refint\Magical_Music.API.dll
