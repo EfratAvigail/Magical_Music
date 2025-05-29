@@ -62,43 +62,38 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
     }
   }, [])
 
-const fetchSongs = async () => {
-  setLoading(true)
-  try {
-    const token = localStorage.getItem("token")
-    const response = await axios.get("https://localhost:7234/api/Song", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+  const fetchSongs = async () => {
+    setLoading(true)
+    try {
+      const token = localStorage.getItem("token")
+      const response = await axios.get<string[]>("https://localhost:7234/api/UploadFile/songs", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      
 
-    // עדכון המידע בהתאם למבנה הנתונים של ה-API
-    const data = response.data.map((song: any) => ({
-      id: song.id,
-      name: song.name,
-      songLength: song.songLength, // משך השיר
-      musicStyle: song.musicStyle, // סגנון מוזיקה
-      releaseDate: new Date(song.releaseDate).toLocaleDateString("he-IL"), // המרת התאריך לפורמט עברי
-      imageUrl: song.imageUrl, // כתובת התמונה
-      singerName: song.singer?.name, // שם הזמר
-      s3Url: song.s3Url, // כתובת ה-URL להורדה
-      key: song.key, // המפתח של הקובץ
-      liked: false, // נתון דמה, תוכל להוסיף מערכת למעקב אחר שירים אהובים
-    }))
+      const data = response.data.map((song: string, index: number) => ({
+        id: index + 1,
+        name: song,
+        songLength: "4:00", // נתון דמה, תעדכן לפי הצורך
+        musicStyle: "Unknown",
+        releaseDate: "2023-01-01",
+        liked: false,
+      }))
 
-    setSongs(data)
-    if (data.length > 0) {
-      setCurrentSong(data[0])
+      setSongs(data)
+      if (data.length > 0) {
+        setCurrentSong(data[0])
+      }
+    } catch (error) {
+      console.error("Error fetching songs:", error)
+      setSongs(mockSongs)
+      setCurrentSong(mockSongs[0])
+    } finally {
+      setLoading(false)
     }
-  } catch (error) {
-    console.error("Error fetching songs:", error)
-    setSongs(mockSongs)
-    setCurrentSong(mockSongs[0])
-  } finally {
-    setLoading(false)
   }
-}
-
 
   const handleLogout = () => {
     localStorage.removeItem("token")
