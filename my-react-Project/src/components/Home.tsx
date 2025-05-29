@@ -250,7 +250,10 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
       </header>
 
       <div className="app-layout">
-        <SideMenu />
+        <SideMenu
+          onNavigate={(view: string) => navigate(view)}
+          activeView={location.pathname}
+        />
         <main className="main-content">
           <Routes>
             <Route
