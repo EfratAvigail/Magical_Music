@@ -28,7 +28,7 @@ namespace Magical_Music.SERVICE
 
         public async Task<(string url, string key)> UploadFileAsync(Stream fileStream, string fileName)
         {
-            var key = $"songs/{Guid.NewGuid()}_{fileName}";
+            var key = fileName;
 
             var uploadRequest = new TransferUtilityUploadRequest
             {
@@ -41,8 +41,11 @@ namespace Magical_Music.SERVICE
             var transferUtility = new TransferUtility(_s3Client);
             await transferUtility.UploadAsync(uploadRequest);
 
-            return ($"https://{_bucketName}.s3.amazonaws.com/{key}", key);
+            // בניית URL בפורמט שאתה רוצה
+            var url = $"https://s3.eu-north-1.amazonaws.com/{_bucketName}/{key}";
+            return (url, key);
         }
+
 
         public string GeneratePresignedUploadUrl(string fileKey, string contentType)
         {

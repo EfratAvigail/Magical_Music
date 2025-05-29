@@ -1,0 +1,100 @@
+<form (ngSubmit)="onSubmit()" class="upload-form">
+  <!-- File Upload Section -->
+  <div class="form-group">
+    <label>קובץ השיר *</label>
+    <div class="file-upload-container" 
+         (dragover)="onDragOver($event)"
+         (dragleave)="onDragLeave($event)"
+         (drop)="onDrop($event)">
+      
+      <input type="file" 
+             id="fileInput" 
+             accept="audio/*"
+             (change)="onFileSelected($event)"
+             style="display: none;">
+      
+      <label for="fileInput" class="file-upload-label">
+        <div class="upload-icon">🎵</div>
+        <div class="upload-text">
+          <span *ngIf="!selectedFile">גרור קובץ שיר לכאן או לחץ לבחירה</span>
+          <span *ngIf="selectedFile">
+            <strong>נבחר: {{selectedFile.name}}</strong><br>
+            <small>גודל: {{formatFileSize(selectedFile.size)}}</small>
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Song Name -->
+  <div class="form-group">
+    <label>שם השיר *</label>
+    <input type="text" 
+           class="form-control" 
+           [(ngModel)]="songData.name" 
+           name="songName"
+           placeholder="הכנס את שם השיר"
+           required>
+  </div>
+
+  <!-- Music Style and Song Length Row -->
+  <div class="form-row">
+    <div class="form-group">
+      <label>סגנון מוזיקלי</label>
+      <select class="form-control" 
+              [(ngModel)]="songData.musicStyle"
+              name="musicStyle">
+        <option value="">בחר סגנון</option>
+        <option *ngFor="let style of musicStyles" [value]="style">{{style}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>אורך השיר (דקות)</label>
+      <input type="number" 
+             class="form-control" 
+             [(ngModel)]="songData.songLength" 
+             name="songLength"
+             placeholder="0"
+             min="0"
+             step="0.1">
+    </div>
+  </div>
+
+  <!-- Release Date and Singer ID Row -->
+  <div class="form-row">
+    <div class="form-group">
+      <label>תאריך יציאה</label>
+      <input type="datetime-local" 
+             class="form-control" 
+             [(ngModel)]="songData.releaseDate"
+             name="releaseDate">
+    </div>
+
+    <div class="form-group">
+      <label>מזהה זמר</label>
+      <input type="number" 
+             class="form-control" 
+             [(ngModel)]="songData.singerId" 
+             name="singerId"
+             placeholder="0"
+             min="0">
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div *ngIf="uploadProgress > 0 && uploadProgress < 100" class="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="uploadProgress"></div>
+    </div>
+    <div class="progress-text">{{uploadProgress}}%</div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" 
+          class="btn btn-primary" 
+          [disabled]="!isFormValid() || isUploading">
+    <span *ngIf="isUploading" class="loading-spinner"></span>
+    {{isUploading ? 'מעלה...' : 'העלה שיר'}}
+  </button>
+</form>

@@ -1,0 +1,105 @@
+<div class="admin-container">
+  <!-- Header -->
+  <div class="header">
+    <h1 class="main-title">🎵 Magical Music 🎵</h1>
+    <p class="subtitle">פאנל מנהל להעלאת שירים</p>
+  </div>
+
+  <!-- Main Panel -->
+  <div class="admin-panel">
+    <div class="panel-header">
+      <h2>העלאת שיר חדש</h2>
+      <p>העלו שירים חדשים למערכת Magical Music</p>
+    </div>
+
+    <!-- Alert Messages -->
+    <div *ngIf="alertMessage" 
+         class="alert" 
+         [ngClass]="{
+           'alert-success': alertMessage.type === 'success',
+           'alert-error': alertMessage.type === 'error',
+           'alert-info': alertMessage.type === 'info',
+           'alert-warning': alertMessage.type === 'warning'
+         }">
+      <span>{{alertMessage.message}}</span>
+      <button class="alert-close" (click)="clearAlert()">×</button>
+    </div>
+
+    <!-- File Upload Component -->
+    <app-file-upload 
+      [isUploading]="isUploading"
+      [uploadProgress]="uploadProgress"
+      (fileSelected)="onFileSelected($event)"
+      (formSubmit)="onFormSubmit($event)">
+    </app-file-upload>
+  </div>
+
+  <!-- Uploaded Songs Section -->
+  <div *ngIf="uploadedSongs.length > 0" class="uploaded-songs-section">
+    <h3 class="section-title">שירים שהועלו לאחרונה</h3>
+    
+    <div class="songs-grid">
+      <div *ngFor="let songResponse of uploadedSongs; let i = index" 
+           class="song-card">
+        
+        <!-- Song Header -->
+        <div class="song-header">
+          <h4 class="song-name">{{songResponse.song.name}}</h4>
+          <button class="delete-btn" 
+                  (click)="deleteSong(i)"
+                  title="מחק מהרשימה">
+            🗑️
+          </button>
+        </div>
+
+        <!-- Song Details -->
+        <div class="song-details">
+          <div class="detail-row" *ngIf="songResponse.song.musicStyle">
+            <span class="detail-label">סגנון:</span>
+            <span class="detail-value">{{songResponse.song.musicStyle}}</span>
+          </div>
+          
+          <div class="detail-row" *ngIf="songResponse.song.songLength">
+            <span class="detail-label">אורך:</span>
+            <span class="detail-value">{{songResponse.song.songLength}}</span>
+          </div>
+          
+          <div class="detail-row" *ngIf="songResponse.song.singerId">
+            <span class="detail-label">מזהה זמר:</span>
+            <span class="detail-value">{{songResponse.song.singerId}}</span>
+          </div>
+          
+          <div class="detail-row" *ngIf="songResponse.song.releaseDate">
+            <span class="detail-label">תאריך יציאה:</span>
+            <span class="detail-value">{{formatDate(songResponse.song.releaseDate)}}</span>
+          </div>
+        </div>
+
+        <!-- S3 URL Section -->
+        <div class="s3-url-section">
+          <div class="s3-url-header">
+            <span class="url-label">S3 URL:</span>
+            <button class="copy-btn" 
+                    (click)="copyToClipboard(songResponse.s3Url)"
+                    title="העתק URL">
+              📋
+            </button>
+          </div>
+          <div class="s3-url">{{songResponse.s3Url}}</div>
+        </div>
+
+        <!-- Song ID Badge -->
+        <div class="song-id-badge">
+          ID: {{songResponse.song.id}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="uploadedSongs.length === 0" class="empty-state">
+    <div class="empty-icon">🎼</div>
+    <h3>עדיין לא הועלו שירים</h3>
+    <p>השיר הראשון שתעלה יופיע כאן</p>
+  </div>
+</div>

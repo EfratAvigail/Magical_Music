@@ -53,7 +53,6 @@ namespace Magical_Music.API.Controllers
 
         [HttpPost("upload")]
         [Consumes("multipart/form-data")]
-      
         public async Task<IActionResult> UploadFile([FromForm] CORE.Models.UploadSongRequest request, [FromServices] ISongService songService)
         {
             if (request.File == null || request.File.Length == 0)
@@ -78,7 +77,7 @@ namespace Magical_Music.API.Controllers
                 SongLength = request.SongLength,
                 ReleaseDate = request.ReleaseDate,
                 ImageUrl = request.ImageUrl,
-                S3Url = url,
+                S3Url = url,  // ודא שה-URL נשמר נכון
                 Key = key
             };
 
@@ -87,6 +86,7 @@ namespace Magical_Music.API.Controllers
 
             return Ok(new { Song = savedSong, S3Url = url });
         }
+
 
 
         //[HttpGet("download-url")]
