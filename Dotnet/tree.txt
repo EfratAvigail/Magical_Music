@@ -1,0 +1,544 @@
+Folder PATH listing
+Volume serial number is B644-53DC
+C:.
+?   .dockerignore
+?   Magical_Music.sln
+?   tree.txt
+?   
+????.vs
+?   ????Magical_Music
+?   ?   ????config
+?   ?   ?       applicationhost.config
+?   ?   ?       
+?   ?   ????copilot-chat
+?   ?   ?   ????690b1e41
+?   ?   ?       ????sessions
+?   ?   ????CopilotIndices
+?   ?   ?   ????17.13.439.2385
+?   ?   ?           CodeChunks.db
+?   ?   ?           SemanticSymbols.db
+?   ?   ?           
+?   ?   ????DesignTimeBuild
+?   ?   ?       .dtbcache.v2
+?   ?   ?       
+?   ?   ????FileContentIndex
+?   ?   ?       3c5a6375-ed16-4847-a183-8b75d968e606.vsidx
+?   ?   ?       82835861-5a3b-4b4f-a6eb-0292d865a242.vsidx
+?   ?   ?       cad713e8-cde0-44ad-8321-6faf147906da.vsidx
+?   ?   ?       d710215c-38d0-4221-949b-597dccc1c0c4.vsidx
+?   ?   ?       ed039d1c-346e-475b-b38d-d27ba91b85fd.vsidx
+?   ?   ?       
+?   ?   ????v17
+?   ?           .futdcache.v2
+?   ?           DocumentLayout.backup.json
+?   ?           DocumentLayout.json
+?   ?           
+?   ????ProjectEvaluation
+?           magical_music.metadata.v9.bin
+?           magical_music.projects.v9.bin
+?           magical_music.strings.v9.bin
+?           
+????Magical_Music
+?   ?   appsettings.Development.json
+?   ?   appsettings.json
+?   ?   Dockerfile
+?   ?   Magical_Music.API.csproj
+?   ?   Magical_Music.API.csproj.user
+?   ?   Magical_Music.http
+?   ?   Program.cs
+?   ?   
+?   ????bin
+?   ?   ????Debug
+?   ?       ????net8.0
+?   ?           ?   appsettings.Development.json
+?   ?           ?   appsettings.json
+?   ?           ?   AutoMapper.dll
+?   ?           ?   AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+?   ?           ?   AWSSDK.Core.dll
+?   ?           ?   AWSSDK.Extensions.NETCore.Setup.dll
+?   ?           ?   AWSSDK.S3.dll
+?   ?           ?   Azure.Core.dll
+?   ?           ?   Azure.Identity.dll
+?   ?           ?   BCrypt.Net-Next.dll
+?   ?           ?   BouncyCastle.Cryptography.dll
+?   ?           ?   DotNetEnv.dll
+?   ?           ?   Google.Protobuf.dll
+?   ?           ?   Humanizer.dll
+?   ?           ?   K4os.Compression.LZ4.dll
+?   ?           ?   K4os.Compression.LZ4.Streams.dll
+?   ?           ?   K4os.Hash.xxHash.dll
+?   ?           ?   Magical_Music.API.deps.json
+?   ?           ?   Magical_Music.API.dll
+?   ?           ?   Magical_Music.API.exe
+?   ?           ?   Magical_Music.API.pdb
+?   ?           ?   Magical_Music.API.runtimeconfig.json
+?   ?           ?   Magical_Music.API.staticwebassets.endpoints.json
+?   ?           ?   Magical_Music.CORE.dll
+?   ?           ?   Magical_Music.CORE.pdb
+?   ?           ?   Magical_Music.DATA.dll
+?   ?           ?   Magical_Music.DATA.pdb
+?   ?           ?   Magical_Music.SERVICE.dll
+?   ?           ?   Magical_Music.SERVICE.pdb
+?   ?           ?   MailKit.dll
+?   ?           ?   Microsoft.AspNetCore.Authentication.JwtBearer.dll
+?   ?           ?   Microsoft.Bcl.AsyncInterfaces.dll
+?   ?           ?   Microsoft.CodeAnalysis.CSharp.dll
+?   ?           ?   Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+?   ?           ?   Microsoft.CodeAnalysis.dll
+?   ?           ?   Microsoft.CodeAnalysis.Workspaces.dll
+?   ?           ?   Microsoft.Data.SqlClient.dll
+?   ?           ?   Microsoft.EntityFrameworkCore.Abstractions.dll
+?   ?           ?   Microsoft.EntityFrameworkCore.Design.dll
+?   ?           ?   Microsoft.EntityFrameworkCore.dll
+?   ?           ?   Microsoft.EntityFrameworkCore.Relational.dll
+?   ?           ?   Microsoft.EntityFrameworkCore.SqlServer.dll
+?   ?           ?   Microsoft.Extensions.Caching.Memory.dll
+?   ?           ?   Microsoft.Extensions.Configuration.Abstractions.dll
+?   ?           ?   Microsoft.Extensions.Configuration.Binder.dll
+?   ?           ?   Microsoft.Extensions.Configuration.dll
+?   ?           ?   Microsoft.Extensions.DependencyInjection.Abstractions.dll
+?   ?           ?   Microsoft.Extensions.DependencyInjection.dll
+?   ?           ?   Microsoft.Extensions.DependencyModel.dll
+?   ?           ?   Microsoft.Extensions.Diagnostics.Abstractions.dll
+?   ?           ?   Microsoft.Extensions.Diagnostics.dll
+?   ?           ?   Microsoft.Extensions.Hosting.Abstractions.dll
+?   ?           ?   Microsoft.Extensions.Http.dll
+?   ?           ?   Microsoft.Extensions.Logging.Abstractions.dll
+?   ?           ?   Microsoft.Extensions.Logging.dll
+?   ?           ?   Microsoft.Extensions.ObjectPool.dll
+?   ?           ?   Microsoft.Extensions.Options.ConfigurationExtensions.dll
+?   ?           ?   Microsoft.Extensions.Options.dll
+?   ?           ?   Microsoft.Extensions.Primitives.dll
+?   ?           ?   Microsoft.Identity.Client.dll
+?   ?           ?   Microsoft.Identity.Client.Extensions.Msal.dll
+?   ?           ?   Microsoft.IdentityModel.Abstractions.dll
+?   ?           ?   Microsoft.IdentityModel.JsonWebTokens.dll
+?   ?           ?   Microsoft.IdentityModel.Logging.dll
+?   ?           ?   Microsoft.IdentityModel.Protocols.dll
+?   ?           ?   Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+?   ?           ?   Microsoft.IdentityModel.Tokens.dll
+?   ?           ?   Microsoft.OpenApi.dll
+?   ?           ?   Microsoft.SqlServer.Server.dll
+?   ?           ?   MimeKit.dll
+?   ?           ?   Mono.TextTemplating.dll
+?   ?           ?   MySql.Data.dll
+?   ?           ?   MySql.Data.EntityFrameworkCore.dll
+?   ?           ?   MySql.EntityFrameworkCore.dll
+?   ?           ?   MySqlConnector.dll
+?   ?           ?   Newtonsoft.Json.dll
+?   ?           ?   Pomelo.EntityFrameworkCore.MySql.dll
+?   ?           ?   ServiceStack.Text.dll
+?   ?           ?   Sprache.dll
+?   ?           ?   Swashbuckle.AspNetCore.Swagger.dll
+?   ?           ?   Swashbuckle.AspNetCore.SwaggerGen.dll
+?   ?           ?   Swashbuckle.AspNetCore.SwaggerUI.dll
+?   ?           ?   System.ClientModel.dll
+?   ?           ?   System.CodeDom.dll
+?   ?           ?   System.Composition.AttributedModel.dll
+?   ?           ?   System.Composition.Convention.dll
+?   ?           ?   System.Composition.Hosting.dll
+?   ?           ?   System.Composition.Runtime.dll
+?   ?           ?   System.Composition.TypedParts.dll
+?   ?           ?   System.Configuration.ConfigurationManager.dll
+?   ?           ?   System.Diagnostics.DiagnosticSource.dll
+?   ?           ?   System.IdentityModel.Tokens.Jwt.dll
+?   ?           ?   System.IO.Pipelines.dll
+?   ?           ?   System.Memory.Data.dll
+?   ?           ?   System.Runtime.Caching.dll
+?   ?           ?   System.Security.Cryptography.Pkcs.dll
+?   ?           ?   System.Security.Cryptography.ProtectedData.dll
+?   ?           ?   System.Security.Permissions.dll
+?   ?           ?   System.Text.Encodings.Web.dll
+?   ?           ?   System.Text.Json.dll
+?   ?           ?   System.Windows.Extensions.dll
+?   ?           ?   ZstdSharp.dll
+?   ?           ?   
+?   ?           ????cs
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????de
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????es
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????fr
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????it
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????ja
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????ko
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????pl
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????pt-BR
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????ru
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????runtimes
+?   ?           ?   ????browser
+?   ?           ?   ?   ????lib
+?   ?           ?   ?       ????net8.0
+?   ?           ?   ?               System.Text.Encodings.Web.dll
+?   ?           ?   ?               
+?   ?           ?   ????unix
+?   ?           ?   ?   ????lib
+?   ?           ?   ?       ????net6.0
+?   ?           ?   ?               Microsoft.Data.SqlClient.dll
+?   ?           ?   ?               
+?   ?           ?   ????win
+?   ?           ?   ?   ????lib
+?   ?           ?   ?       ????net6.0
+?   ?           ?   ?       ?       Microsoft.Data.SqlClient.dll
+?   ?           ?   ?       ?       System.Runtime.Caching.dll
+?   ?           ?   ?       ?       
+?   ?           ?   ?       ????net8.0
+?   ?           ?   ?               System.Security.Cryptography.Pkcs.dll
+?   ?           ?   ?               System.Windows.Extensions.dll
+?   ?           ?   ?               
+?   ?           ?   ????win-arm
+?   ?           ?   ?   ????native
+?   ?           ?   ?           Microsoft.Data.SqlClient.SNI.dll
+?   ?           ?   ?           
+?   ?           ?   ????win-arm64
+?   ?           ?   ?   ????native
+?   ?           ?   ?           Microsoft.Data.SqlClient.SNI.dll
+?   ?           ?   ?           
+?   ?           ?   ????win-x64
+?   ?           ?   ?   ????native
+?   ?           ?   ?           comerr64.dll
+?   ?           ?   ?           gssapi64.dll
+?   ?           ?   ?           k5sprt64.dll
+?   ?           ?   ?           krb5_64.dll
+?   ?           ?   ?           krbcc64.dll
+?   ?           ?   ?           Microsoft.Data.SqlClient.SNI.dll
+?   ?           ?   ?           
+?   ?           ?   ????win-x86
+?   ?           ?       ????native
+?   ?           ?               Microsoft.Data.SqlClient.SNI.dll
+?   ?           ?               
+?   ?           ????Tools
+?   ?           ?   ????ffmpeg
+?   ?           ?           ffmpeg.exe
+?   ?           ?           
+?   ?           ????tr
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????zh-Hans
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.resources.dll
+?   ?           ?       Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?           ?       
+?   ?           ????zh-Hant
+?   ?                   Microsoft.CodeAnalysis.CSharp.resources.dll
+?   ?                   Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+?   ?                   Microsoft.CodeAnalysis.resources.dll
+?   ?                   Microsoft.CodeAnalysis.Workspaces.resources.dll
+?   ?                   
+?   ????Controllers
+?   ?       AuthController.cs
+?   ?       AWSController.cs
+?   ?       CutSongController.cs
+?   ?       EmailController.cs
+?   ?       SingerController.cs
+?   ?       SongController.cs
+?   ?       TranscriptionController.cs
+?   ?       UserController.cs
+?   ?       
+?   ????obj
+?   ?   ?   Magical_Music.API.csproj.nuget.dgspec.json
+?   ?   ?   Magical_Music.API.csproj.nuget.g.props
+?   ?   ?   Magical_Music.API.csproj.nuget.g.targets
+?   ?   ?   project.assets.json
+?   ?   ?   project.nuget.cache
+?   ?   ?   
+?   ?   ????Container
+?   ?   ?       ContainerDevelopmentMode.cache
+?   ?   ?       ContainerId.cache
+?   ?   ?       ContainerName.cache
+?   ?   ?       ContainerRunContext.cache
+?   ?   ?       
+?   ?   ????Debug
+?   ?       ????net8.0
+?   ?           ?   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+?   ?           ?   ApiEndpoints.json
+?   ?           ?   apphost.exe
+?   ?           ?   AppSettingsSchema.json
+?   ?           ?   CombinedComponentSchema.json
+?   ?           ?   Magical_.67A4EE64.Up2Date
+?   ?           ?   Magical_Music.API.AssemblyInfo.cs
+?   ?           ?   Magical_Music.API.AssemblyInfoInputs.cache
+?   ?           ?   Magical_Music.API.assets.cache
+?   ?           ?   Magical_Music.API.csproj.AssemblyReference.cache
+?   ?           ?   Magical_Music.API.csproj.BuildWithSkipAnalyzers
+?   ?           ?   Magical_Music.API.csproj.CoreCompileInputs.cache
+?   ?           ?   Magical_Music.API.csproj.FileListAbsolute.txt
+?   ?           ?   Magical_Music.API.dll
+?   ?           ?   Magical_Music.API.GeneratedMSBuildEditorConfig.editorconfig
+?   ?           ?   Magical_Music.API.genruntimeconfig.cache
+?   ?           ?   Magical_Music.API.GlobalUsings.g.cs
+?   ?           ?   Magical_Music.API.MvcApplicationPartsAssemblyInfo.cache
+?   ?           ?   Magical_Music.API.MvcApplicationPartsAssemblyInfo.cs
+?   ?           ?   Magical_Music.API.pdb
+?   ?           ?   Magical_Music.API.sourcelink.json
+?   ?           ?   staticwebassets.build.endpoints.json
+?   ?           ?   staticwebassets.build.json
+?   ?           ?   staticwebassets.references.upToDateCheck.txt
+?   ?           ?   staticwebassets.removed.txt
+?   ?           ?   
+?   ?           ????EndpointInfo
+?   ?           ?       Magical_Music.API.json
+?   ?           ?       Magical_Music.API.OpenApiFiles.cache
+?   ?           ?       
+?   ?           ????ref
+?   ?           ?       Magical_Music.API.dll
+?   ?           ?       
+?   ?           ????refint
+?   ?           ?       Magical_Music.API.dll
+?   ?           ?       
+?   ?           ????staticwebassets
+?   ?                   msbuild.build.Magical_Music.API.props
+?   ?                   msbuild.buildMultiTargeting.Magical_Music.API.props
+?   ?                   msbuild.buildTransitive.Magical_Music.API.props
+?   ?                   
+?   ????Properties
+?   ?       launchSettings.json
+?   ?       
+?   ????Tools
+?       ????ffmpeg
+?               ffmpeg.exe
+?               
+????Magical_Music.CORE
+?   ?   Class1.cs
+?   ?   Magical_Music.CORE.csproj
+?   ?   MappingProfile.cs
+?   ?   
+?   ????bin
+?   ?   ????Debug
+?   ?       ????net8.0
+?   ?               Magical_Music.CORE.deps.json
+?   ?               Magical_Music.CORE.dll
+?   ?               Magical_Music.CORE.pdb
+?   ?               
+?   ????DTOs
+?   ?       SingerDTO.cs
+?   ?       SongCutRequest.cs
+?   ?       SongDTO.cs
+?   ?       UserDTO.cs
+?   ?       
+?   ????Models
+?   ?       CutRequest.cs
+?   ?       EmailPassword.cs
+?   ?       EmailRequest.cs
+?   ?       LoginModel.cs
+?   ?       RegisterModel.cs
+?   ?       Singer.cs
+?   ?       Song.cs
+?   ?       TranscriptionRequest.cs
+?   ?       UploadSongRequest.cs
+?   ?       User.cs
+?   ?       
+?   ????obj
+?   ?   ?   Magical_Music.CORE.csproj.nuget.dgspec.json
+?   ?   ?   Magical_Music.CORE.csproj.nuget.g.props
+?   ?   ?   Magical_Music.CORE.csproj.nuget.g.targets
+?   ?   ?   project.assets.json
+?   ?   ?   project.nuget.cache
+?   ?   ?   
+?   ?   ????Debug
+?   ?       ????net8.0
+?   ?           ?   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+?   ?           ?   Magical_Music.CORE.AssemblyInfo.cs
+?   ?           ?   Magical_Music.CORE.AssemblyInfoInputs.cache
+?   ?           ?   Magical_Music.CORE.assets.cache
+?   ?           ?   Magical_Music.CORE.csproj.AssemblyReference.cache
+?   ?           ?   Magical_Music.CORE.csproj.BuildWithSkipAnalyzers
+?   ?           ?   Magical_Music.CORE.csproj.CoreCompileInputs.cache
+?   ?           ?   Magical_Music.CORE.csproj.FileListAbsolute.txt
+?   ?           ?   Magical_Music.CORE.dll
+?   ?           ?   Magical_Music.CORE.GeneratedMSBuildEditorConfig.editorconfig
+?   ?           ?   Magical_Music.CORE.GlobalUsings.g.cs
+?   ?           ?   Magical_Music.CORE.pdb
+?   ?           ?   Magical_Music.CORE.sourcelink.json
+?   ?           ?   
+?   ?           ????ref
+?   ?           ?       Magical_Music.CORE.dll
+?   ?           ?       
+?   ?           ????refint
+?   ?                   Magical_Music.CORE.dll
+?   ?                   
+?   ????Repositories
+?   ?       ISingerRepository.cs
+?   ?       ISongRepository.cs
+?   ?       IUserRepository.cs
+?   ?       
+?   ????Services
+?           IEmailService.cs
+?           ISingerService.cs
+?           ISongCuttingService.cs
+?           ISongService.cs
+?           ITranscriptionService.cs
+?           IUserService.cs
+?           
+????Magical_Music.DATA
+?   ?   Class1.cs
+?   ?   DataContext.cs
+?   ?   Magical_Music.DATA.csproj
+?   ?   
+?   ????bin
+?   ?   ????Debug
+?   ?       ????net8.0
+?   ?               Magical_Music.CORE.dll
+?   ?               Magical_Music.CORE.pdb
+?   ?               Magical_Music.DATA.deps.json
+?   ?               Magical_Music.DATA.dll
+?   ?               Magical_Music.DATA.pdb
+?   ?               Magical_Music.DATA.runtimeconfig.json
+?   ?               
+?   ????Migrations
+?   ?       20250401013310_MG.cs
+?   ?       20250401013310_MG.Designer.cs
+?   ?       20250401020005_Migration_Magical_Music.cs
+?   ?       20250401020005_Migration_Magical_Music.Designer.cs
+?   ?       20250401020113_Migration_M_M.cs
+?   ?       20250401020113_Migration_M_M.Designer.cs
+?   ?       20250424121515_MigrationMagical_Music.cs
+?   ?       20250424121515_MigrationMagical_Music.Designer.cs
+?   ?       20250427122510_Migrationmmm.cs
+?   ?       20250427122510_Migrationmmm.Designer.cs
+?   ?       20250528125005_AddKeyToSongs.cs
+?   ?       20250528125005_AddKeyToSongs.Designer.cs
+?   ?       DataContextModelSnapshot.cs
+?   ?       
+?   ????obj
+?   ?   ?   Magical_Music.DATA.csproj.nuget.dgspec.json
+?   ?   ?   Magical_Music.DATA.csproj.nuget.g.props
+?   ?   ?   Magical_Music.DATA.csproj.nuget.g.targets
+?   ?   ?   project.assets.json
+?   ?   ?   project.nuget.cache
+?   ?   ?   
+?   ?   ????Debug
+?   ?       ????net8.0
+?   ?           ?   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+?   ?           ?   Magical_.12562A77.Up2Date
+?   ?           ?   Magical_Music.DATA.AssemblyInfo.cs
+?   ?           ?   Magical_Music.DATA.AssemblyInfoInputs.cache
+?   ?           ?   Magical_Music.DATA.assets.cache
+?   ?           ?   Magical_Music.DATA.csproj.AssemblyReference.cache
+?   ?           ?   Magical_Music.DATA.csproj.BuildWithSkipAnalyzers
+?   ?           ?   Magical_Music.DATA.csproj.CoreCompileInputs.cache
+?   ?           ?   Magical_Music.DATA.csproj.FileListAbsolute.txt
+?   ?           ?   Magical_Music.DATA.dll
+?   ?           ?   Magical_Music.DATA.GeneratedMSBuildEditorConfig.editorconfig
+?   ?           ?   Magical_Music.DATA.genruntimeconfig.cache
+?   ?           ?   Magical_Music.DATA.GlobalUsings.g.cs
+?   ?           ?   Magical_Music.DATA.pdb
+?   ?           ?   Magical_Music.DATA.sourcelink.json
+?   ?           ?   
+?   ?           ????ref
+?   ?           ?       Magical_Music.DATA.dll
+?   ?           ?       
+?   ?           ????refint
+?   ?                   Magical_Music.DATA.dll
+?   ?                   
+?   ????Repositories
+?           SingerRepository.cs
+?           SongRepository.cs
+?           UserRepository.cs
+?           
+????Magical_Music.SERVICE
+    ?   AuthService.cs
+    ?   AWSService.cs
+    ?   Class1.cs
+    ?   EmailService.cs
+    ?   Magical_Music.SERVICE.csproj
+    ?   SingerService.cs
+    ?   SongCuttingService.cs
+    ?   SongService.cs
+    ?   TranscriptionService.cs
+    ?   UploadSongRequest.cs
+    ?   UserService.cs
+    ?   
+    ????bin
+    ?   ????Debug
+    ?       ????net8.0
+    ?               Magical_Music.CORE.dll
+    ?               Magical_Music.CORE.pdb
+    ?               Magical_Music.DATA.dll
+    ?               Magical_Music.DATA.pdb
+    ?               Magical_Music.SERVICE.deps.json
+    ?               Magical_Music.SERVICE.dll
+    ?               Magical_Music.SERVICE.pdb
+    ?               
+    ????obj
+        ?   Magical_Music.SERVICE.csproj.nuget.dgspec.json
+        ?   Magical_Music.SERVICE.csproj.nuget.g.props
+        ?   Magical_Music.SERVICE.csproj.nuget.g.targets
+        ?   project.assets.json
+        ?   project.nuget.cache
+        ?   
+        ????Debug
+            ????net8.0
+                ?   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+                ?   Magical_.280BCB48.Up2Date
+                ?   Magical_Music.SERVICE.AssemblyInfo.cs
+                ?   Magical_Music.SERVICE.AssemblyInfoInputs.cache
+                ?   Magical_Music.SERVICE.assets.cache
+                ?   Magical_Music.SERVICE.csproj.AssemblyReference.cache
+                ?   Magical_Music.SERVICE.csproj.BuildWithSkipAnalyzers
+                ?   Magical_Music.SERVICE.csproj.CoreCompileInputs.cache
+                ?   Magical_Music.SERVICE.csproj.FileListAbsolute.txt
+                ?   Magical_Music.SERVICE.dll
+                ?   Magical_Music.SERVICE.GeneratedMSBuildEditorConfig.editorconfig
+                ?   Magical_Music.SERVICE.GlobalUsings.g.cs
+                ?   Magical_Music.SERVICE.pdb
+                ?   Magical_Music.SERVICE.sourcelink.json
+                ?   
+                ????ref
+                ?       Magical_Music.SERVICE.dll
+                ?       
+                ????refint
+                        Magical_Music.SERVICE.dll
+                        
