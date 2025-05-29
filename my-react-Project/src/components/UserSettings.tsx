@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { UserIcon, Save, Mail, Lock, UserCheck, Trash2 } from "lucide-react"
-import type { User } from "../types"
+import type { User } from "../types/index"
 import "../styles/usersettings.css"
 
 interface UserSettingsProps {

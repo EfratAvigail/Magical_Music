@@ -9,13 +9,7 @@ import LandingPage from "./components/LandingPage"
 import ErrorBoundary from "./components/ErrorBoundary"
 // import UploadSong from "./components/UploadSong" // Import the UploadSong component
 
-// Define types for authentication
-// interface User {
-//   id: number
-//   name: string
-//   email: string
-//   role: string
-// }
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
