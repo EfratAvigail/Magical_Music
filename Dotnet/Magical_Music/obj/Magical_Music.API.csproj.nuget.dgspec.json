@@ -378,6 +378,10 @@
               "target": "Package",
               "version": "[8.0.14, )"
             },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.21.0, )"
+            },
             "ServiceStack.Text": {
               "target": "Package",
               "version": "[8.7.0, )"
