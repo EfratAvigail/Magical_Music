@@ -190,7 +190,7 @@ namespace Magical_Music
             });
 
             app.MapControllers();
-            //app.MapGet("/", () => "Welcome to Magical Music API! 🎶");
+            app.MapGet("/", () => "Welcome to Magical Music API! 🎶");
             app.Run();
         }
     }

@@ -368,6 +368,7 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
                               value={volume}
                               onChange={handleVolumeChange}
                               className="volume-slider"
+                              
                             />
                           </div>
                         </div>
