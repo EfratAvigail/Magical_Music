@@ -3,7 +3,7 @@
 import { useState, type FormEvent, type ChangeEvent } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { FileMusicIcon as MusicNote, KeyRound, Mail, Headphones, Music } from "lucide-react"
-import "../styles/app.css"
+import "../styles/auth.css"
 import axios from "axios"
 
 interface LoginFormData {
@@ -37,26 +37,22 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
     setLoading(true)
     setError("")
 
+    const baseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7234"
+
     try {
-      const response = await axios.post("https://localhost:7234/api/Auth/login", {
+      const response = await axios.post(`${baseUrl}/api/Auth/login`, {
         email: formData.email,
         password: formData.password,
       })
 
-      // אין צורך לקרוא ל- response.json(), הנתונים זמינים ישירות ב-response.data
       const data = response.data
 
-      // אם יש שגיאה, Axios יזרוק שגיאה, כך שאין צורך לבדוק את response.ok
-      // Save token to localStorage
       localStorage.setItem("token", data.token || "")
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user))
       }
 
-      // Update authentication state
       setIsAuthenticated(true)
-
-      // Redirect to home page
       navigate("/")
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred during login")
@@ -68,7 +64,6 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
   return (
     <div className="auth-container">
       <div className="auth-background">
-        {/* Animated musical notes and instruments */}
         {[...Array(15)].map((_, i) => (
           <div
             key={i}

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C25CFA45-B598-4793-BCCE-9894C6CFA963}|Magical_Music.DATA\\Magical_Music.DATA.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.data\\repositories\\songrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C25CFA45-B598-4793-BCCE-9894C6CFA963}|Magical_Music.DATA\\Magical_Music.DATA.csproj|solutionrelative:magical_music.data\\repositories\\songrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|solutionrelative:magical_music\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -28,10 +32,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music\\controllers\\songcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|solutionrelative:magical_music\\controllers\\songcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C25CFA45-B598-4793-BCCE-9894C6CFA963}|Magical_Music.DATA\\Magical_Music.DATA.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.data\\repositories\\songrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C25CFA45-B598-4793-BCCE-9894C6CFA963}|Magical_Music.DATA\\Magical_Music.DATA.csproj|solutionrelative:magical_music.data\\repositories\\songrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\uploadsongrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -108,7 +108,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -116,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "SongController.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\SongController.cs",
               "RelativeDocumentMoniker": "Magical_Music\\Controllers\\SongController.cs",
@@ -140,19 +140,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "SongRepository.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.DATA\\Repositories\\SongRepository.cs",
               "RelativeDocumentMoniker": "Magical_Music.DATA\\Repositories\\SongRepository.cs",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.DATA\\Repositories\\SongRepository.cs",
               "RelativeToolTip": "Magical_Music.DATA\\Repositories\\SongRepository.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAgwE8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T12:24:20.49Z"
+              "WhenOpened": "2025-05-28T12:24:20.49Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SongService.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\SongService.cs",
               "RelativeDocumentMoniker": "Magical_Music.SERVICE\\SongService.cs",
@@ -164,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "secrets.json",
               "DocumentMoniker": "C:\\Users\\user1\\AppData\\Roaming\\Microsoft\\UserSecrets\\0e1825b8-7ef3-4eeb-91a5-74742e872de8\\secrets.json",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\0e1825b8-7ef3-4eeb-91a5-74742e872de8\\secrets.json",
@@ -176,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AWSController.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\AWSController.cs",
               "RelativeDocumentMoniker": "Magical_Music\\Controllers\\AWSController.cs",
@@ -188,20 +189,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Program.cs",
               "RelativeDocumentMoniker": "Magical_Music\\Program.cs",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Program.cs",
               "RelativeToolTip": "Magical_Music\\Program.cs",
-              "ViewState": "AgIAAK8AAAAAAAAAAAAQwMMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAQwGoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-21T20:46:55.685Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AWSService.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\AWSService.cs",
               "RelativeDocumentMoniker": "Magical_Music.SERVICE\\AWSService.cs",
@@ -213,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UploadSongRequest.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\UploadSongRequest.cs",
               "RelativeDocumentMoniker": "Magical_Music.SERVICE\\UploadSongRequest.cs",

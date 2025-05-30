@@ -80,7 +80,7 @@ const AIChat = ({ isOpen, onClose }: AIChatProps) => {
         content: msg.content,
       }))
 
-const response = await fetch("https://localhost:7234/api/chat", {
+const response = await fetch("https://magical-music.onrender.com/api/chat", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

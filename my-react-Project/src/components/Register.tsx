@@ -28,6 +28,9 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
   const [loading, setLoading] = useState<boolean>(false)
   const navigate = useNavigate()
 
+  // משתנה בסיס API מתוך משתני הסביבה
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prevState) => ({
@@ -49,7 +52,7 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
     }
 
     try {
-      const response = await axios.post("https://localhost:7234/api/Auth/register", {
+      const response = await axios.post(`${API_BASE_URL}/api/Auth/register`, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -58,7 +61,7 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
       const data = response.data
 
       // שליחת מייל ברוכים הבאים
-      await axios.post("https://localhost:7234/api/Email/send", {
+      await axios.post(`${API_BASE_URL}/api/Email/send`, {
         to: formData.email,
         subject: "ברוכים הבאים ל-Magical Music 🎵✨",
         body: `
