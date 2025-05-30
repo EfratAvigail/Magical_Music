@@ -41,10 +41,10 @@ const SongFolder = ({ songs }: SongFolderProps) => {
       day: "numeric",
     })
   }
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
   const onPlaySong = async (song: Song) => {
     try {
-      const response = await axios.get(`https://localhost:7234/api/UploadFile/download-url?fileName=${encodeURIComponent(song.name)}`);
+      const response = await axios.get(`${API_BASE_URL}/api/UploadFile/download-url?fileName=${encodeURIComponent(song.name)}`);
       const audioUrl = response.data; // assuming the API returns the URL directly
       const audio = new Audio(audioUrl);
       audio.play();

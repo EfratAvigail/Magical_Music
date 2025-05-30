@@ -37,10 +37,11 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
     setLoading(true)
     setError("")
 
-    const baseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:7234"
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
+
 
     try {
-      const response = await axios.post(`${baseUrl}/api/Auth/login`, {
+      const response = await axios.post(`${API_BASE_URL}/api/Auth/login`, {
         email: formData.email,
         password: formData.password,
       })

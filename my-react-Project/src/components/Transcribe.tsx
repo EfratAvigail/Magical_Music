@@ -45,7 +45,7 @@ const Transcribe = () => {
   const [uploadedAudioFile, setUploadedAudioFile] = useState<File | null>(null)
   const [uploadedAudioDuration, setUploadedAudioDuration] = useState<number>(0)
   const [activeTab, setActiveTab] = useState<"record" | "upload">("record")
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const audioChunksRef = useRef<Blob[]>([])
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -190,7 +190,7 @@ const Transcribe = () => {
       formData.append("AudioFile", audioBlob, "audio.mp3"); // כאן אתה מוסיף את קובץ האודיו
 
       // שליחת הבקשה ל-API שלך
-      const transcriptionResponse = await axios.post('https://localhost:7234/api/Transcription/transcribe', formData, {
+      const transcriptionResponse = await axios.post(`${API_BASE_URL}/api/Transcription/transcribe`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'accept': '*/*'
@@ -236,7 +236,7 @@ const Transcribe = () => {
       setSendingEmail(true)
 
       // Call the email API
-      const response = await fetch("https://localhost:7234/api/Email/send", {
+      const response = await fetch(`${API_BASE_URL}/api/Email/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -326,7 +326,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       const formData = new FormData();
       formData.append('AudioFile', file);
 
-      const response = await axios.post("https://localhost:7234/api/Transcription/transcribe", formData, {
+      const response = await axios.post(`${API_BASE_URL}/api/Transcription/transcribe`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

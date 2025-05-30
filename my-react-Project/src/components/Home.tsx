@@ -30,7 +30,7 @@ import axios from "axios"
 interface HomeProps {
   setIsAuthenticated: (value: boolean) => void
 }
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 const Home = ({ setIsAuthenticated }: HomeProps) => {
   const [user, setUser] = useState<UserType | null>(null)
   const [songs, setSongs] = useState<Song[]>([])
@@ -66,7 +66,7 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
     setLoading(true)
     try {
       const token = localStorage.getItem("token")
-      const response = await axios.get<string[]>("https://localhost:7234/api/UploadFile/songs", {
+      const response = await axios.get<string[]>(`${API_BASE_URL}/api/UploadFile/songs`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -108,7 +108,7 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
     }
 
     try {
-      const response = await axios.get(`https://localhost:7234/api/UploadFile/download-url`, {
+      const response = await axios.get(`${API_BASE_URL}/api/UploadFile/download-url`, {
         params: { fileName: song.name }
       })
       const audioUrl = response.data.fileUrl

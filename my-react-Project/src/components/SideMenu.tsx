@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom"
 import AIChat from "./AIChat"
 // import MusicPlayer from "./MusicPlayer"
 import "../styles/sidemenu.css"
-
+  // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 interface MenuItem {
   id: string
   label: string

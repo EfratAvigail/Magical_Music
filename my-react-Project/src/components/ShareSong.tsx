@@ -8,7 +8,7 @@ import "../styles/sharesong.css";
 interface ShareSongProps {
   songs: Song[];
 }
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 const ShareSong = ({ songs }: ShareSongProps) => {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [email, setEmail] = useState("");
@@ -144,7 +144,7 @@ const ShareSong = ({ songs }: ShareSongProps) => {
       </html>
       `;
 
-      await axios.post("https://localhost:7234/api/Email/send", {
+      await axios.post(`${API_BASE_URL}/api/Email/send`, {
         to: email,
         subject: `שותף איתך את השיר "${selectedSong.name}" באמצעות Magical_Music`,
         body: fullMessage,
@@ -165,7 +165,7 @@ const ShareSong = ({ songs }: ShareSongProps) => {
 
   const fetchSongUrl = async (song: Song) => {
     try {
-      const response = await axios.get(`https://localhost:7234/api/UploadFile/download-url?fileName=${encodeURIComponent(song.name)}`);
+      const response = await axios.get(`${API_BASE_URL}/api/UploadFile/download-url?fileName=${encodeURIComponent(song.name)}`);
       return response.data.fileUrl;
     } catch (error) {
       console.error("Error fetching song URL:", error);

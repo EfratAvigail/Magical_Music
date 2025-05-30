@@ -9,7 +9,7 @@ import axios from "axios"
 interface CutSongProps {
   songs: Song[]
 }
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 const CutSong = ({ songs }: CutSongProps) => {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
@@ -152,7 +152,7 @@ const CutSong = ({ songs }: CutSongProps) => {
     }
 
     try {
-      const response = await axios.post("https://localhost:7234/api/CutSong", requestBody, {
+      const response = await axios.post(`${API_BASE_URL}/api/CutSong`, requestBody, {
         headers: { "Content-Type": "application/json" },
         responseType: "blob",
       })

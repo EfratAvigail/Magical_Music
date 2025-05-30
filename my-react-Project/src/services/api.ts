@@ -2,7 +2,7 @@ import axios from "axios"
 
 // Base API configuration
 const API_CONFIG = {
-  baseUrl:  "https://localhost:7234",
+  baseUrl: "https://magical-music.onrender.com",
 }
 
 // Set API_CONFIG globally for components to access
@@ -32,7 +32,6 @@ apiClient.interceptors.request.use(
 
 // Song API service
 export const songAPI = {
-  // Get all songs
   getAllSongs: async () => {
     try {
       const response = await apiClient.get("/api/Auth/Song")
@@ -43,7 +42,6 @@ export const songAPI = {
     }
   },
 
-  // Get song by ID
   getSongById: async (id: number) => {
     try {
       const response = await apiClient.get(`/api/Auth/Song/${id}`)
@@ -54,7 +52,6 @@ export const songAPI = {
     }
   },
 
-  // Get songs by singer name
   getSongsBySinger: async (singerName: string) => {
     try {
       const response = await apiClient.get(`/api/Auth/Song/singer/${singerName}`)
@@ -65,7 +62,6 @@ export const songAPI = {
     }
   },
 
-  // Add new song
   addSong: async (songData: FormData) => {
     try {
       const response = await apiClient.post("/api/Auth/Song", songData, {
@@ -80,7 +76,6 @@ export const songAPI = {
     }
   },
 
-  // Update existing song
   updateSong: async (id: number, songData: FormData) => {
     try {
       const response = await apiClient.put(`/api/Auth/Song/${id}`, songData, {
@@ -95,7 +90,6 @@ export const songAPI = {
     }
   },
 
-  // Delete song
   deleteSong: async (id: number) => {
     try {
       const response = await apiClient.delete(`/api/Auth/Song/${id}`)
@@ -109,7 +103,6 @@ export const songAPI = {
 
 // Singer API service
 export const singerAPI = {
-  // Get all singers
   getAllSingers: async () => {
     try {
       const response = await apiClient.get("/api/Auth/Singer")
@@ -120,7 +113,6 @@ export const singerAPI = {
     }
   },
 
-  // Get singer by ID
   getSingerById: async (id: number) => {
     try {
       const response = await apiClient.get(`/api/Auth/Singer/${id}`)
@@ -131,7 +123,6 @@ export const singerAPI = {
     }
   },
 
-  // Add new singer
   addSinger: async (singerData: FormData) => {
     try {
       const response = await apiClient.post("/api/Auth/Singer", singerData, {
@@ -146,7 +137,6 @@ export const singerAPI = {
     }
   },
 
-  // Update existing singer
   updateSinger: async (id: number, singerData: FormData) => {
     try {
       const response = await apiClient.put(`/api/Auth/Singer/${id}`, singerData, {
@@ -161,7 +151,6 @@ export const singerAPI = {
     }
   },
 
-  // Delete singer
   deleteSinger: async (id: number) => {
     try {
       const response = await apiClient.delete(`/api/Auth/Singer/${id}`)
@@ -175,7 +164,6 @@ export const singerAPI = {
 
 // Authentication API service
 export const authAPI = {
-  // Login
   login: async (email: string, password: string) => {
     try {
       const response = await apiClient.post("/api/Auth/login", { email, password })
@@ -186,7 +174,6 @@ export const authAPI = {
     }
   },
 
-  // Register
   register: async (userData: any) => {
     try {
       const response = await apiClient.post("/api/Auth/register", userData)
@@ -197,7 +184,6 @@ export const authAPI = {
     }
   },
 
-  // Get user profile
   getProfile: async () => {
     try {
       const response = await apiClient.get("/api/Auth/profile")
@@ -209,81 +195,8 @@ export const authAPI = {
   },
 }
 
-// Transcription API service
-export const transcriptionAPI = {
-  // Transcribe audio
-  transcribeAudio: async (audioFile: File, onProgress?: (progress: number) => void) => {
-    const formData = new FormData()
-    formData.append("audioFile", audioFile)
-
-    try {
-      const response = await axios.post("https://api.assemblyai.com/v2/upload", audioFile, {
-        headers: {
-          "Content-Type": "application/octet-stream",
-          Authorization: process.env.NEXT_PUBLIC_ASSEMBLY_AI_KEY || "72956af2d493457a9a1dfdf5661522aa",
-        },
-        onUploadProgress: (progressEvent) => {
-          if (progressEvent.total && onProgress) {
-            const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-            onProgress(progress)
-          }
-        },
-      })
-
-      const uploadUrl = response.data.upload_url
-
-      const transcriptResponse = await axios.post(
-        "https://api.assemblyai.com/v2/transcript",
-        {
-          audio_url: uploadUrl,
-          speech_model: "universal",
-        },
-        {
-          headers: {
-            Authorization: process.env.NEXT_PUBLIC_ASSEMBLY_AI_KEY || "72956af2d493457a9a1dfdf5661522aa",
-            "Content-Type": "application/json",
-          },
-        }
-      )
-
-      return transcriptResponse.data
-    } catch (error) {
-      console.error("Transcription error:", error)
-      throw error
-    }
-  },
-
-  // Send email with transcription
-  sendTranscriptionEmail: async (email: string, transcriptionText: string) => {
-    try {
-      const response = await apiClient.post("/api/Email/send", {
-        to: email,
-        subject: "Your Audio Transcription from Magical Music",
-        body: `
-          <html>
-            <body>
-              <h1>Your Audio Transcription</h1>
-              <p>Here is the transcription of your audio recording:</p>
-              <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                <p>${transcriptionText}</p>
-              </div>
-              <p>Thank you for using Magical Music!</p>
-            </body>
-          </html>
-        `,
-        isHtml: true,
-      })
-      return response.data
-    } catch (error) {
-      console.error("Email sending error:", error)
-      throw error
-    }
-  },
-}
-
 // AI Chat API service
 export const aiAPI = {
-  // Send message to AI
   sendMessage: async (messages: Array<{ role: string; content: string }>) => {
     try {
       const response = await apiClient.post("/api/ai/chat", { messages })
@@ -299,6 +212,5 @@ export default {
   song: songAPI,
   singer: singerAPI,
   auth: authAPI,
-  transcription: transcriptionAPI,
   ai: aiAPI,
 }
