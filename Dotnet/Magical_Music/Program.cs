@@ -126,11 +126,11 @@ namespace Magical_Music
 
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
+            //}
 
             app.UseHttpsRedirection();
             app.UseCors("AllowSpecificOrigin");
@@ -190,7 +190,7 @@ namespace Magical_Music
             });
 
             app.MapControllers();
-            //app.MapGet("/", () => "Welcome to Magical Music API! 🎶");
+            app.MapGet("/", () => "Welcome to Magical Music API! 🎶");
             app.Run();
         }
     }
