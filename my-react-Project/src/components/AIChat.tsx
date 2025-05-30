@@ -6,7 +6,7 @@ import { Send, X, Loader, Bot, User, ChevronDown, ChevronUp } from 'lucide-react
 // import { aiAPI } from "../services/api"
 import { ChatMessage } from "../types"
 import "../styles/aichat.css"
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
+  // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 interface AIChatProps {
   isOpen: boolean
   onClose: () => void
@@ -80,7 +80,7 @@ const AIChat = ({ isOpen, onClose }: AIChatProps) => {
         content: msg.content,
       }))
 
-const response = await fetch(`${API_BASE_URL}/api/chat`, {
+const response = await fetch(`/api/chat`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

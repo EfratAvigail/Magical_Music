@@ -37,11 +37,10 @@ const Login = ({ setIsAuthenticated }: LoginProps) => {
     setLoading(true)
     setError("")
 
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/Auth/login`, {
+      const response = await axios.post(`https://magical-music.onrender.com/api/Auth/login`, {
         email: formData.email,
         password: formData.password,
       })
