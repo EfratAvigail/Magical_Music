@@ -152,7 +152,7 @@ const CutSong = ({ songs }: CutSongProps) => {
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/CutSong`, requestBody, {
+      const response = await axios.post(`https://magical-music.onrender.com/api/CutSong`, requestBody, {
         headers: { "Content-Type": "application/json" },
         responseType: "blob",
       })

@@ -52,7 +52,7 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/Auth/register`, {
+      const response = await axios.post(`https://magical-music.onrender.com/api/Auth/register`, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -61,7 +61,7 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
       const data = response.data
 
       // שליחת מייל ברוכים הבאים
-      await axios.post(`${API_BASE_URL}/api/Email/send`, {
+      await axios.post(`https://magical-music.onrender.com/api/Email/send`, {
         to: formData.email,
         subject: "ברוכים הבאים ל-Magical Music 🎵✨",
         body: `

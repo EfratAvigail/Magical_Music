@@ -1,11 +1,17 @@
 import axios from "axios"
 
+// Detect environment
+const API_BASE_URL =
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_API_BASE_URL
+    : ""
+
 // Base API configuration
 const API_CONFIG = {
-  baseUrl: "https://magical-music.onrender.com",
+  baseUrl: API_BASE_URL,
 }
 
-// Set API_CONFIG globally for components to access
+// Set API_CONFIG globally for components to access (optional)
 if (typeof window !== "undefined") {
   ;(window as any).API_CONFIG = API_CONFIG
 }
@@ -33,178 +39,103 @@ apiClient.interceptors.request.use(
 // Song API service
 export const songAPI = {
   getAllSongs: async () => {
-    try {
-      const response = await apiClient.get("/api/Auth/Song")
-      return response.data
-    } catch (error) {
-      console.error("Error fetching songs:", error)
-      throw error
-    }
+    const response = await apiClient.get("/api/Auth/Song")
+    return response.data
   },
 
   getSongById: async (id: number) => {
-    try {
-      const response = await apiClient.get(`/api/Auth/Song/${id}`)
-      return response.data
-    } catch (error) {
-      console.error(`Error fetching song with ID ${id}:`, error)
-      throw error
-    }
+    const response = await apiClient.get(`/api/Auth/Song/${id}`)
+    return response.data
   },
 
   getSongsBySinger: async (singerName: string) => {
-    try {
-      const response = await apiClient.get(`/api/Auth/Song/singer/${singerName}`)
-      return response.data
-    } catch (error) {
-      console.error(`Error fetching songs for singer ${singerName}:`, error)
-      throw error
-    }
+    const response = await apiClient.get(`/api/Auth/Song/singer/${singerName}`)
+    return response.data
   },
 
   addSong: async (songData: FormData) => {
-    try {
-      const response = await apiClient.post("/api/Auth/Song", songData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      return response.data
-    } catch (error) {
-      console.error("Error adding song:", error)
-      throw error
-    }
+    const response = await apiClient.post("/api/Auth/Song", songData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    return response.data
   },
 
   updateSong: async (id: number, songData: FormData) => {
-    try {
-      const response = await apiClient.put(`/api/Auth/Song/${id}`, songData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      return response.data
-    } catch (error) {
-      console.error(`Error updating song with ID ${id}:`, error)
-      throw error
-    }
+    const response = await apiClient.put(`/api/Auth/Song/${id}`, songData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    return response.data
   },
 
   deleteSong: async (id: number) => {
-    try {
-      const response = await apiClient.delete(`/api/Auth/Song/${id}`)
-      return response.data
-    } catch (error) {
-      console.error(`Error deleting song with ID ${id}:`, error)
-      throw error
-    }
+    const response = await apiClient.delete(`/api/Auth/Song/${id}`)
+    return response.data
   },
 }
 
 // Singer API service
 export const singerAPI = {
   getAllSingers: async () => {
-    try {
-      const response = await apiClient.get("/api/Auth/Singer")
-      return response.data
-    } catch (error) {
-      console.error("Error fetching singers:", error)
-      throw error
-    }
+    const response = await apiClient.get("/api/Auth/Singer")
+    return response.data
   },
 
   getSingerById: async (id: number) => {
-    try {
-      const response = await apiClient.get(`/api/Auth/Singer/${id}`)
-      return response.data
-    } catch (error) {
-      console.error(`Error fetching singer with ID ${id}:`, error)
-      throw error
-    }
+    const response = await apiClient.get(`/api/Auth/Singer/${id}`)
+    return response.data
   },
 
   addSinger: async (singerData: FormData) => {
-    try {
-      const response = await apiClient.post("/api/Auth/Singer", singerData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      return response.data
-    } catch (error) {
-      console.error("Error adding singer:", error)
-      throw error
-    }
+    const response = await apiClient.post("/api/Auth/Singer", singerData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    return response.data
   },
 
   updateSinger: async (id: number, singerData: FormData) => {
-    try {
-      const response = await apiClient.put(`/api/Auth/Singer/${id}`, singerData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      return response.data
-    } catch (error) {
-      console.error(`Error updating singer with ID ${id}:`, error)
-      throw error
-    }
+    const response = await apiClient.put(`/api/Auth/Singer/${id}`, singerData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    return response.data
   },
 
   deleteSinger: async (id: number) => {
-    try {
-      const response = await apiClient.delete(`/api/Auth/Singer/${id}`)
-      return response.data
-    } catch (error) {
-      console.error(`Error deleting singer with ID ${id}:`, error)
-      throw error
-    }
+    const response = await apiClient.delete(`/api/Auth/Singer/${id}`)
+    return response.data
   },
 }
 
 // Authentication API service
 export const authAPI = {
   login: async (email: string, password: string) => {
-    try {
-      const response = await apiClient.post("/api/Auth/login", { email, password })
-      return response.data
-    } catch (error) {
-      console.error("Login error:", error)
-      throw error
-    }
+    const response = await apiClient.post("/api/Auth/login", { email, password })
+    return response.data
   },
 
   register: async (userData: any) => {
-    try {
-      const response = await apiClient.post("/api/Auth/register", userData)
-      return response.data
-    } catch (error) {
-      console.error("Registration error:", error)
-      throw error
-    }
+    const response = await apiClient.post("/api/Auth/register", userData)
+    return response.data
   },
 
   getProfile: async () => {
-    try {
-      const response = await apiClient.get("/api/Auth/profile")
-      return response.data
-    } catch (error) {
-      console.error("Error fetching profile:", error)
-      throw error
-    }
+    const response = await apiClient.get("/api/Auth/profile")
+    return response.data
   },
 }
 
 // AI Chat API service
 export const aiAPI = {
   sendMessage: async (messages: Array<{ role: string; content: string }>) => {
-    try {
-      const response = await apiClient.post("/api/ai/chat", { messages })
-      return response.data
-    } catch (error) {
-      console.error("AI chat error:", error)
-      throw error
-    }
+    const response = await apiClient.post("/api/ai/chat", { messages })
+    return response.data
   },
 }
 

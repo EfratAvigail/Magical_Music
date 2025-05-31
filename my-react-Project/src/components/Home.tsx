@@ -66,7 +66,7 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
     setLoading(true)
     try {
       const token = localStorage.getItem("token")
-      const response = await axios.get<string[]>(`${API_BASE_URL}/api/UploadFile/songs`, {
+      const response = await axios.get<string[]>(`https://magical-music.onrender.com/api/UploadFile/songs`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -108,7 +108,7 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
     }
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/UploadFile/download-url`, {
+      const response = await axios.get(`https://magical-music.onrender.com/api/UploadFile/download-url`, {
         params: { fileName: song.name }
       })
       const audioUrl = response.data.fileUrl
