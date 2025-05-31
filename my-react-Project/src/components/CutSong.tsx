@@ -9,7 +9,7 @@ import axios from "axios"
 interface CutSongProps {
   songs: Song[]
 }
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
+  // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 const CutSong = ({ songs }: CutSongProps) => {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)

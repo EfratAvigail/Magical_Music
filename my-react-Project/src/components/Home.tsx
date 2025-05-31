@@ -30,7 +30,7 @@ import axios from "axios"
 interface HomeProps {
   setIsAuthenticated: (value: boolean) => void
 }
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
+  // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 const Home = ({ setIsAuthenticated }: HomeProps) => {
   const [user, setUser] = useState<UserType | null>(null)
   const [songs, setSongs] = useState<Song[]>([])

@@ -29,7 +29,6 @@ const Register = ({ setIsAuthenticated }: RegisterProps) => {
   const navigate = useNavigate()
 
   // משתנה בסיס API מתוך משתני הסביבה
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
