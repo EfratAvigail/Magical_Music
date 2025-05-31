@@ -25,6 +25,10 @@ namespace Magical_Music
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // PORT for Render
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            builder.WebHost.UseUrls($"http://*:{port}");
+
             builder.Configuration.AddUserSecrets<Program>();
             builder.Configuration.AddJsonFile("Secret.json", optional: true, reloadOnChange: true);
 
@@ -35,11 +39,6 @@ namespace Magical_Music
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
 
             builder.Services.AddHttpClient();
-            builder.Services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new() { Title = "Magical Music API", Version = "v1" });
-                c.SupportNonNullableReferenceTypes();
-            });
 
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
@@ -59,6 +58,8 @@ namespace Magical_Music
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Magical Music API", Version = "v1" });
+                options.SupportNonNullableReferenceTypes();
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Scheme = "Bearer",
@@ -126,11 +127,8 @@ namespace Magical_Music
 
             var app = builder.Build();
 
-            //if (app.Environment.IsDevelopment())
-            //{
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            //}
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
             app.UseCors("AllowSpecificOrigin");
@@ -139,7 +137,10 @@ namespace Magical_Music
             app.UseAuthorization();
             app.UseAntiforgery();
 
-            // ✨ Chat API - Only for music topics
+            // דף ברירת מחדל
+            app.MapGet("/", () => Results.Ok("Welcome to Magical Music API! 🎶"));
+
+            // Chat API
             app.MapPost("/api/chat", async (IHttpClientFactory httpClientFactory, IConfiguration config, ChatRequest chatRequest) =>
             {
                 var apiKey = config["OpenAI:ApiKey"];
@@ -190,7 +191,6 @@ namespace Magical_Music
             });
 
             app.MapControllers();
-            //app.MapGet("/", () => "Welcome to Magical Music API! 🎶");
             app.Run();
         }
     }
