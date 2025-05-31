@@ -138,7 +138,9 @@ namespace Magical_Music
             app.UseAntiforgery();
 
             // דף ברירת מחדל
-            app.MapGet("/", () => Results.Ok("Welcome to Magical Music API! 🎶"));
+            //app.MapGet("/", () => Results.Ok("Welcome to Magical Music API! 🎶"));
+            app.MapGet("/", () => Results.Redirect("/swagger"));
+
 
             // Chat API
             app.MapPost("/api/chat", async (IHttpClientFactory httpClientFactory, IConfiguration config, ChatRequest chatRequest) =>
