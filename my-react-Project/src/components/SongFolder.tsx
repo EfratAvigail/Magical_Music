@@ -5,7 +5,7 @@ import { FolderPlus, MoreHorizontal, Play, Heart, Filter, SortDesc, Grid, List }
 import axios from "axios" // הוספת Axios
 import type { Song } from "../types"
 import "../styles/songfolder.css"
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
+  // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || ""
 interface SongFolderProps {
   songs: Song[]
 }
@@ -45,7 +45,7 @@ const SongFolder = ({ songs }: SongFolderProps) => {
   // Function to play the song using Axios
 const onPlaySong = async (song: Song) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/UploadFile/download-url`, {
+    const response = await axios.get(`https://magical-music.onrender.com/api/UploadFile/download-url`, {
       params: { fileName: song.name }
     });
     
