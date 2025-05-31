@@ -25,6 +25,9 @@ namespace Magical_Music
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // טעינת משתני סביבה (חיוני עבור Render)
+            builder.Configuration.AddEnvironmentVariables();
+
             // PORT for Render
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             builder.WebHost.UseUrls($"http://*:{port}");
@@ -34,7 +37,7 @@ namespace Magical_Music
 
             var jwtKey = builder.Configuration["JWT_KEY"];
             if (string.IsNullOrEmpty(jwtKey))
-                throw new ArgumentNullException("Jwt:Key", "JWT Key must be provided in User Secrets");
+                throw new ArgumentNullException("Jwt:Key", "JWT Key must be provided in environment variables or configuration.");
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
 
@@ -50,9 +53,10 @@ namespace Magical_Music
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:5173")
-                                      .AllowAnyMethod()
-                                      .AllowAnyHeader());
+                    policyBuilder => policyBuilder
+                        .WithOrigins("http://localhost:5173")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
             });
 
             builder.Services.AddEndpointsApiExplorer();
@@ -60,15 +64,17 @@ namespace Magical_Music
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Magical Music API", Version = "v1" });
                 options.SupportNonNullableReferenceTypes();
+
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
-                    Description = "Bearer Authentication with JWT Token",
-                    Type = SecuritySchemeType.Http
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
                 });
+
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -76,11 +82,11 @@ namespace Magical_Music
                         {
                             Reference = new OpenApiReference
                             {
-                                Id = "Bearer",
-                                Type = ReferenceType.SecurityScheme
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
                             }
                         },
-                        new List<string>()
+                        new string[] { }
                     }
                 });
             });
@@ -123,26 +129,26 @@ namespace Magical_Music
                       Password=qCV6Kk3IFLptHiJRXMV9",
                     new MySqlServerVersion(new Version(8, 0, 21))));
 
-            builder.Services.AddAntiforgery();
-
             var app = builder.Build();
 
-            app.UseSwagger();
-            app.UseSwaggerUI();
-
-            app.UseHttpsRedirection();
             app.UseCors("AllowSpecificOrigin");
+
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseAntiforgery();
 
-            // דף ברירת מחדל
-            //app.MapGet("/", () => Results.Ok("Welcome to Magical Music API! 🎶"));
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Magical Music API v1");
+                c.RoutePrefix = "";
+            });
+
+            app.UseHttpsRedirection();
+
             app.MapGet("/", () => Results.Redirect("/swagger"));
 
-
-            // Chat API
             app.MapPost("/api/chat", async (IHttpClientFactory httpClientFactory, IConfiguration config, ChatRequest chatRequest) =>
             {
                 var apiKey = config["OpenAI:ApiKey"];
@@ -193,6 +199,7 @@ namespace Magical_Music
             });
 
             app.MapControllers();
+
             app.Run();
         }
     }
