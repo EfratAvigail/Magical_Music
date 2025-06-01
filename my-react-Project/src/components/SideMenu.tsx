@@ -41,7 +41,7 @@ const SideMenu = ({ onNavigate }: SideMenuProps) => {
     { id: "/dashboard/share", label: "Share Song", icon: <Share size={20} /> },
     // { id: "/dashboard/search", label: "Search Songs", icon: <Search size={20} /> },
      { id: "/dashboard/requests", label: "Requests", icon: <MessageSquarePlus size={20} /> },
-     { id: "/dashboard/karaoke", label: "Requests", icon: <ChevronRight size={20} /> },
+     { id: "/dashboard/karaoke", label: "karaoke", icon: <ChevronRight size={20} /> },
 
   ]
 
