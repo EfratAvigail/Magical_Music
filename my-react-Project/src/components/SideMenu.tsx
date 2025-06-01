@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
-import { Music,  Mic, Bot, LogOut, Menu, X, ChevronRight, Share, Scissors } from "lucide-react"
+import { Music,  Mic, Bot, LogOut, Menu, X, ChevronRight, Share, Scissors, MessageSquarePlus } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
 import AIChat from "./AIChat"
 // import MusicPlayer from "./MusicPlayer"
@@ -40,6 +40,7 @@ const SideMenu = ({ onNavigate }: SideMenuProps) => {
     { id: "/dashboard/cut", label: "Cut Song", icon: <Scissors size={20} /> },
     { id: "/dashboard/share", label: "Share Song", icon: <Share size={20} /> },
     // { id: "/dashboard/search", label: "Search Songs", icon: <Search size={20} /> },
+     { id: "/dashboard/requests", label: "Requests", icon: <MessageSquarePlus size={20} /> },
   ]
 
   // Check if route is active
