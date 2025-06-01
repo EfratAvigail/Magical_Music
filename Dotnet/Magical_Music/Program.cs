@@ -63,6 +63,8 @@ namespace Magical_Music
             });
 
 
+            builder.Services.AddDbContext<DataContext>();
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
