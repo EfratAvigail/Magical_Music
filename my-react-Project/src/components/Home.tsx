@@ -27,7 +27,7 @@ import ShareSong from "./ShareSong"
 import UserSettings from "./UserSettings"
 import axios from "axios"
 import AdminRequests from "./admin-requests"
-import Karaoke from "./karaoke"
+// import Karaoke from "./karaoke"
 
 interface HomeProps {
   setIsAuthenticated: (value: boolean) => void
@@ -392,7 +392,7 @@ const Home = ({ setIsAuthenticated }: HomeProps) => {
             <Route path="share" element={<ShareSong songs={displaySongs} />} />
             <Route path="settings" element={<UserSettings user={user} />} />
             <Route path="requests" element={<AdminRequests user={user} />} />
-            <Route path="Karaoke" element={<Karaoke songs={displaySongs}  />} />
+            {/* <Route path="Karaoke" element={<Karaoke songs={displaySongs}  />} /> */}
 
 
           </Routes>
