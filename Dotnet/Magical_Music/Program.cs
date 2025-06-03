@@ -52,10 +52,12 @@ namespace Magical_Music
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll",
-                    policy => policy.AllowAnyOrigin()
-                                    .AllowAnyMethod()
-                                    .AllowAnyHeader());
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://localhost:5173",
+                    "https://my-react-project-6w5y.onrender.com",
+                    "http://localhost:4200")
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
             });
 
 
@@ -133,8 +135,8 @@ namespace Magical_Music
 
             var app = builder.Build();
 
-            //app.UseCors("AllowSpecificOrigin");
-            app.UseCors("AllowAll");
+            app.UseCors("AllowSpecificOrigin");
+            //app.UseCors("AllowAll");
 
 
             app.UseRouting();
