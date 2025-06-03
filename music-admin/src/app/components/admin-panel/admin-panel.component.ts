@@ -14,7 +14,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
-  imports: [CommonModule, FileUploadComponent,FormsModule,ReactiveFormsModule],  // הוספת CommonModule
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FileUploadComponent
+  ],  // הוספת CommonModule
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.css']
 })
