@@ -135,11 +135,8 @@ namespace Magical_Music
 
             var app = builder.Build();
 
-            app.UseCors("AllowSpecificOrigin");
-            //app.UseCors("AllowAll");
-
-
             app.UseRouting();
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseAuthentication();
             app.UseAuthorization();
