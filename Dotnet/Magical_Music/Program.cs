@@ -139,11 +139,13 @@ namespace Magical_Music
 
             var app = builder.Build();
 
-            app.UseRouting();
-            app.UseCors("AllowSpecificOrigin");
 
+
+            app.UseCors("AllowSpecificOrigin");
+            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
