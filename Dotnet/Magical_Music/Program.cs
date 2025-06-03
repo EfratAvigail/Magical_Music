@@ -25,21 +25,23 @@ namespace Magical_Music
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // טעינת משתני סביבה (חיוני עבור Render)
+            builder.Configuration.AddEnvironmentVariables();
+
+            // PORT for Render
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            builder.WebHost.UseUrls($"http://*:{port}");
+
             builder.Configuration.AddUserSecrets<Program>();
             builder.Configuration.AddJsonFile("Secret.json", optional: true, reloadOnChange: true);
 
             var jwtKey = builder.Configuration["JWT_KEY"];
             if (string.IsNullOrEmpty(jwtKey))
-                throw new ArgumentNullException("Jwt:Key", "JWT Key must be provided in User Secrets");
+                throw new ArgumentNullException("Jwt:Key", "JWT Key must be provided in environment variables or configuration.");
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
 
             builder.Services.AddHttpClient();
-            builder.Services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new() { Title = "Magical Music API", Version = "v1" });
-                c.SupportNonNullableReferenceTypes();
-            });
 
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
@@ -50,26 +52,37 @@ namespace Magical_Music
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:5173",
-                    "https://my-react-project-6w5y.onrender.com",
-                    "http://localhost:4200")
-                                      .AllowAnyMethod()
-                                      .AllowAnyHeader());
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins(
+                            "http://localhost:5173",
+                            "https://my-react-project-6w5y.onrender.com",
+                            "http://localhost:4200")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials(); // חשוב אם אתה שולח Cookies / JWT
+                });
             });
+
+
+            builder.Services.AddDbContext<DataContext>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Magical Music API", Version = "v1" });
+                options.SupportNonNullableReferenceTypes();
+
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
-                    Description = "Bearer Authentication with JWT Token",
-                    Type = SecuritySchemeType.Http
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
                 });
+
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -77,11 +90,11 @@ namespace Magical_Music
                         {
                             Reference = new OpenApiReference
                             {
-                                Id = "Bearer",
-                                Type = ReferenceType.SecurityScheme
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
                             }
                         },
-                        new List<string>()
+                        new string[] { }
                     }
                 });
             });
@@ -124,24 +137,25 @@ namespace Magical_Music
                       Password=qCV6Kk3IFLptHiJRXMV9",
                     new MySqlServerVersion(new Version(8, 0, 21))));
 
-            builder.Services.AddAntiforgery();
-
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseHttpsRedirection();
-            app.UseCors("AllowSpecificOrigin");
             app.UseRouting();
+            app.UseCors("AllowSpecificOrigin");
+
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseAntiforgery();
 
-            // ✨ Chat API - Only for music topics
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Magical Music API v1");
+                c.RoutePrefix = "";
+            });
+
+            app.UseHttpsRedirection();
+
+            app.MapGet("/", () => Results.Redirect("/swagger"));
+
             app.MapPost("/api/chat", async (IHttpClientFactory httpClientFactory, IConfiguration config, ChatRequest chatRequest) =>
             {
                 var apiKey = config["OpenAI:ApiKey"];
@@ -203,3 +217,4 @@ namespace Magical_Music
     public record Choice(Message Message);
     public record TranscriptionRequest(IFormFile AudioFile);
 }
+
