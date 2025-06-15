@@ -52,14 +52,16 @@ namespace Magical_Music
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins(
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins(
                             "http://localhost:5173",
-                            "https://my-react-project-6w5y.onrender.com"
-                        )
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials());
+                            "https://my-react-project-6w5y.onrender.com",
+                            "http://localhost:4200")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials(); // חשוב אם אתה שולח Cookies / JWT
+                });
             });
 
 
@@ -137,12 +139,13 @@ namespace Magical_Music
 
             var app = builder.Build();
 
+
+
             app.UseCors("AllowSpecificOrigin");
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -216,3 +219,4 @@ namespace Magical_Music
     public record Choice(Message Message);
     public record TranscriptionRequest(IFormFile AudioFile);
 }
+

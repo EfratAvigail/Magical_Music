@@ -8,7 +8,7 @@ import { SongUploadRequest, SongUploadResponse } from '../models/song.model';
   providedIn: 'root'
 })
 export class UploadService {
-  private apiUrl = 'https://localhost:7234/api/UploadFile/upload';
+  private apiUrl = 'https://magical-music.onrender.com/api/UploadFile/upload';
   private progressSubject = new Subject<number>();
 
   constructor(private http: HttpClient) { }

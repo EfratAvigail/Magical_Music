@@ -7,14 +7,19 @@ import { Subscription } from 'rxjs';
 import { UploadService } from '../../services/upload.service';
 import { SongUploadRequest, SongUploadResponse, AlertMessage } from '../../models/song.model';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // src/app/components/admin-panel/admin-panel.component.ts
 
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
-  imports: [CommonModule, FileUploadComponent,FormsModule],  // הוספת CommonModule
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FileUploadComponent
+  ],  // הוספת CommonModule
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.css']
 })

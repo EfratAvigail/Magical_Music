@@ -1,7 +1,9 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AdminPanelComponent } from './app/components/admin-panel/admin-panel.component';
+import { AppComponent } from './app/app.component';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
-bootstrapApplication(AdminPanelComponent, {
-  providers: []
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes), provideHttpClient()]
 });
