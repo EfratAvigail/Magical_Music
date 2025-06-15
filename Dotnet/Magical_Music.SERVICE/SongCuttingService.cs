@@ -1,5 +1,4 @@
 ﻿using Amazon.S3;
-using Amazon.S3.Transfer;
 using Magical_Music.CORE.DTOs;
 using Magical_Music.CORE.Services;
 using Microsoft.Extensions.Configuration;
@@ -34,34 +33,42 @@ namespace Magical_Music.SERVICE
                 await response.ResponseStream.CopyToAsync(fileStream);
             }
 
-            // נתיב ל־ffmpeg.exe
-            var ffmpegPath = Path.Combine(Directory.GetCurrentDirectory(), "Tools", "ffmpeg", "ffmpeg.exe");
+            // נתיב ל־ffmpeg ב־Linux
+            var ffmpegPath = "/usr/bin/ffmpeg";
             if (!File.Exists(ffmpegPath))
-                throw new FileNotFoundException("ffmpeg.exe not found", ffmpegPath);
+                throw new FileNotFoundException("ffmpeg not found", ffmpegPath);
 
-            // חיתוך עם FFmpeg
+            // חישוב זמנים
             var start = request.StartSeconds;
             var duration = request.EndSeconds - request.StartSeconds;
+
+            // בניית פקודה
             var ffmpegArgs = $"-i \"{tempInput}\" -ss {start} -t {duration} -c copy \"{tempOutput}\"";
 
-            var process = Process.Start(new ProcessStartInfo
+            var process = new Process
             {
-                FileName = ffmpegPath,
-                Arguments = ffmpegArgs,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            });
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = ffmpegPath,
+                    Arguments = ffmpegArgs,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }
+            };
 
+            process.Start();
+            string stderr = await process.StandardError.ReadToEndAsync(); // לקרוא לוגים אם יש שגיאה
             await process.WaitForExitAsync();
-            if (process.ExitCode != 0)
-                throw new Exception("FFmpeg failed to cut the song.");
 
-            // מחיקת הקלט בלבד
+            if (process.ExitCode != 0)
+                throw new Exception($"FFmpeg failed to cut the song. Error: {stderr}");
+
+            // מחיקת הקלט
             File.Delete(tempInput);
 
-            // החזרת נתיב לפלט (העתק חתוך)
+            // החזרת הנתיב לקובץ החתוך
             return tempOutput;
         }
     }

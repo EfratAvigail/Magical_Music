@@ -3,29 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6105EDBA-360A-43B1-8066-86FAE5EE2561}|Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.service\\songcuttingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6105EDBA-360A-43B1-8066-86FAE5EE2561}|Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj|solutionrelative:magical_music.service\\songcuttingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music\\controllers\\cutsongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|solutionrelative:magical_music\\controllers\\cutsongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|solutionrelative:magical_music\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< HEAD
-=======
-      "AbsoluteMoniker": "D:0:0:{6105EDBA-360A-43B1-8066-86FAE5EE2561}|Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6105EDBA-360A-43B1-8066-86FAE5EE2561}|Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj|solutionrelative:magical_music.service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|solutionrelative:magical_music\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
       "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\transcriptionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\transcriptionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -38,17 +27,18 @@
       "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\singer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\emailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\emailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-=======
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\AppData\\Roaming\\Microsoft\\UserSecrets\\0e1825b8-7ef3-4eeb-91a5-74742e872de8\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
@@ -108,16 +98,8 @@
       "RelativeMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|solutionrelative:magical_music\\controllers\\transcriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6105EDBA-360A-43B1-8066-86FAE5EE2561}|Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.service\\songcuttingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6105EDBA-360A-43B1-8066-86FAE5EE2561}|Magical_Music.SERVICE\\Magical_Music.SERVICE.csproj|solutionrelative:magical_music.service\\songcuttingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music.core\\models\\cutrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5984333-B7D0-4EBE-BD17-0F47E7E87C2D}|Magical_Music.CORE\\Magical_Music.CORE.csproj|solutionrelative:magical_music.core\\models\\cutrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|c:\\users\\user1\\desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\dotnet\\magical_music\\controllers\\cutsongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5617D30-8E33-4FBA-AFBD-49B075FDF3A3}|Magical_Music\\Magical_Music.API.csproj|solutionrelative:magical_music\\controllers\\cutsongcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user1\\Documents\\Dotnet\\Magical_Music.DATA\\Migrations\\20250528124356_YourMigrationName.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -138,63 +120,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 5,
-              "Title": "EmailRequest.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\EmailRequest.cs",
-              "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\EmailRequest.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\EmailRequest.cs",
-              "RelativeToolTip": "Magical_Music.CORE\\Models\\EmailRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T00:22:49.962Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-=======
-              "DocumentIndex": 1,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\AuthService.cs",
-              "RelativeDocumentMoniker": "Magical_Music.SERVICE\\AuthService.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\AuthService.cs",
-              "RelativeToolTip": "Magical_Music.SERVICE\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T13:24:49.582Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Magical_Music\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Magical_Music\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAwwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T13:24:01.895Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
-              "Title": "LoginModel.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\LoginModel.cs",
-              "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\LoginModel.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\LoginModel.cs",
-              "RelativeToolTip": "Magical_Music.CORE\\Models\\LoginModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T00:22:47.688Z"
             },
             {
               "$type": "Document",
@@ -222,11 +152,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 3,
-=======
-              "DocumentIndex": 7,
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
+              "DocumentIndex": 5,
               "Title": "Singer.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\Singer.cs",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\Singer.cs",
@@ -238,11 +164,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 2,
-=======
-              "DocumentIndex": 6,
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
+              "DocumentIndex": 4,
               "Title": "Song.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\Song.cs",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\Song.cs",
@@ -254,55 +176,55 @@
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 1,
-=======
-              "DocumentIndex": 5,
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
+              "DocumentIndex": 3,
               "Title": "TranscriptionRequest.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\TranscriptionRequest.cs",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\TranscriptionRequest.cs",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\TranscriptionRequest.cs",
               "RelativeToolTip": "Magical_Music.CORE\\Models\\TranscriptionRequest.cs",
-<<<<<<< HEAD
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-26T15:07:41.627Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Program.cs",
               "RelativeDocumentMoniker": "Magical_Music\\Program.cs",
               "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Program.cs",
               "RelativeToolTip": "Magical_Music\\Program.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAkwJAAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAQwEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T20:46:55.685Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T20:46:55.685Z"
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Program.cs",
-              "RelativeDocumentMoniker": "Magical_Music\\Program.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Program.cs",
-              "RelativeToolTip": "Magical_Music\\Program.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAQwEEAAAALAAAAAAAAAA==",
+              "Title": "SongCuttingService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\SongCuttingService.cs",
+              "RelativeDocumentMoniker": "Magical_Music.SERVICE\\SongCuttingService.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\SongCuttingService.cs",
+              "RelativeToolTip": "Magical_Music.SERVICE\\SongCuttingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T20:46:55.685Z",
+              "WhenOpened": "2025-05-25T20:44:09.465Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-=======
+              "DocumentIndex": 1,
+              "Title": "CutSongController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\CutSongController.cs",
+              "RelativeDocumentMoniker": "Magical_Music\\Controllers\\CutSongController.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\CutSongController.cs",
+              "RelativeToolTip": "Magical_Music\\Controllers\\CutSongController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:59:25.208Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
               "Title": "SongRepository.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.DATA\\Repositories\\SongRepository.cs",
@@ -315,27 +237,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
-              "Title": "RegisterModel.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\RegisterModel.cs",
-              "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\RegisterModel.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\RegisterModel.cs",
-              "RelativeToolTip": "Magical_Music.CORE\\Models\\RegisterModel.cs",
-<<<<<<< HEAD
+              "DocumentIndex": 8,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\LoginModel.cs",
+              "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\LoginModel.cs",
+              "RelativeToolTip": "Magical_Music.CORE\\Models\\LoginModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T00:23:07.282Z"
+              "WhenOpened": "2025-06-01T00:22:47.688Z"
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 14,
-=======
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "EmailRequest.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\EmailRequest.cs",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\EmailRequest.cs",
@@ -347,8 +261,19 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RegisterModel.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\RegisterModel.cs",
+              "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\RegisterModel.cs",
+              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\RegisterModel.cs",
+              "RelativeToolTip": "Magical_Music.CORE\\Models\\RegisterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T00:23:07.282Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 16,
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
               "Title": "UploadSongRequest.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\UploadSongRequest.cs",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\UploadSongRequest.cs",
@@ -384,11 +309,7 @@
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 9,
-=======
               "DocumentIndex": 11,
->>>>>>> 003dd1d5acb153bad6e7eea655ef2862d14800c1
               "Title": "AWSService.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\AWSService.cs",
               "RelativeDocumentMoniker": "Magical_Music.SERVICE\\AWSService.cs",
@@ -497,18 +418,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 24,
-              "Title": "SongCuttingService.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\SongCuttingService.cs",
-              "RelativeDocumentMoniker": "Magical_Music.SERVICE\\SongCuttingService.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.SERVICE\\SongCuttingService.cs",
-              "RelativeToolTip": "Magical_Music.SERVICE\\SongCuttingService.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAowDIAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T20:44:09.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
               "Title": "CutRequest.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\Models\\CutRequest.cs",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\Models\\CutRequest.cs",
@@ -520,19 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "CutSongController.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\CutSongController.cs",
-              "RelativeDocumentMoniker": "Magical_Music\\Controllers\\CutSongController.cs",
-              "ToolTip": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music\\Controllers\\CutSongController.cs",
-              "RelativeToolTip": "Magical_Music\\Controllers\\CutSongController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwBMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T12:59:25.208Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 27,
               "Title": "20250528125005_AddKeyToSongs.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.DATA\\Migrations\\20250528125005_AddKeyToSongs.cs",
               "RelativeDocumentMoniker": "Magical_Music.DATA\\Migrations\\20250528125005_AddKeyToSongs.cs",
@@ -544,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 25,
               "Title": "20250528124356_YourMigrationName.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Documents\\Dotnet\\Magical_Music.DATA\\Migrations\\20250528124356_YourMigrationName.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Documents\\Dotnet\\Magical_Music.DATA\\Migrations\\20250528124356_YourMigrationName.cs",
@@ -555,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 26,
               "Title": "SingerDTO.cs",
               "DocumentMoniker": "C:\\Users\\user1\\Desktop\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05D4\u05DE\u05D5\u05D6\u05D9\u05E7\u05D4 \u05E9\u05DC\u05D9\\Dotnet\\Magical_Music.CORE\\DTOs\\SingerDTO.cs",
               "RelativeDocumentMoniker": "Magical_Music.CORE\\DTOs\\SingerDTO.cs",

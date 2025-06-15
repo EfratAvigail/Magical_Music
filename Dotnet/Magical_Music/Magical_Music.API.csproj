@@ -36,8 +36,4 @@
 		<ProjectReference Include="..\Magical_Music.SERVICE\Magical_Music.SERVICE.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Tools\ffmpeg\" />
-	</ItemGroup>
-
 </Project>
